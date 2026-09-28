@@ -1,0 +1,142 @@
+.fiche-rp-spirit-1 {
+  background-color: #fef8d3;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  font-family: "Inter", sans-serif;
+  color: #333;
+  width: 500px;
+  border-radius: 5px;
+  overflow: hidden; /* évite de répéter les radius sur header/footer */
+}
+
+/* HEADER */
+.fiche-rp-spirit-1 .header-spirit {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  position: relative;
+  width: 100%;
+  height: 250px;
+}
+
+.fiche-rp-spirit-1 .header-spirit img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.fiche-rp-spirit-1 .header-spirit .overlay-spirit {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(254, 248, 211, 0) 50%,
+    rgba(254, 248, 211, 1)
+  );
+}
+
+.fiche-rp-spirit-1 .header-spirit .overlay-spirit.v2 {
+  background: linear-gradient(
+    to bottom,
+    rgba(253, 154, 185, 1) 0%,
+    rgba(253, 154, 185, 0) 20%,
+    rgba(254, 248, 211, 0) 50%,
+    rgba(254, 248, 211, 1)
+  );
+}
+
+/* FEAT */
+.fiche-rp-spirit-1 .feat-spirit {
+  background-color: #fef8d3;
+  padding: 8px 10px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+  font-family: "Familjen Grotesk", sans-serif;
+  border-radius: 5px;
+}
+
+.fiche-rp-spirit-1 .feat-spirit.v2 {
+  position: static;
+  background-color: white;
+}
+
+/* TITLE */
+.fiche-rp-spirit-1 .title-spirit {
+  text-align: center;
+  font-size: 25px;
+  font-family: "La Belle Aurore", cursive;
+  line-height: 1.2;
+  margin: 20px 40px;
+  color: #333;
+}
+
+.fiche-rp-spirit-1 .title-spirit.v2 {
+  text-align: right;
+  margin-bottom: 0;
+}
+
+/* CONTENT */
+.fiche-rp-spirit-1 .content-spirit {
+  background-color: #f0ecd3;
+  margin: 0 25px 25px;
+  font-size: 12px;
+  padding: 20px;
+  line-height: 1.5;
+  border-radius: 10px;
+  text-align: justify;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.fiche-rp-spirit-1 .content-spirit.v2 {
+  background-color: transparent;
+  box-shadow: none;
+  padding: 10px;
+}
+
+/* FOOTER */
+.fiche-rp-spirit-1 .footer-spirit {
+  background: linear-gradient(to right, #ffdfe9, #ffcfb0);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 25px;
+}
+
+.fiche-rp-spirit-1 .footer-spirit.v2 {
+  background: #fd9ab9;
+}
+
+.fiche-rp-spirit-1 .footer-spirit .place-spirit {
+  flex: 1;
+  font-size: 12px;
+  text-align: right;
+}
+
+.fiche-rp-spirit-1 .footer-spirit .icon-spirit {
+  padding: 5px;
+  border-radius: 100px;
+  background-color: #fff;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fiche-rp-spirit-1 .footer-spirit .icon-spirit span.material-symbols-outlined {
+  font-size: 20px;
+}
+
+.credits {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  font-size: 9px;
+  padding: 5px;
+  font-weight: bold;
+}
