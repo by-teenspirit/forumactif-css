@@ -30,27 +30,6 @@ sont restées ensemble pour ne pas casser ce lien.
 Le gabarit générique non rattaché à une personne (`RPG-fiche-rp`) est dans
 `divers/fiche-rp-generique/`.
 
-## `lgdc_fiches.css` — la feuille commune
-
-C'est **la seule feuille de ce dossier que le forum charge vraiment**. Elle est
-appelée dans `overall_header`, juste avant `<title>`.
-
-Elle était hébergée sur Dropbox, via un lien porteur d'un jeton `st=` qui expire :
-le jour où ce jeton tombe, tout le monde perd le CSS de sa fiche d'un coup.
-Elle est donc reprise ici, à l'octet près (58 556 o, vérifié).
-
-URL à mettre dans `overall_header`, à la place du lien Dropbox :
-
-    <link href="https://cdn.jsdelivr.net/gh/by-teenspirit/forumactif-css@<SHA>/lgdc/lgdc_fiches.css" rel="stylesheet" type="text/css">
-
-`<SHA>` est le hash du commit, pas `@main` — même raison que pour `adwad.css`
-(voir le README à la racine) : une URL figée est immuable, jsDelivr la sert
-tout de suite, sans purge et sans attendre 7 jours de cache.
-
-Après chaque modification de `lgdc_fiches.css` : committer, récupérer le nouveau
-hash, remplacer l'ancien dans `overall_header`, enregistrer **et publier** le
-template. Sans changement d'URL, rien ne sort.
-
 ## Ce que ces fichiers sont — et ne sont pas
 
 Ce sont des **sources de travail** : gabarits avec du lorem ipsum et des
