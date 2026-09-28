@@ -1,0 +1,197 @@
+/* Code by teenspirt */
+
+@import url("https://fonts.googleapis.com/css2?family=League+Gothic&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+.fiche-evo-kirby {
+  background-color: white;
+  width: 500px;
+  margin: auto;
+  font-family: Roboto;
+  font-size: 12px;
+  color: #272727;
+  border: 1px solid lightgray;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-sizing: content-box;
+}
+
+.header-kirby {
+  border-radius: 5px;
+  /* background-image: linear-gradient(
+      to bottom,
+      rgba(29, 29, 29, 0),
+      rgba(29, 29, 29, 1)
+    ),
+    url("https://64.media.tumblr.com/e34617ef35020777c5dd1f70bed19fbb/tumblr_ohj9x3vfoC1veydt5o1_500.gif"); */
+  height: 130px;
+  background-position: center;
+  position: relative;
+}
+
+.header-content {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+.titre-kirby {
+  text-align: center;
+  font-family: League Gothic;
+  font-size: 32px;
+  color: white;
+  padding: 10px;
+}
+
+.soustt-kirby {
+  font-family: Roboto Condensed;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+}
+
+.info-kirby {
+  display: flex;
+  gap: 10px;
+  height: 150px;
+}
+
+.container-info {
+  height: 100%;
+  border-radius: 5px;
+  padding: 15px;
+  overflow: auto;
+  flex: 2;
+  box-sizing: border-box;
+  text-align: justify;
+}
+
+.titre-info {
+  font-size: 24px;
+  font-family: League Gothic;
+  margin-top: -5px;
+  padding: 5px 0px;
+}
+
+.info-kirby img {
+  height: 100%;
+  flex: 1;
+  object-fit: cover;
+  width: 50px;
+  border-radius: 5px;
+}
+
+.cita-kirby {
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  font-weight: bold;
+  font-family: Roboto Condensed;
+  text-align: center;
+  box-sizing: border-box;
+  text-transform: uppercase;
+}
+
+.titre-rela {
+  text-align: center;
+  font-family: League Gothic;
+  font-size: 32px;
+  padding: 10px;
+}
+
+.rela-kirby {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.rela-name {
+  font-family: League Gothic;
+  font-size: 24px;
+  bottom: 15px;
+  left: 15px;
+  position: absolute;
+  transition: all 0.5s ease-out;
+  opacity: 1;
+  color: white;
+  z-index: 10;
+}
+
+.rela-content {
+  height: 140px;
+  width: 245px;
+  display: inline-block;
+  background-color: black;
+  border-radius: 5px;
+  transition: all 0.5s ease-out;
+  position: relative;
+  /* background-image: linear-gradient(
+      to bottom,
+      rgba(29, 29, 29, 0),
+      rgba(29, 29, 29, 1)
+    ),
+    url("https://64.media.tumblr.com/e34617ef35020777c5dd1f70bed19fbb/tumblr_ohj9x3vfoC1veydt5o1_500.gif"); */
+}
+.rela-content img {
+  -moz-transition: opacity 0.8s ease-in-out;
+  -webkit-transition: opacity 0.8s ease-in-out;
+  -o-transition: opacity 0.8s ease-in-out;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 1;
+  height: 140px;
+  width: 245px;
+  object-fit: cover;
+}
+.rela-content:hover img {
+  opacity: 0.4;
+}
+.rela-content:hover .rela-info {
+  opacity: 1;
+}
+
+.rela-content:hover .rela-name {
+  transition: all 0.5s ease-out;
+  transform: translateY(-90px);
+  opacity: 1;
+}
+.rela-info {
+  background-color: #1d1d1d;
+  border-radius: 5px;
+  padding: 40px 15px 15px 15px;
+  box-sizing: border-box;
+  overflow: auto;
+  line-height: 100%;
+  z-index: 4;
+  opacity: 0;
+  text-align: justify;
+  position: absolute;
+  height: 140px;
+  width: 245px;
+  color: white;
+  -moz-transition: opacity 0.8s ease-in-out;
+  -webkit-transition: opacity 0.8s ease-in-out;
+  -o-transition: opacity 0.8s ease-in-out;
+  transition: opacity 0.8s ease-in-out;
+  box-sizing: border-box;
+}
+
+/* SECONDE FICHE */
+
+.info2-content {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.info2 {
+  content: "";
+  display: flex;
+  gap: 10px;
+}
+
+.separa-kirby {
+  border-radius: 5px;
+}
