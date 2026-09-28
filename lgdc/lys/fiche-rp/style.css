@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+.fiche-rp-lys {
+  width: 500px;
+  box-sizing: border-box;
+  background-color: white;
+  border: 1px solid lightgray;
+  padding: 20px;
+  font-size: 12px;
+  color: #272727;
+  border-radius: 5px;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.img-lys {
+  position: absolute;
+  top: -130px;
+  left: -90px;
+}
+
+.header-lys {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.titre-lys {
+  width: 300px;
+  font-family: Roboto Condensed;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.soustt-lys {
+  font-family: Playfair Display;
+  font-weight: 500;
+  width: 300px;
+  text-align: right;
+}
+
+.content-rp-lys {
+  font-family: Roboto;
+  text-align: justify;
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+
+.content2 {
+  background-color: rgba(168, 203, 243, 0.6);
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+.content-lac {
+  background-color: #b1e5c5;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+.circle-lys {
+  height: 100px;
+  width: 100px;
+  background-color: rgba(168, 203, 243, 0.6);
+  position: absolute;
+  bottom: -65px;
+  right: -65px;
+  border-radius: 100px;
+}
+
+.credit {
+  text-align: center;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-family: Roboto Condensed;
+  color: #272727;
+  font-weight: bold;
+  margin-top: 5px;
+}
