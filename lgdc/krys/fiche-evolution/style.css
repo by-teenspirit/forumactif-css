@@ -1,0 +1,206 @@
+.fiche-evo-krys {
+  width: 500px;
+  background-color: #272727;
+  color: #ede3de;
+  font-size: 12px;
+  border-radius: 5px;
+  margin: auto;
+}
+
+.gif-krys {
+  background-color: linear-gradient(#272727, #858585);
+  height: 150px;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.titre-krys {
+  font-family: Amita;
+  font-size: 35px;
+  text-align: center;
+  margin-top: -35px;
+}
+
+.surround-krys {
+  padding: 0px 20px 20px 20px;
+}
+
+.info-krys {
+  width: 100%;
+  background-color: #1d1d1d;
+  border-radius: 5px;
+  font-family: Playfair Display;
+  font-weight: bold;
+  text-align: center;
+  margin: -10px 0px 10px 0px;
+  padding: 5px 0px;
+}
+
+.relations-krys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nom-relation {
+  font-family: Playfair Display;
+  font-size: 20px;
+  background-color: rgba(237, 227, 222, 0.3);
+  bottom: 15px;
+  position: absolute;
+  padding: 3px 0px 3px 10px;
+  width: 75%;
+  border-radius: 0px 5px 5px 0px;
+  transform: translateY(0%);
+  transition: 0.25s ease-in-out;
+  opacity: 1;
+}
+
+name {
+  font-family: Playfair Display;
+  font-size: 20px;
+  padding-bottom: 10px;
+  display: block;
+}
+
+.relation1 {
+  height: 140px;
+  width: 225px;
+  display: inline-block;
+  background-color: black;
+  border-radius: 5px;
+  transition: all 0.5s ease-out;
+  position: relative;
+}
+.relation1 img {
+  -moz-transition: opacity 0.8s ease-in-out;
+  -webkit-transition: opacity 0.8s ease-in-out;
+  -o-transition: opacity 0.8s ease-in-out;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 1;
+  height: 140px;
+  width: 225px;
+  object-fit: cover;
+}
+.relation1:hover img {
+  opacity: 0.4;
+}
+.relation1:hover .relation1-info {
+  opacity: 1;
+}
+
+.relation1:hover .nom-relation {
+  transform: translateY(-100%);
+  transition: 0.25s ease-in-out;
+  opacity: 0;
+}
+.relation1-info {
+  background-color: #1d1d1d;
+  border-radius: 5px;
+  padding: 15px;
+  overflow: auto;
+  line-height: 100%;
+  z-index: 4;
+  opacity: 0;
+  position: absolute;
+  width: 195px;
+  height: 110px;
+  -moz-transition: opacity 0.8s ease-in-out;
+  -webkit-transition: opacity 0.8s ease-in-out;
+  -o-transition: opacity 0.8s ease-in-out;
+  transition: opacity 0.8s ease-in-out;
+  box-sizing: content-box;
+}
+
+/* SECONDE FICHE */
+
+.rp-krys {
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.image-krys {
+  width: 180px;
+  height: 100px;
+  border-radius: 5px;
+}
+
+.header-krys {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.citation-krys {
+  font-family: Playfair Display;
+  font-weight: bold;
+  font-size: 18px;
+  flex: 1;
+  text-align: justify;
+}
+
+.citation-krys:before {
+  content: "“ ";
+  font-family: Playfair Display;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.citation-krys:after {
+  content: " ”";
+  font-family: Playfair Display;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.container-krys {
+  background-color: #1d1d1d;
+  padding: 50px 15px 15px 15px;
+  position: relative;
+  border-radius: 5px;
+}
+
+.titre-container {
+  position: absolute;
+  font-family: Playfair Display;
+  font-size: 18px;
+  background-color: rgba(237, 227, 222, 0.2);
+  padding: 5px 0px 5px 10px;
+  width: 75%;
+  border-radius: 5px 0px 5px 0px;
+  left: 0;
+  top: 0;
+}
+
+/* FICHE DE RP */
+
+.cita-position {
+  display: flex;
+  text-align: right;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.cita-length {
+  width: 350px;
+  flex: none;
+  margin-right: 30px;
+  text-align: right;
+  margin-top: -20px;
+}
+
+.rp-krys {
+  padding: 10px 30px 30px 30px;
+  font-family: Roboto;
+  text-align: justify;
+  font-size: 12px;
+}
+
+.feat-krys {
+  font-family: Roboto Condensed;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 5px;
+  margin-right: 30px;
+}
