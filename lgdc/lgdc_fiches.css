@@ -1,0 +1,2772 @@
+/* -------- TOUTES LES FICHES ------- */
+/* ordre : prez, prédef, liens, evo, répert de rps */
+
+:root {
+    --color1: #1e6f5c; /* fond 1 */
+    --color2: #0b413b; /* fond 1 plus foncé */
+    --color3: #29bb89; /* fond 1 plus clair */
+    --color4: #10544c; /* couleur de fond de la bann */
+    --color5: #cc463e; /* accentuation rouge par ex */
+    --color6: #e6dd3b; /* encore plus foncé */
+    --color7: #000000; /* typo */
+    --color8: #1c224c;
+    --color9: #000;
+    --police-titre: 'Dancing Script', cursive;
+    --police-text: Roboto;
+    --subtitle: Playfair Display;
+}
+
+
+/* --------------- LES FICHES DE PREZ ------------- */
+
+
+
+/* présentation Kontah */
+.defilement { text-align:justify; color: white; height: 200px; overflow: auto; }
+.defilement2 { text-align:justify; color: white; height: 210px; overflow: auto; }
+.defilement3 { text-align:justify; color: white; height: 170px; overflow: auto; }
+.defilement4 { text-align:justify; color: white; height: 170px; overflow: auto; }
+
+/* ----- FICHE #1 SUN -------- */
+
+.gdcadre {
+  width: 550px;
+  border: 5px solid var(--color7);
+  box-shadow: 0px 0px 10px var(--color2);
+  background-color: var(--color1);
+}
+
+.id-image {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.id, .id-image {
+  -webkit-transition: 0.7s;
+  -moz-transition: 0.7s;  
+  -ms-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.id:hover .id-image {
+  margin-top: -115px;
+  overflow: auto;
+}
+
+.id { width: 500px;
+  height: 110px;
+  border: 2px solid var(--color3);
+  background-color: var(--color3);
+  box-shadow: 0px 0px 10px var(--color3);
+  overflow: hidden;
+}
+
+.titrecadre { font-size: 35px;
+  color: var(--color3);
+  margin-bottom: -12px;
+  font-family: 'Calligraffitti', cursive;
+  margin-left: 8px;
+  margin-bottom: -13px;
+  text-shadow: 0px 0px 5px var(--color3);
+}
+
+.texte { font-size: 11px;
+  color: var(--color2);
+  text-align: justify;
+  padding: 5px;
+  height: 100px;
+  overflow: hidden;
+  line-height: 14px;
+}
+
+.texte:hover {overflow: auto; }
+
+.texte2 { font-size: 11px;
+  color: var(--color2);
+  text-align: justify;
+  padding: 5px;
+  line-height: 14px;
+}
+
+.cadrebut { width: 500px;
+  border: 2px solid var(--color3);
+  background-color: var(--color3);
+  height: 80px;
+  overflow: auto;
+  margin-bottom: -10px;
+  box-shadow: 0px 0px 10px var(--color3);
+}
+
+.ptcadre { width: 240px;
+  border: 2px solid var(--color3);
+  background-color: var(--color3);
+  height: 200px;
+  overflow: auto;
+  box-shadow: 0px 0px 10px var(--color3);
+}
+
+.cadrehist { width: 500px;
+  height: 200px;
+  overflow: auto;
+  border: 2px solid var(--color3);
+  background-color: var(--color3);
+  height: 200px;
+  margin-top: 5px;
+  box-shadow: 0px 0px 10px var(--color3);
+}
+
+.cadretwa { width: 238px;
+  border: 2px solid var(--color3);
+  background-color: var(--color3);
+  height: 200px;
+  -webkit-transition: 0.7s;
+  -moz-transition: 0.7s;
+  -ms-transition: 0.7s;
+  transition: 0.7s;
+  opacity: 0;
+}
+
+.img_twa {background-image: url(https://www.zupimages.net/up/17/18/bh78.png);
+  width: 240px;
+  height: 200px;
+  border: 2px solid var(--color3);
+}
+
+.cadretwa:hover {opacity: 8;}
+
+.txttwa { font-size: 35px;
+  text-align: center;
+  color: var(--color2);
+  font-family: 'Calligraffitti', cursive;
+  text-shadow: 0px 0px 5px var(--color2);
+  -webkit-transform: rotate(-25deg);
+  -moz-transform: rotate(-25deg);
+  margin-top: 55px;
+}
+
+/* ----------- FIN FICHE #1 ----------- */
+
+
+
+/* ---------------- FICHE #2 (Kayl) ----------- */
+
+.prezblok
+{ width: 560px;
+  background: var(--color1);
+  box-shadow: 0px 0px 2px var(--color1); }
+
+.preztitle
+{ text-align: center;
+  font-size: 40px;
+  margin-top: 20px;
+  color: var(--color3);
+  font-family: var(--police-titre); }
+
+.preztitle:hover
+{ letter-spacing: 10px;
+  -moz-transition:all 1s; /* Mozilla Firefox */
+  -webkit-transition:all 1s; /* Safari et Google Chrome */
+  -o-transition:all 1s; /* Opera */
+  transition: all 1s;}
+
+.prezimage
+{ width: 250px;
+  height: 250px;
+  opacity: 0.7;
+  box-shadow: 0px 0px 1px var(--color2);
+  margin-top: 23px;
+  margin-right: 20px;
+  background-image: url('https://www.zupimages.net/up/17/08/5dbb.png'); }
+.prezimage:hover
+{ opacity: 1;
+  box-shadow: 0px 0px 5px var(--color2);
+  -moz-transition:all 1s; /* Mozilla Firefox */
+  -webkit-transition:all 1s; /* Safari et Google Chrome */
+  -o-transition:all 1s; /* Opera */
+  transition: all 1s; }
+
+.tonchat
+{ text-align: right;
+  font-size: 30px;
+  color: var(--color3);
+  font-family: var(--police-titre);
+  margin-bottom: 5px;
+  padding-right: 20px; }
+
+.prezblok1
+{ width: 236px;
+  height: 236px;
+  overflow: auto;
+  background-color: var(--color3);
+  box-shadow: 0 0 1px var(--color3);
+  opacity: .7;
+  color: var(--color2);
+  text-align: justify;
+  padding: 7px; }
+
+.prezblok1:hover
+{ box-shadow: 0 0 5px var(--color3);
+  opacity: .9;
+  -moz-transition:all 1s; /* Mozilla Firefox */
+  -webkit-transition:all 1s; /* Safari et Google Chrome */
+  -o-transition:all 1s; /* Opera */
+  transition: all 1s;}
+
+.physique
+{ text-align: center;
+  font-size: 30px;
+  color: var(--color3);
+  margin-top: 20px;
+  font-family: var(--police-titre);
+  margin-bottom: 5px; }
+
+.prezphys
+{ width: 250px;
+  height: 250px;
+  overflow: auto;
+  background-color: var(--color3);
+  box-shadow: 0 0 1px var(--color3);
+  opacity: .7;
+  color: var(--color2);
+  text-align: justify;
+  padding: 7px; }
+
+.prezphys:hover
+{ box-shadow: 0 0 5px var(--color3);
+  opacity: .9;
+  -moz-transition:all 1s; /* Mozilla Firefox */
+  -webkit-transition:all 1s; /* Safari et Google Chrome */
+  -o-transition:all 1s; /* Opera */
+  transition: all 1s;}
+
+.caractere
+{ text-align: center;
+  font-size: 30px;
+  color: var(--color3);
+  margin-top: 20px;
+  font-family: var(--police-titre);
+  margin-bottom: 5px; }
+
+.prezcara
+{ width: 250px;
+  height: 250px;
+  overflow: auto;
+  background-color: var(--color3);
+  box-shadow: 0 0 1px var(--color3);
+  opacity: .7;
+  color: var(--color2);
+  text-align: justify;
+  padding: 7px; }
+
+.prezcara:hover
+{ box-shadow: 0 0 5px var(--color2);
+  opacity: .9;
+  -moz-transition:all 1s; /* Mozilla Firefox */
+  -webkit-transition:all 1s; /* Safari et Google Chrome */
+  -o-transition:all 1s; /* Opera */
+  transition: all 1s;}
+
+.histoire
+{ text-align: center;
+  font-size: 30px;
+  color: var(--color3);
+  margin-top: 20px;
+  font-family: var(--police-titre);
+  margin-bottom: 5px; }
+
+.prezhist
+{ width: 530px;
+  height: 300px;
+  overflow: auto;
+  background-color: var(--color3);
+  box-shadow: 0 0 1px var(--color3);
+  opacity: .7;
+  color: var(--color2);
+  text-align: justify;
+  padding: 7px; }
+
+.prezhist:hover
+{ box-shadow: 0 0 5px var(--color3);
+  opacity: .9;
+  -moz-transition:all 1s; /* Mozilla Firefox */
+  -webkit-transition:all 1s; /* Safari et Google Chrome */
+  -o-transition:all 1s; /* Opera */
+  transition: all 1s; }
+
+.toi
+{ text-align: left;
+  font-size: 30px;
+  color: var(--color3);
+  font-family: var(--police-titre);
+  margin-bottom: 5px;
+  padding-left: 20px; }
+
+.prezblok2
+{ width: 236px;
+  height: 236px;
+  overflow: auto;
+  margin-right: 20px;
+  background-color: var(--color3);
+  box-shadow: 0 0 1px var(--color3);
+  opacity: .7;
+  color: var(--color2);
+  text-align: justify;
+  padding: 7px; }
+
+.prezblok2:hover
+{ box-shadow: 0 0 5px var(--color3);
+  opacity: .9;
+  -moz-transition:all 1s; /* Mozilla Firefox */
+  -webkit-transition:all 1s; /* Safari et Google Chrome */
+  -o-transition:all 1s; /* Opera */
+  transition: all 1s;}
+
+.prezimage2
+{ width: 250px;
+  height: 250px;
+  opacity: 0.7;
+  box-shadow: 0px 0px 1px var(--color1);
+  margin-top: 23px;
+  background-image: url('https://www.zupimages.net/up/17/08/pxxh.png'); }
+.prezimage2:hover
+{ opacity: 1;
+  box-shadow: 0px 0px 5px var(--color1);
+  -moz-transition:all 1s; /* Mozilla Firefox */
+  -webkit-transition:all 1s; /* Safari et Google Chrome */
+  -o-transition:all 1s; /* Opera */
+  transition: all 1s; }
+
+/* ------------------- FIN FICHE #2 ----------- */
+
+
+
+/* ---------- FICHE PREZ (Kayl & co) ---------- */
+
+.prez-block1{
+  width: 550px;
+  background: var(--color2);
+  margin: auto;
+  padding-bottom: 65px;
+  box-shadow: 0 0 3px var(--color2);
+}
+
+div.prez-id {
+  width: 250px;
+  background: var(--color3);
+  margin: 0px 15px;
+  float: left;
+}
+.prez-triangle{
+  width: 0;
+  height: 0;
+  border-left: 125px solid transparent;
+  border-right: 125px solid transparent;
+  border-top: 50px solid var(--color3);
+  margin: 0px 15px;
+  position: relative;
+  float: left;
+}
+p.prez-id{
+  padding: 15px !important;
+  text-align: justify !important;
+  font-size: 12px !important;
+  height: 172px !important;
+  overflow: auto !important;
+}
+h2.prez-subtitle {
+  color: var(--color2) !important;
+  text-align: center !important;
+  font-size: 25px !important;
+  letter-spacing: 1px !important;
+  font-family: 'Calligraffitti', cursive !important;
+  border-bottom: 1px solid var(--color2) !important;
+  width: 80% !important;
+  margin: auto !important;
+  padding: 15px !important;
+  font-weight: 600 !important;
+}
+.prez-but {
+  display: inline-block;
+  width: 250px;
+}
+.prez-but h1{
+  font-size: 30px !important;
+  text-align: center !important;
+  color: var(--color3) !important;
+  font-family: 'Calligraffitti', cursive !important;
+  letter-spacing: 1px !important;
+  font-weight: 600 !important;
+  margin-top:30px  !important;
+}
+.prez-but h3{
+  text-align: justify !important;
+  font-weight: bold !important;
+  font-size: 18px !important;
+  color: var(--color3) !important;
+  font-family: var(--police-titre), cursive !important;
+}
+.prez-but p {
+  text-align: justify;
+  height: 150px;
+  overflow: auto;
+  font-size: 12px !important;
+  margin-top: 15px;
+  color: var(--color3);
+}
+
+.prez-block2{
+  width: 550px;
+  background: var(--color3);
+  margin: auto;
+  text-align: center;
+  box-shadow: 0 0 3px var(--color2);
+}
+.prez-block2 div{
+  display: inline-block;
+  margin: 0px 20px;
+  width: 40%;
+  font-size: 11px !important;
+}
+.prez-block2 h2{
+  color: var(--color2) !important;
+  font-size: 25px !important;
+  border-bottom: 1px solid var(--color2) !important;
+  padding: 5px !important;
+  font-family: 'Calligraffitti', cursive !important;
+  letter-spacing: 1px !important;
+  font-weight: 600 !important;
+}
+.prez-block2 p{
+  text-align: justify;
+  height: 200px;
+  overflow: auto;
+  font-size: 12px !important;
+}
+.prez-block3{
+  width: 550px;
+  background: var(--color2);
+  margin: auto;
+  text-align: center;
+  padding: 15px 0px;
+  box-shadow: 0 0 3px var(--color2);
+}
+.prez-block3 h2{
+  color: var(--color3) !important;
+  font-size: 25px !important;
+  border-bottom: 1px solid var(--color3);
+  width: 50% !important;
+  margin: auto !important;
+  padding: 5px !important;
+  font-family: 'Calligraffitti', cursive !important;
+  letter-spacing: 1px !important;
+  font-weight: 600 !important;
+}
+.prez-block3 p{
+  text-align: justify;
+  padding: 15px;
+  height: 200px;
+  overflow: auto;
+  font-size: 12px !important;
+  color:var(--color3);
+}
+.prez-block4{
+  width: 550px;
+  background-image: url("https://zupimages.net/up/18/51/5054.png");
+  margin: auto;
+  padding: 15px 0px;
+  font-size: 12px !important;
+  box-shadow: 0 0 3px var(--color2);
+}
+.prez-screen{
+  width: 300px;
+  background: var(--color3);
+  border-top: 7px solid var(--color2);
+  border-radius: 5px/12px;
+  margin-left: 200px;
+  font-size: 12px !important;
+}
+.prez-copyright{
+  text-align: center;
+  font-size: 9px;
+}
+/* ---------- FIN #3 ---------- */
+
+
+/* ----- Fiche #5 (Neph) ------- */
+
+
+.prez_bloc {
+  background: var(--color1);
+  width: 500px;
+  height: auto;
+  margin: auto;
+  border: none;
+  padding: 0;
+}
+.prez_entete {
+  background-color: var(--color1);
+  border-bottom: 2px var(--color3) solid;
+  margin-bottom: 10px;
+}
+.prez_entete h1 {
+  font-family: var(--police-titre)!important;
+  text-align: center;
+  font-size: 28px!important;
+  margin: 8px 0px -15px!important;
+  color: var(--color3)!important;
+  text-shadow: 1px 1px 0px var(--color2)!important;
+}
+.prez_entete hr {
+  font-weight: normal;
+  margin: 5px;
+  border: 0.5px solid var(--color3);
+}
+.prez_entete img {
+  height: 100px;
+  width: 100px;
+  padding: 5px;
+  margin: 10px 5px 10px 15px;
+  border: 1px solid var(--color3);
+  border-radius: 100%;
+}
+
+.prez_titre {
+  display: inline-block;
+  height: 100px;
+  overflow: hidden;
+  width: 324px;
+  padding: 5px;
+  margin: 10px;
+}
+
+.prez_entete #pseudo {
+  font-family: var(--police-titre);
+  font-size: 28px;
+}
+
+.prez_entete h2 {
+  font-family: var(--police-text);
+  text-transform: uppercase;
+  font-size: 13px;
+  text-align: justify;
+  color: var(--color3)!important;
+}
+
+.prez_questions {
+    margin: 10px auto 10px;
+    width: 476px;
+    padding: 10px;
+    background: var(--color3);
+    text-align: justify;
+}
+
+.prez_questions span {
+  font-family: var(--subtitle);
+  font-size: 14px;
+}
+
+.prez_infos {
+  display: inline-block;
+  overflow: hidden;
+  height: 320px;
+  padding: 0px 10px 0px 13px;
+  width: 275px;
+}
+
+.prez_infos div {
+  width: 255px;
+  background: var(--color3);
+  margin-bottom: 10px;
+  padding: 4px;
+  font-size: 14px;
+  text-align: center;
+  color: var(--color2);
+  text-transform: uppercase;
+  font-family: var(--police-text);
+}
+.prez_infosbloc {
+  text-align: justify!important;
+  height: 140px;
+  text-transform: none!important;
+  font-family: var(--police-text)!important;
+  overflow: auto;
+  line-height: 16px;
+  margin-top: 10px;
+}
+.prez_infos h2 {
+  font-family: var(--police-titre)!important;
+  color: var(--color3)!important;
+  border-bottom: 1px solid var(--color4)!important;
+  text-align: center!important;
+  font-size: 27px!important;
+  text-shadow: 1px 1px 0px var(--color5)!important;
+}
+
+.prez_but {
+  background: url(https://zupimages.net/up/19/43/xxx5.png);
+  background-size: cover;
+  width: 200px;
+  height: 320px;
+  margin-left: 13px;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.prez_but div {
+    background-color: var(--color3);
+    opacity: 0.7;
+    height: 160px;
+    width: 170px;
+    margin: 140px auto 0px auto;
+    padding: 5px;
+    font-family: var(--police-text);
+    line-height: 17px;
+    overflow: auto;
+    text-align: justify;
+    outline-offset: 3px;
+    outline: 1px solid var(--color3);
+    color: var(--color2);
+}
+
+.prez_but span {
+  font-family: var(--police-titre);
+  text-shadow: 1px 1px 0px var(--color5);
+  font-size: 20px;
+  color: var(--color3);
+}
+
+.prez_bloc > h2 {
+  border-bottom: 2px var(--color3) solid!important;
+  text-align: center;
+  padding: 3px!important;
+  font: 27px var(--police-titre)!important;
+  color: var(--color2)!important;
+  text-shadow: 1px 1px 0px var(--color3)!important;
+}
+
+.prez_bloc p {
+  height: 200px;
+  overflow: auto;
+  background: var(--color3);
+  width: 475px;
+  margin: auto;
+  margin-bottom: 15px;
+  text-align: justify;
+  font-family: var(--police-text);
+  padding: 5px;
+  line-height: 17px;
+  font-size: 13px !important;
+}
+
+.prez_carac {
+  display: inline-block!important;
+  width: 362px!important;
+  margin: 0px 0px 0px 15px!important;
+  height: 200px!important;
+}
+
+.prez_caraimg {
+  overflow: hidden;
+  height: 200px;
+  width: 100px;
+  margin-left: 12px;
+}
+
+.prez_behind {
+  background-image: url(https://zupimages.net/up/19/43/3r3j.png);
+ background-size: 550px;
+  padding-top: 5px;
+}
+
+.prez_behind h2 {
+  background: var(--color1);
+  text-align: center;
+  margin: 10px 0px;
+  font: 27px var(--police-titre)!important;
+  padding: 3px!important;
+  color: var(--color2)!important;
+  border-bottom: 2px var(--color1) solid!important;
+  text-shadow: 1px 1px 0px var(--color3)!important;
+}
+
+.prez_behind div {
+  width: 270px;
+  height: 200px;
+  padding: 5px;
+  margin-left: 215px;
+  overflow: auto;
+  font-family: var(--police-text);
+  background-color: var(--color3);
+  outline-offset: 3px;
+  outline: 1px solid var(--color3);
+  color: var(--color2);
+  opacity: 0.7;
+}
+
+.prez_behind span {
+  font-family: var(--subtitle);
+  font-size: 15px;
+}
+.prez_bloc h3 {
+  margin: 5px;
+  font-weight: normal;
+  color: var(--color2);
+  font-family: var(--police-text);
+  font-size: 10px;
+  text-align: center;
+}
+
+/* ----- FIN #5 ----- */
+
+
+/* ----- FICHE DE PREZ 2025 #8 ----- */
+
+.prez_general{
+  width: 520px;
+  margin: auto;
+  background: var(--color3);
+  border-radius: 5px;
+padding: 5px;
+}
+
+.prez_bloc1{
+  width: 490px;
+  margin: 10px auto;
+  background: var(--color1);
+  border: 1.5px solid var(--color3);
+  height: 120px;
+  border-radius: 5px;
+}
+
+.prez_bloc1:before{
+  content: '';
+  display: block;
+  width: 60px;
+  height: 118px;
+  background: var(--color4);
+  position: absolute;
+}
+.prez_bloc1 > img{
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin: 10px;
+  position: relative;
+  border-radius: 5px;
+  border: 1px solid var(--color3);
+}
+.prez_bloc1 h1 {
+    text-align: right;
+    padding: 15px 10px 0 5px!important;
+    text-transform: uppercase;
+    font: 100 22px var(--subtitle)!important;
+    color: var(--color3)!important;
+    margin: 0!important;
+}
+.prez_bloc1 h2 {
+    text-align: right;
+    padding: 0 10px!important;
+    text-transform: uppercase;
+    font: 18px var(--subtitle)!important;
+    color: var(--color3)!important;
+    margin: 0!important;
+}
+
+.prez_bloc1 > div {
+  width: 360px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.prez_bloc1 span{
+  margin: 17px 0;
+  background: var(--color2);
+  padding: 3px;
+  text-transform: uppercase;
+  font: 12px var(--police-text);
+  color: var(--color3);
+  border-radius: 5px;
+}
+.prez_title{
+  width: 490px;
+  height: 30px;
+  margin: 20px auto 10px;
+  background: var(--color1);
+  border: 1.5px solid var(--color1);
+  text-align: right;
+  font: 15px var(--subtitle);
+  text-transform: uppercase;
+  color: var(--color2);
+  border-radius: 5px;
+}
+.prez_title:before{
+  content: '';
+  display: block;
+  width: 30px;
+  height: 28px;
+  background: var(--color4);
+  position: absolute;
+}
+.prez_title h3{
+  display: inline;
+  padding: 5px!important;
+  font: 15px var(--subtitle);
+  position: relative;
+  top: 3px;
+  color: var(--color7);
+}
+
+.prez_title > img {
+    float: left;
+    position: relative;
+    width: 28px;
+    margin-top: 1px;
+    height: 25px;
+}
+.prezonglet{
+  display: inline-block;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding: 3px;
+  cursor: pointer;
+  color: var(--color3);
+}
+span.prezonglet:hover {
+    color: var(--color7)!important;
+}
+.contenu_prezonglet{
+  width: 490px;
+  margin: 10px auto -15px;
+  background: #ffffff;
+  height: 300px;
+  padding: 5px;
+  display: none;
+  border-radius: 5px;
+}
+
+.prez_trait h1, .prez_butfamille h1, .prez_histoire h1, .prez_physique h1, .prez_cara h1 {
+    text-align: right;
+    text-transform: uppercase;
+    font: 15px var(--subtitle)!important;
+    color: var(--color7)!important;
+    margin: 0!important;
+}
+
+.prez_trait{
+  background: var(--color3);
+  border: 1.5px solid var(--color3);
+  padding: 8px;
+  color: var(--color2);
+  width: 260px;
+  height: 130px;
+  margin: 7px;
+  float: left;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.prez_trait > div {
+  width: 240px;
+  margin: 10px 0;
+  text-align: center;
+}
+.prez_trait span{
+  background: var(--color4);
+  padding: 3px;
+  text-transform: uppercase;
+  font: 12px var(--police-text);
+  color: var(--color3);
+  margin: 3px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.prezbut{
+  margin-top: -137px!important;
+}
+
+.prez_butfamille{
+  background: var(--color3);
+  border: 1.5px solid var(--color3);
+  padding: 8px;
+  color: var(--color7);
+  width: 185px;
+  height: 130px;
+  margin: 7px;
+  float: left;
+  border-radius: 5px;
+}
+
+.prez_butfamille span{
+  display: block;
+  text-align: justify;
+  font: 13px var(--police-text);
+}
+.prez_butfamille span:before{
+  content: '+ ';
+  font-weight: bold;
+  color: var(--color2);
+}
+
+.contenu_prezonglet > img{
+  float: left;
+  width: 100px;
+  height: 116px;
+  margin: 9px 10px;
+border-radius: 5px;
+}
+.prez_physique{
+  width: 460px;
+  margin: 7px auto;
+  background: var(--color3);
+  border: 1.5px solid var(--color3);
+  padding: 8px;
+  color: var(--color7);
+  height: 120px;
+  border-radius: 5px;
+}
+.prez_physique p, .prez_butfamille p {
+    text-align: justify;
+    font: 13px var(--police-text)!important;
+    height: 85px;
+    overflow: auto;
+    margin-top: 3px!important;
+}
+.prez_cara{
+  width: 460px;
+  margin: 7px auto;
+  background: var(--color3);
+  border: 1.5px solid var(--color3);
+  padding: 8px;
+  color: var(--color7);
+  height: 150px;
+  border-radius: 5px;
+}
+.prez_cara p{
+  text-align: justify!important;
+  font: 13px var(--police-text)!important;
+  height: 110px;
+  overflow: auto;
+  margin-top: 3px!important;
+}
+.prez_histoire{
+  width: 460px;
+  margin: 7px auto;
+  background: var(--color3);
+  border: 1.5px solid var(--color3);
+  padding: 8px;
+  color: var(--color7);
+  height: 275px;
+  border-radius: 5px;
+}
+
+.prez_histoire p{
+  text-align: justify;
+  font: 13px var(--police-text)!important;
+  height: 230px;
+  overflow: auto;
+  margin-top: 6px!important;
+}
+
+.prez_bloc3{
+  width: 360px;
+  margin: 10px 10px 10px 14px;
+  background: #fff;
+  height: 220px;
+  overflow: auto;
+  padding: 7px 10px;
+  border-radius: 5px;
+}
+
+.prez_vava{
+  float: right;
+  width: 120px;
+  height: 220px;
+  margin-right: 14px;
+  border-radius: 5px;
+}
+
+.prez_bloc3 > div {
+    width: 340px;
+    margin-bottom: 6px;
+    margin-left: -1.5px;
+    background: var(--color4);
+  border-radius: 5px;
+}
+
+.prez_bloc3 p {
+    height: 30px;
+    width: 84px;
+    text-align: left;
+    font: 100 14px var(--police-text)!important;
+    color: var(--color3)!important;
+font-weight: 200;
+    line-height: 13px!important;
+    padding: 4px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.prez_bloc3 span {
+    display: table-cell;
+    width: 256px;
+    background: var(--color3);
+    font: 14px var(--police-text);
+    padding: 2px 5px;
+    border: 1px solid var(--color3);
+    vertical-align: middle;
+    color: var(--color7);
+border-radius: 5px;
+}
+
+.prez_bloc3 a {
+    display: table-cell;
+    width: 340px;
+    background: var(--color2)!important;
+    font: 14px var(--subtitle)!important;
+    padding: 5px!important;
+    vertical-align: middle;
+    color: var(--color3)!important;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.6s;
+  border-radius: 5px;
+}
+.prez_bloc3 a:hover{
+  background: var(--color5)!important;
+}
+
+/* ----- FIN PREZ ACTUELLE ----- */
+
+
+/* -------- FIN FICHE PREZ ---------- */
+
+
+
+/* ------------ FICHES PREDEF ---------- */
+
+/* ----- DEBUT FICHE DE PREDEFS ACTUELLE ------ */
+.predef_general{
+  width: 520px;
+  margin: auto;
+  background: var(--color10)!important;
+  border: 1.5px solid var(--color10)!important;
+  border-radius: 5px;
+}
+
+.predef_bloc1{
+  width: 490px;
+  margin: 10px auto!important;
+  background: var(--color4);
+  border: 1.5px solid var(--color4)!important;
+  height: 120px;
+  border-radius: 5px;
+}
+
+.predef_bloc1:before{
+  content: '';
+  display: block;
+  width: 60px;
+  height: 118px;
+  background: var(--color4)!important;
+  position: absolute;
+}
+.predef_bloc1 > img{
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin: 10px;
+  position: relative;
+  border-radius: 5px;
+}
+.predef_bloc1 h1{
+  text-align: right;
+  padding: 15px 10px 0 5px!important;
+  text-transform: uppercase;
+  font: 22px var(--subtitle)!important;
+  color: var(--color3)!important;
+  margin: 0!important;
+}
+.predef_bloc1 h2{
+  text-align: right;
+  padding: 0 10px!important;
+  text-transform: uppercase;
+  font: 18px var(--subtitle)!important;
+  color: var(--color3)!important;
+  margin: 0!important;
+}
+
+.predef_bloc1 > div {
+  width: 360px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+
+.predef_bloc1 span{
+  margin: 17px 0;
+  background: var(--color2);
+  padding: 3px;
+  text-transform: uppercase;
+  font: 12px var(--police-text);
+  color: var(--color3);
+  border-radius: 5px;
+}
+.predef_title{
+  width: 490px;
+  height: 30px;
+  margin: 20px auto 10px;
+  background: var(--color4);
+  border: 1.5px solid var(--color4);
+  text-align: right;
+  font: 15px var(--subtitle);
+  text-transform: uppercase;
+  color: var(--color3);
+  border-radius: 5px;
+}
+.predef_title:before{
+  content: '';
+  display: block;
+  width: 30px;
+  height: 28px;
+  background: var(--color4);
+  position: absolute;
+}
+.predef_title h3{
+  display: inline;
+  padding: 5px!important;
+  font: 15px var(--subtitle)!important;
+  position: relative;
+  top: 3px;
+  color: var(--color7)!important;
+}
+
+.predef_title > img {
+    float: left;
+    position: relative;
+    width: 28px;
+    margin-top: 1px;
+    height: 25px;
+  border-radius: 5px;
+}
+.predefonglet{
+  display: inline-block;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding: 3px;
+  cursor: pointer;
+  color: var(--color7);
+}
+span.predefonglet:hover {
+    color: var(--color5)!important;
+}
+.contenu_predefonglet{
+  width: 490px;
+  margin: 10px auto -15px;
+  background: #fff;
+  border: 1.5px solid var(--color3);
+  height: 300px;
+  padding: 4px 7px;
+  display: none;
+  overflow: auto;
+  border-radius: 5px;
+}
+
+.predef_trait h1, .predef_histoire h1, .predefphysique h1, .predef_link h1{
+  text-align: right;
+  text-transform: uppercase;
+  font: 15px var(--subtitle)!important;
+  color: var(--color7)!important;
+  margin: 0!important;
+}
+
+.predef_trait{
+  background: var(--color3);
+  border: 1.5px solid var(--color3);
+  padding: 8px;
+  color: var(--color7);
+  width: 260px;
+  height: 130px;
+  margin: 7px;
+  float: left;
+  border-radius: 5px;
+}
+.predef_trait > div {
+  width: 240px;
+  margin: 10px 0;
+  text-align: center;
+  height: 85px;
+  overflow: auto;
+}
+.predef_trait span{
+  background: var(--color4);
+  padding: 3px;
+  text-transform: uppercase;
+  font: 12px var(--police-text);
+  color: var(--color3);
+  margin: 3px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.predefphysique{
+  background: var(--color3);
+  border: 1.5px solid var(--color3);
+  padding: 8px;
+  color: var(--color7);
+  width: 185px;
+  height: 130px;
+  margin: 7px;
+  float: left;
+  border-radius: 5px;
+}
+
+.predef_histoire{
+  background: var(--color3);
+  border: 1.5px solid var(--color3);
+  padding: 8px;
+  color: var(--color7);
+  width: 458px;
+  height: 130px;
+  margin: 7px;
+  float: left;
+  border-radius: 5px;
+}
+
+.contenu_predefonglet > img{
+  float: left;
+  width: 100px;
+  height: 116px;
+  margin: 9px 10px;
+}
+.predefphysique p, .predef_histoire p{
+  text-align: justify!important;
+  font: 13px var(--police-text)!important;
+  height: 90px;
+  overflow: auto;
+  margin-top: 3px!important;
+}
+
+.predef_link {
+    width: 223px;
+    float: left;
+    height: 135px;
+    overflow: hidden;
+    background: var(--color3);
+    margin: 5px;
+    color: var(--color2);
+    padding: 5px;
+    border: 2px solid var(--color3);
+  border-radius: 5px;
+}
+
+.predef_link span{
+  display: block;
+  text-align: right;
+  text-transform: uppercase;
+  font: italic 12px var(--subtitle);
+  color: var(--color3);
+  margin: 0;
+}
+
+.predef_link p{
+  text-align: justify;
+  font: 12px var(--police-text)!important;
+  color: var(--color7)!important;
+  height: 85px;
+  overflow: auto;
+  margin: 3px 0 0 0!important;
+  padding: 2px!important;
+}
+
+.predef_bloc3{
+  width: 490px;
+  margin: 10px 10px 10px 14px;
+  background: #fff;
+  overflow: auto;
+  padding: 7px 10px;
+  border-radius: 5px;
+}
+
+.predef_bloc3 > div {
+    width: 470px;
+    margin-bottom: 6px;
+    display: table-cell;
+    background: var(--color3);
+    font: 14px var(--police-text);
+    padding: 2px 5px;
+    border: 1px solid var(--color3);
+    vertical-align: middle;
+    color: var(--color7);
+    text-align: justify;
+  border-radius: 5px;
+}
+/* ----- FIN FICHE DE PREDEFS ACTUELLE ------ */
+
+
+/* -------- FICHE #6 (Sun) ---------- */
+
+.predefbloc
+{ width: 560px;
+  background: var(--color1);
+  box-shadow: 0px 0px 2px #72819A; }
+
+.predeftitle
+{ text-align: left;
+  margin-left: 40px;
+  font-size: 40px;
+  margin-bottom: -10px;
+  color: var(--color3);
+  font-family: 'Calligraffitti', cursive;
+  -moz-transition:all 1s;
+  -webkit-transition:all 1s;
+  -o-transition:all 1s;
+  transition: all 1s;}
+.predeftitle:hover
+{ letter-spacing: 8px;
+  -moz-transition:all 1s; /* Mozilla Firefox */
+  -webkit-transition:all 1s; /* Safari et Google Chrome */
+  -o-transition:all 1s; /* Opera */
+  transition: all 1s;}
+
+.predefpetitbloc
+{ width: 300px;
+  height: 150px;
+  overflow: auto;
+  background-color: var(--color3);
+  box-shadow: 0 0 1px var(--color3);
+  opacity: .7;
+  color: var(--color2);
+  text-align: justify;
+  padding: 7px;
+  -moz-transition:all 1s;
+  -webkit-transition:all 1s;
+  -o-transition:all 1s;
+  transition: all 1s;}
+
+.predefpetitbloc:hover
+{ box-shadow: 0 0 5px var(--color3);
+  opacity: .9;
+  -moz-transition:all 1s; /* Mozilla Firefox */
+  -webkit-transition:all 1s; /* Safari et Google Chrome */
+  -o-transition:all 1s; /* Opera */
+  transition: all 1s;}
+
+.predefimage
+{ width: 165px;
+  height: 165px;
+  opacity: 0.7;
+  box-shadow: 0px 0px 1px var(--color3);
+  background-image: url('https://www.zupimages.net/up/17/20/z02s.png');
+  -moz-transition:all 1s;
+  -webkit-transition:all 1s;
+  -o-transition:all 1s;
+  transition: all 1s;
+  }
+.predefimage:hover
+{ opacity: 1;
+  box-shadow: 0px 0px 5px var(--color3);
+  -moz-transition:all 1s; /* Mozilla Firefox */
+  -webkit-transition:all 1s; /* Safari et Google Chrome */
+  -o-transition:all 1s; /* Opera */
+  transition: all 1s; }
+
+.globalinfos
+{ text-align: left;
+  margin-left: 50px;
+  font-size: 34px;
+  margin-top: 30px;
+  margin-bottom: -10px;
+  color: var(--color3);
+  font-family: 'Calligraffitti', cursive; }
+.predefglobalinfos
+{ width: 460px;
+  height: 200px;
+  overflow: auto;
+ background-color: var(--color3);
+  box-shadow: 0 0 1px var(--color3);
+  opacity: .7;
+  color: var(--color2);
+  text-align: justify;
+  padding: 7px;
+  -moz-transition:all 1s;
+  -webkit-transition:all 1s;
+  -o-transition:all 1s;
+  transition: all 1s;
+  }
+
+.predefglobalinfos:hover
+{ box-shadow: 0 0 5px var(--color3);
+  opacity: .9;
+  -moz-transition:all 1s; /* Mozilla Firefox */
+  -webkit-transition:all 1s; /* Safari et Google Chrome */
+  -o-transition:all 1s; /* Opera */
+  transition: all 1s;
+  }
+
+/* ---------- FIN FICHE PREDEF --------- */
+
+
+/*-------- FICHE PREDEF #7 Kontah ----- */
+
+.first {
+  width: 150px;
+  height: 210px;
+  border-radius:10px;
+  margin-left:10px;
+  background-image: url(https://zupimages.net/up/21/20/0asp.png);
+}
+
+.second {
+  background-color: var(--color1);
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding: 5px;
+  -moz-box-sizing: border-box;  
+  -o-box-sizing: border-box;  
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 400px;
+  height: 205px;
+  font-family: Arial;
+  font-size: 12px;
+  text-align: justify;
+  overflow: auto;
+}
+
+.titi {
+  background-color: var(--color3);
+  color: var(--color2);
+  font-family: Nothing You Could Do;
+  font-size: 18px;
+  text-algin: center;
+}
+
+.third {
+  background-color: var(--color1);
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding: 5px;
+  -moz-box-sizing: border-box;  
+  -o-box-sizing: border-box;  
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-top: -10px;
+  font-family: Arial;
+  font-size: 12px;
+  text-align: justify;
+  width: 550px;
+  height: 250px;
+  overflow: auto;
+}
+/* ----- FIN FICHE Kontah ----- */
+
+/* ---------- FIN FICHES PREDEF ---------- */
+
+
+
+/* --------- DEBUT FICHES DE LIENS ---------- */
+
+/* ----- FICHE DE LIENS ACTUELLE ----- */
+
+.liens {
+  width: 508px;
+  background: var(--color1);
+  margin: auto;
+  padding: 8px;
+  border-top: 2px solid var(--color4);
+  border-bottom: 2px solid var(--color4);
+border-radius: 5px;
+}
+
+.liens h1 {
+  font-family: var(--police-titre);
+  font-weight: normal;
+  text-align: right;
+  margin: 5px 10px;
+  font-size: 35px;
+  color: var(--color3)!important;
+text-shadow: 1px 1px 0 var(--color3);
+}
+
+.liens h1:after {
+  content: "";
+  display: block;
+  width: 400px;
+  margin: 10px auto 5px;
+  color: var(--color3)!important;
+  height: 1px;
+}
+
+.liens h2 {
+  font-weight: normal;
+  font-family: var(--subtitle);
+  text-align: right;
+  font-size: 17px;
+  color: var(--color3)!important;
+  margin: 0px 10px;
+}
+
+.liens h3 {
+  font-family: var(--police-titre);
+  font-weight: normal;
+  text-align: center;
+  margin: 22px 2px 10px;
+  font-size: 28px;
+  color: var(--color3);
+}
+
+.liens_left {
+  display: inline-block;
+  overflow: hidden;
+ /* height: 257px; */
+  margin: 0px 10px;
+  padding: 8px;
+  width: 180px;
+
+}
+
+.liens_left img {
+  border: 1px solid var(--color1);
+    margin-bottom: -2px;
+    margin-left: -7.5px;
+    margin-top: -5px;
+    width: 179.5px;
+    height: 101px;
+border-radius: 5px;
+}
+
+.liens_left div {
+  margin: 5px -8px 0px -8px;
+  padding: 0px 1px;
+border-radius: 5px;
+}
+
+.liens_left span {
+  display: block;
+  padding: 5px;
+ /* width: 180px; */
+  background: var(--color3);
+  font-family: var(--police-text);
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 15px;
+  margin: 0px 0px 3px 0px;
+  color: var(--color7);
+border-radius: 5px;
+}
+
+.liens_left a {
+  display: block;
+  padding: 5px;
+  font-size: 15px;
+  background: var(--color2);
+  font-family: var(--police-text);
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+  color: var(--color3)!important;
+  text-decoration: none;
+  transition: linear 0.6s;
+border-radius: 5px;
+}
+.liens_left a:hover {
+  background: var(--color3);
+}
+
+.liens_right {
+  display: inline-block;
+  height: 265px;
+  overflow: auto;
+  margin: 0px 10px;
+  padding: 8px;
+  width: 270px;
+  background: var(--color3);
+  font-family: var(--police-text);
+  font-size: 13px;
+  text-align: justify;
+  border-top: 2px solid var(--color4);
+  border-bottom: 2px solid var(--color4);
+border-radius: 5px;
+}
+
+.liens hr {
+  border: 0.5px solid var(--color4);
+  margin: -8px auto 10px;
+}
+
+.liens_search {
+  width: 470px;
+  margin: auto;
+  background: var(--color3);
+  padding: 8px;
+  max-height: 150px;
+  overflow: auto;
+  border-top: 2px solid var(--color4);
+  border-bottom: 2px solid var(--color4);
+  text-align: justify;
+border-radius: 5px;
+}
+
+.liens_bloc{
+  overflow: hidden;
+  width: 229px;
+  height: 229px;
+  background-size: cover;
+  display: inline-block;
+  margin-left: 12px;
+border-radius: 5px!important;
+}
+.liens_bloc > p > span{
+  font: 15px var(--police-text);
+  display: block;
+  height: 55px;
+  text-align: center;
+  padding-top: 7px;
+}
+.liens_bloc p{
+  background-color: var(--color3);
+  opacity:0.8;
+  width: 229px;
+  height: 229px;
+  color: var(--color7);
+  padding: 5px;
+  box-sizing: border-box;
+  text-align: justify;
+  margin: 170px auto;
+  font: 13px var(--police-text);
+  transition: all 0.6s linear;
+}
+
+.liens_bloc:hover p{
+  margin: 0px auto;   
+  overflow: auto;
+}
+
+/* ----- FIN FICHE DE LIENS ACTUELLE ----- */
+
+
+/* -------- FICHE DE LIENS PAR NEPH (#1) ---------- */
+
+.fl {
+  margin: auto;
+  width: 500px;
+  background: var(--color1);
+  border-radius: 100px 100px 0px 0px;
+  text-align: center;
+}
+
+.fl_img {
+  background-image: url("https://zupimages.net/up/18/51/f34q.png");
+  width: 500px;
+  height: 150px;
+  border-bottom: var(--color1) 2px solid;
+  border-radius: 100px 100px 0px 0px;
+}
+
+h1.fl_nom {
+  font-family: 'Calligraffitti', cursive !important;
+  font-size: 34px !important;
+  letter-spacing: 1px !important;
+  color: var(--color3) !important;
+  text-align: center !important;
+}
+
+h2.fl_quote {
+  font-family: var(--subtitle) !important;
+  font-size: 20px !important;
+  color: var(--color3) !important;
+  text-align: center !important;
+  width: 450px !important;
+  margin: auto !important;
+}
+  
+.fl_infos {
+  font-family: var(--police-text);
+  font-size: 16px;
+  padding: 5px;
+  text-align: center;
+  margin: auto;
+  background-color: var(--color2);
+  display: inline-block;
+  color: var(--color3);
+  margin-right: 10px;
+  width: 95px;
+  margin-left: 10px;
+}
+
+.fl_infos a { color: var(--color3) !important; }
+.fl_infos a:hover{ color: var(--color5) !important; }
+
+.fl_perso {
+  background-color: var(--color3);
+  width: 210px;
+  margin-left: 10px;
+  margin-right: 20px;
+  display: inline-block;
+  padding: 10px;
+}
+
+.fl_perso-titre {
+  font-family: 'Calligraffitti', cursive;
+  letter-spacing: 1px;
+  font-size: 20px;
+  color: var(--color2);
+  text-align: center;
+  margin: auto;
+}
+
+.fl_perso-texte {
+  height: 180px;
+  overflow: hidden;
+  font-family: times;
+  color: var(--color2);
+  text-align: justify;
+  font-size: 12px !important;
+}
+
+.fl_perso-texte:hover {
+  overflow: auto;
+}
+
+.fl_search {
+  background-color: var(--color3);
+  width: 210px;
+  margin-left: 20px;
+  margin-right: 10px;
+  display: inline-block;
+  padding: 10px;
+}
+
+.fl_search-titre {
+  font-family: 'Calligraffitti', cursive;
+  letter-spacing: 1px;
+  font-size: 20px;
+  color: var(--color2);
+  text-align: center;
+  margin: auto;
+}
+
+.fl_search-texte {
+  height: 180px;
+  overflow: hidden;
+  font-family: times;
+  color: var(--color2);
+  text-align: justify;
+  font-size: 12px !important;
+}
+
+.fl_search-texte:hover {
+  overflow: auto;
+}
+
+.fl_liens {
+  background: var(--color3);
+  width: 460px;
+  margin: auto;
+  padding: 10px;
+}
+
+.fl_lien {
+  width: 189px;
+  margin-right: 10px;
+  margin-left: 10px;
+  display: inline-block;
+  padding: 10px;
+  text-align: left;
+}
+
+h4.fl_liens-titre {
+  font-family: 'Calligraffitti', cursive;
+  letter-spacing: 1px;
+  font-size: 18px;
+  color: var(--color2);
+  margin-bottom: -5px;
+}
+
+p.fl_liens-texte {
+  height: 100px !important;
+  overflow: hidden !important;
+  font-family: times;
+  margin-top: -5px;
+  text-align: justify;
+  border-top: 2px var(--color2) solid;
+  color: var(--color2) !important;
+}
+
+p.fl_liens-texte:hover {
+  overflow: auto;
+}
+  
+.fl_copyright {
+  font-family: 'Calligraffitti', cursive;
+  font-size: 15px;
+  color: var(--color3);
+}
+
+/* ------------ FIN FICHE DE LIENS #1 --------------*/
+
+
+
+
+/* ----------- FICHE DE LIENS PAR ??????? ----------- */
+/* je sais meme pas a quoi elle ressemble */
+/* ----- DEBUT FICHE DE LIENS ----- */
+
+.bloclien {
+    width: 500px;
+    margin: 10px auto;
+    background: var(--color1);
+    border: 1px solid var(--color3);
+    padding: 5px;
+    height: 122px;
+    position: relative;
+    left: 16px;
+}
+.bloclien > img {
+    width: 90px;
+    height: 90px;
+    float: left;
+    border: 1px solid var(--color6);
+    border-radius: 50%;
+    margin: 10px 25px 0 -40px;
+}
+.bloclien > h2 {
+    color: var(--color3)!important;
+    text-shadow: 1px 1px 0 var(--color5);
+    font: 25px var(--police-titre)!important;
+    height: 30px;
+    padding-left: 85px!important;
+    margin: 0!important;
+}
+.bloclien > h3 {
+    color: var(--color2)!important;
+    font: 100 15px var(--subtitle)!important;
+    background: var(--color3)!important;
+    display: inline-block!important;
+    padding: 1px 6px 1px 15px!important;
+    position: relative!important;
+    margin-bottom: 3px!important;
+}
+.bloclien > span {
+    color: var(--color2)!important;
+    font: 12px var(--police-text)!important;
+    background: var(--color4)!important;
+    padding: 1px 6px!important;
+    display: inline-block;
+    margin-bottom: 3px!important;
+}
+
+.bloclien > h3:before {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: var(--color3);
+    position: absolute;
+    left: -8px;
+    top: 3px;
+    transform: rotate(45deg);
+}
+
+.bloclien > p {
+    text-align: justify!important;
+    font: 13px var(--police-text)!important;
+    color: var(--color8)!important;
+    position: absolute;
+    top: 8px;
+    left: 80px;
+    width: 0px;
+    background: var(--color5);
+    height: 106px;
+    overflow: auto;
+  transition: all 0.8s;
+  border: 1px solid var(--color3)!important;
+  opacity: 0;
+}
+
+.bloclien:hover > p {
+  width: 410px;
+  padding: 5px!important;
+  opacity: 1;
+}
+
+/* ----- FIN FICHE DE LIENS MYSTERE ----- */
+
+/* --------- FIN FICHES DE LIENS ---------- */
+
+
+
+/* -------------- DEBUT FICHES EVO ------------*/
+
+/* Fiche evolution actuelle*/
+
+.fiche_evo{
+  background: var(--color1);
+  border: 1px solid var(--color1);
+  width: 520px;
+  margin: auto;
+border-radius: 5px;
+}
+
+.fiche_evo .personame{
+  width: 480px;
+  top: 20px;
+  left: 20px;
+  height: 200px;
+  background-size: cover;
+  border: 8px solid var(--color3);
+  outline: 1px solid var(--color3);
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  text-transform: uppercase;
+  font: 25px var(--subtitle);
+  color: var(--color7);
+  text-shadow: 1px 1px 0 var(--color3);
+border-radius: 5px;
+}
+
+.fiche_evo .evogrey{
+  background: var(--color3);
+  border-top: 1px solid var(--color3);
+  border-bottom: 1px solid var(--color3);
+  margin: 60px 0 30px;
+  text-align: right;
+  padding: 20px;
+}
+
+.fiche_evo .evogrey h2, .fiche_evo .evogrey h3{
+  font: italic 14px var(--police-text);
+  color: var(--color7);
+  text-shadow: 1px 1px 0 var(--color3);
+  text-transform: uppercase;
+}
+
+.fiche_evo .evogrey h2:after{
+  content: '';
+  display: block;
+  margin:3px 50px 0 auto;
+  width: 130px;
+  height: 1px;
+  background: var(--color2);
+  box-shadow: 1px 1px 0 var(--color3);
+}
+
+.evo_recap{
+  width: 460px;
+  background: var(--color3);
+  margin: auto;
+  padding: 5px 10px;
+  border: 1px solid var(--color3);
+border-radius: 5px;
+}
+
+.evo_recap h3 {
+    border-bottom: 2px solid var(--color7)!important;
+}
+
+.evo_recap h3 span{
+  font: italic 14px var(--police-text);
+  color: var(--color2);
+  text-transform: uppercase;
+}
+
+.evo_recap h3 span:after{
+  content: '';
+  display: block;
+  background: var(--color2);
+  width: 50px;
+  height: 2px;
+  position: relative;
+  top: 2px;
+  left: 20px;
+}
+
+.evo_recap p{
+  font: 100 13px var(--police-text)!important;
+  color: var(--color7);
+  text-align: justify;
+  margin-top: 10px;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.fiche_evo .evocitation{
+  background: var(--color3);
+  border-top: 1px solid var(--color3);
+  border-bottom: 1px solid var(--color3);
+  margin: 30px 0;
+  text-align: right;
+border-radius: 5px;
+}
+
+.fiche_evo .evocitation h3{
+  font: italic 14px var(--police-text);
+  color: var(--color7);
+  text-shadow: 1px 1px 0 var(--color5);
+  text-transform: uppercase;
+  padding: 10px 20px!important;
+}
+
+/* Fin fiche evolution actuelle */
+
+/* ---------------- FIN FICHES EVO ------------ */
+
+
+
+
+/* ---------- DEBUT REPERT DE RPS ----------- */
+
+/* répertoire actuel */
+
+.tcardperso {
+    width: 550px;
+    margin: auto!important;
+    border: 1px solid var(--color1)!important;
+    border-top: none!important;
+    background: var(--color1)!important;
+border-radius: 5px;
+}
+
+.tcardperso h1 {
+    margin: 0;
+    background: var(--color4)!important;
+    border-top: 1px solid var(--color4)!important;
+    border-bottom: 1px solid var(--color4)!important;
+    font: 100 22px var(--subtitle)!important;
+    padding: 5px 15px!important;
+    text-transform: uppercase;
+    color: var(--color3)!important;
+}
+
+.tcardperso > .vava {
+    width: 180px;
+    height: 305px;
+    margin: 4px 0 0 15px!important;
+    float: left;
+    overflow: hidden;
+}
+
+.tcardperso > .vava img {
+    width: 180px;
+    height: 305px;
+border-radius: 5px;
+}
+
+.tcardperso > p {
+    width: 270px;
+    height: 205px;
+    overflow: auto;
+    margin: 5px 10px 15px!important;
+    padding: 0px 10px!important;
+    text-align: justify;
+    font: 12px var(--police-text)!important;
+    border-left: 1px solid var(--color4)!important;
+    float: right;
+    color: var(--color3)!important;
+}
+
+.tcardperso .tcard_infos {
+    margin: 10px 85px 10px!important;
+    width: 100px;
+    height: 100px;
+    background: var(--color3)!important;
+    border-radius: 100%;
+    border: 3px solid var(--color4)!important;
+    border-top: 3px solid var(--color4)!important;
+}
+
+.tcard_infos img {
+    margin: 7px!important;
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+}
+
+.tcardperso .info {
+    width: 200px;
+    background: var(--color3)!important;
+    border: 1px solid var(--color4)!important;
+    margin: 0px 41px!important;
+    font: 13px var(--police-text)!important;
+    text-transform: uppercase;
+    color: var(--color7)!important;
+    height: 22px;
+border-radius: 5px;
+}
+
+.tcardperso .info > img {
+    width: 20px;
+    height: 100%;
+    padding: 3px!important;
+    margin: 0!important;
+    float: left;
+    background: var(--color4)!important;
+}
+
+.tcardperso .info span {
+    display: block;
+    padding: 3px 3px 3px 30px!important;
+}
+
+.inventairek{
+  width: 400px;
+  margin-left: 200px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.tcardperso_inv [type=radio] {
+  display: none;
+}
+
+.tcardperso_inv label {
+    margin: 15px 7px!important;
+    display: block;
+    cursor: pointer!important;
+    border: 1px solid var(--color3)!important;
+    width: 65px;
+    height: 65px;
+    font: italic 40px var(--subtitle)!important;
+    text-transform: uppercase;
+    padding: 5px 12px!important;
+    color: var(--color1)!important;
+    text-align: right;
+    text-shadow: 2px 2px 0 var(--color4)!important;
+border-radius: 5px;
+}
+
+.rcontenu_onglet {
+    position: absolute;
+    top: 0px;
+    left: 85px;
+    right: 0;
+    bottom: 0;
+    background: var(--color3)!important;
+    border: 1px solid var(--color3)!important;
+    padding: 0 5px!important;
+    width: 250px;
+    height: 305px;
+    overflow: auto;
+    text-align: justify;
+border-radius: 5px;
+}
+
+[type=radio]:checked ~ label {
+    background: var(--color3)!important;
+    color: var(--color2)!important;
+}
+
+[type=radio]:checked ~ label ~ .rcontenu_onglet {
+  z-index: 1;
+}
+
+label#tcardperso_inv-1:hover:after {
+    content: 'En cours';
+    display: block;
+    font: italic 12px var(--police-text);
+    text-shadow: none;
+    color: var(--color4);
+    width: 65px;
+    padding: 3px;
+    float: left;
+    position: relative;
+    left: 45px;
+    top: -15px;
+    background: var(--color3);
+    border: 1px solid var(--color3);
+    z-index: 10;
+border-radius: 5px;
+}
+label#tcardperso_inv-2:hover:after{
+  content: 'Finis';
+  display: block;
+  font: italic 12px var(--police-text);
+  text-shadow: none;
+  color: var(--color4);
+  width: 58px;
+  padding: 3px;
+  float: left;
+  position: relative;
+  left: 45px;
+  top: -15px;
+  background: var(--color3);
+  border: 1px solid var(--color3);
+  z-index: 10;
+border-radius: 5px;
+}
+label#tcardperso_inv-3:hover:after{
+  content: 'Abandonnes';
+  display: block;
+  font: italic 12px var(--police-text);
+  text-shadow: none;
+  color: var(--color4);
+  width: 104px;
+  padding: 3px;
+  float: left;
+  position: relative;
+  left: 45px;
+  top: -15px;
+  background: var(--color3);
+  border: 1px solid var(--color3);
+  z-index: 10;
+border-radius: 5px;
+}
+label#tcardperso_inv-4:hover:after{
+  content: 'Prevus';
+  display: block;
+  font: italic 12px var(--police-text);
+  text-shadow: none;
+  color: var(--color4);
+  width: 60px;
+  padding: 3px;
+  float: left;
+  position: relative;
+  left: 45px;
+  top: -15px;
+  background: var(--color3);
+  border: 1px solid var(--color3);
+  z-index: 10;
+border-radius: 5px;
+}
+
+/* fin répert actuel */
+
+/* ----------- FIN REPERTOIRE DE RPS ---------- */
+
+
+
+
+
+
+
+/* ------------- DEBUT ANNONCES ET FORMU ------------------ */
+
+/* ----- FICHE ANNONCES ET FORMULAIRE ACTUELS ------ */
+
+.fiche {
+    width: 500px;
+    margin: auto;
+    background: var(--color10)!important;
+    border: 1px solid var(--color10)!important;
+    padding: 5px 0!important;
+    border-radius: 5px;
+}
+.fiche h1 {
+    background: var(--color4)!important;
+    text-align: center!important;
+    padding: 5px!important;
+    color: var(--color3)!important;
+    font: 200 22px var(--subtitle)!important;
+    text-transform: uppercase;
+    text-shadow: 1px 0px 0px var(--color3)!important;
+}
+.fiche p {
+    padding: 0 20px!important;
+    text-align: justify;
+    font: 13px var(--police-text)!important;
+    color: var(--color7);
+}
+
+.fiche n { /* ça c'est les titres, c'est pour remplacer le span d'avant qui niquait la mep */
+  font-size:18px;
+  font-family: var(--subtitle);
+  font-weight: 600;
+}
+
+.fiche a {
+  color: var(--color4)!important;
+}
+
+.fiche a:hover {
+  color: var(--color4)!important;
+}
+
+.fiche b, .fiche strong {
+  text-shadow: 1px 0px 0px var(--color3);
+}
+
+dl.codebox span {
+    text-transform: inherit!important;
+}
+
+/* ----- FIN FICHE ANNONCES ET FORMULAIRE ACTUELS ------ */
+
+/* -------- FICHE ANNONCE #2 ------------ */
+
+.ficheannonce {
+  width: 500px;
+  padding: 40px;
+  height: auto;
+  background-color: var(--color1);
+  box-shadow: 0px 0px 5px var(--color1);
+  border-left: 5px solid var(--color5);
+  border-right: 5px solid var(--color5);
+  text-align: justify;
+  color: var(--color7);
+  margin: 10px 0 10px 0;
+}
+
+.titrefiche {
+  font-family: var(--police-titre); 
+  font-size:40px; 
+  color: var(--color7);
+  text-shadow: 1px 0px 0px var(--color7);
+  -webkit-transition: 0.8s;
+  -moz-transition: 0.8s; 
+  -ms-transition: 0.8s; 
+  transition: 0.8s;
+}
+
+.titrefiche:hover {
+  letter-spacing: 2px;
+  -webkit-transition: 0.8s;
+  -moz-transition: 0.8s; 
+  -ms-transition: 0.8s; 
+  transition: 0.8s;
+}
+
+/* ---------- FIN FICHE ANNONCE ------------- */
+
+
+/* ----- FORMULAIRE OFFICIEL (Neph) ----- */
+
+.formutitle {
+  font-size: 40px;
+  font-family: var(--police-titre);
+  color: var(--color2);
+  margin-bottom: -5px;
+  width: 400px;
+  -moz-transition:all 1s; /* Mozilla Firefox */
+  -webkit-transition:all 1s; /* Safari et Google Chrome */
+  -o-transition:all 1s; /* Opera */
+  transition: all 1s;
+}
+.formutitle:hover {
+  letter-spacing: 5px; 
+  -moz-transition:all 1s; /* Mozilla Firefox */
+  -webkit-transition:all 1s; /* Safari et Google Chrome */
+  -o-transition:all 1s; /* Opera */
+  transition: all 1s;
+  rotate(360deg);
+}
+
+.formubloc {
+  background-color: var(--color1);
+  width: 400px;
+  opacity: .7;
+  color: var(--color7);
+  text-align: justify;
+  padding: 10px; 
+  -moz-transition:all 1s; /* Mozilla Firefox */
+  -webkit-transition:all 1s; /* Safari et Google Chrome */
+  -o-transition:all 1s; /* Opera */
+  transition: all 1s;
+}
+
+.formubloc:hover {
+  box-shadow: 0 0 5px var(--color1);
+  opacity: .9;
+  -moz-transition:all 1s; /* Mozilla Firefox */
+  -webkit-transition:all 1s; /* Safari et Google Chrome */
+  -o-transition:all 1s; /* Opera */
+  transition: all 1s;
+}
+
+/* -----FIN FORMULAIRE OFFICIEL ----- */
+
+
+/* ---------- FIN FICHES ANNONCES ------------ */
+
+/* ---------- SWITCHEROO ------------ */
+:root {
+  --color-text: #5D96BE;
+  --color-bg: #E8FAF6;
+  --color-delete: #cc463e;
+  --color-tooltip: #0f0f0f;
+  --color-squircle: #f4f9ff;
+  --color-accent: #f4f9ff;
+  --color-button: #1C1B1F;
+  --color-pill: #f4f9ff;
+  --gap-size: 16px;
+  --ease: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.43, 0.09, 0.38, 2.56);
+}
+#image_onglet_switcheroo {
+    left: 0;
+    position: fixed;
+  z-index: 999;
+    top: 50%;
+  transition: 1s;
+  -moz-transition: 1s;
+  -o-transition: 1s;
+  -htm-transition: 1s;
+  -webkit-transition: 1s;
+}
+
+.switcheroo {
+  color: var(--color-text);
+  /*background-color: var(--color-bg);*/
+  font-size: 14px;
+  left: -36px;
+  transition: 1s;
+  -moz-transition: 1s;
+  -o-transition: 1s;
+  -htm-transition: 1s;
+  -webkit-transition: 1s;
+}
+
+.switcheroo:hover {
+  left:0px;
+  transition: 1s;
+  -moz-transition: 1s;
+  -o-transition: 1s;
+  -htm-transition: 1s;
+  -webkit-transition: 1s;
+}
+
+.switcheroo[position="static"] {
+  position: relative;
+}
+.switcheroo[position="top"] {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
+.switcheroo[position="bottom"] {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+}
+.switcheroo[direction="horizontal"] {
+  width: 100%;
+}
+.switcheroo[direction="vertical"] {
+  height: 100%;
+}
+
+.switcheroo__squircles {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  padding: var(--gap-size);
+  gap: var(--gap-size);
+}
+.switcheroo[direction="horizontal"] .switcheroo__squircles {
+  flex-direction: row;
+}
+.switcheroo[direction="vertical"] .switcheroo__squircles {
+  flex-direction: column;
+}
+
+/* squircle */
+.switcheroo[theme="discord"] .switcheroo__squircle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-squircle);
+}
+.switcheroo[theme="discord"] .switcheroo__squircle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-radius 128ms var(--ease);
+  margin: -3px;
+}
+.switcheroo[theme="discord"] .switcheroo__squircle:hover {
+  border-radius: 36%;
+}
+.switcheroo[theme="discord"][direction="vertical"] .switcheroo__squircle:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: var(--color-pill);
+  position: absolute;
+  border-radius: 4px;
+  top: 50%;
+  transform: translate(-100%, -50%) scale(0);
+  transition: transform 128ms, opacity 64ms;
+  pointer-events: none;
+  opacity: 0;
+}
+.switcheroo[theme="discord"][direction="horizontal"] .switcheroo__squircle:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: var(--color-pill);
+  position: absolute;
+  border-radius: 4px;
+  left: 50%;
+  transform: translate(-50%, -100%) scale(0);
+  transition: transform 128ms, opacity 64ms;
+  pointer-events: none;
+  opacity: 0;
+}
+.switcheroo[theme="discord"] .switcheroo__squircle.active {
+  border-radius: 36%;
+  cursor: default;
+}
+.switcheroo[theme="discord"][direction="vertical"] .switcheroo__squircle:hover:before {
+  opacity: 1;
+  transform: translate(-100%, -50%) scale(0.5);
+}
+.switcheroo[theme="discord"][direction="horizontal"] .switcheroo__squircle:hover:before {
+  opacity: 1;
+  transform: translate(-50%, -100%) scale(0.5);
+}
+
+.switcheroo[theme="discord"][direction="vertical"] .switcheroo__squircle.active:before {
+  opacity: 1;
+  transform: translate(-85%, -50%) scale(0.2);
+  border-radius: 50%;
+}
+.switcheroo[theme="discord"][direction="horizontal"] .switcheroo__squircle.active:before {
+  opacity: 1;
+  transform: translate(-50%, -85%) scale(0.2);
+  border-radius: 50%;
+}
+
+
+/* tooltip */
+.switcheroo__popper {
+  background-color: var(--color-tooltip);
+  padding: 0.68rem 1rem;
+  position: absolute;
+  width: -webkit-max-content;
+  width: max-content;
+  border-radius: 4px;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 64ms var(--ease), transform 128ms var(--ease-bounce);
+  pointer-events: none;
+  color: #fff;
+}
+.switcheroo[direction="vertical"] .switcheroo__popper {
+  left: 155%;
+  top: 50%;
+  transform-origin: left;
+  transform: translateY(-50%) scale(0.98);
+}
+.switcheroo[direction="horizontal"] .switcheroo__popper {
+  top: 155%;
+  left: 50%;
+  transform-origin: top;
+  transform: translateX(-50%) scale(0.98);
+}
+.switcheroo__popper:before {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-tooltip);
+  z-index: -1;
+}
+.switcheroo[direction="vertical"] .switcheroo__popper:before {
+  left: -2px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+.switcheroo[direction="horizontal"] .switcheroo__popper:before {
+  left: 50%;
+  top: -2px;
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+.switcheroo[direction="vertical"] .switcheroo__squircle:hover .switcheroo__popper {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+.switcheroo[direction="horizontal"] .switcheroo__squircle:hover .switcheroo__popper {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+.switcheroo__squircle:hover:before {
+  opacity: 1;
+  transform: translate(-100%, -50%) scale(0.5);
+}
+
+/* avatar */
+.switcheroo[theme="discord"] .switcheroo__avatar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+}
+.switcheroo[theme="discord"] .switcheroo__avatar img {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* divider */
+.switcheroo[theme="discord"][direction="vertical"] .switcheroo__divider {
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-pill);
+  border-radius: 1px;
+  opacity: 0.06;
+  transform: scale(0.8);
+}
+.switcheroo[theme="discord"][direction="horizontal"] .switcheroo__divider {
+  width: 2px;
+  background-color: var(--color-pill);
+  border-radius: 1px;
+  opacity: 0.06;
+  transform: scale(0.8);
+}
+/* delete button */
+.switcheroo[theme="discord"] .switcheroo__delete {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 16px;
+  line-height: 14px;
+  height: 16px;
+  top: -2px;
+  right: -2px;
+  border-radius: 50%;
+  background-color: var(--color-delete);
+  transform: scale(0);
+  opacity: 1;
+  transition: transform 128ms var(--ease), opacity 64ms var(--ease);
+  cursor: pointer;
+  font-size: 13px;
+}
+.switcheroo[theme="discord"] .switcheroo__squircle:hover .switcheroo__delete {
+  opacity: 1;
+  transform: scale(1);
+}
+/* logo */
+.switcheroo[theme="discord"] .switcheroo__logo {
+}
+.switcheroo[theme="discord"] .switcheroo__logo img {
+  width: 32px;
+}
+.switcheroo[theme="discord"] .switcheroo__logo:hover {
+  background-color: var(--color-accent);
+}
+/* buttons */
+.switcheroo[theme="discord"] .switcheroo__squircle--button {
+  transition: border-radius 128ms var(--ease);
+  color: var(--color-button);
+      box-shadow: 0 0 4px var(--color12);
+}
+.switcheroo[theme="discord"] .switcheroo__squircle--button:hover {
+  color: #fff;
+  background-color: var(--color-button);
+}
+/* modal */
+.switcheroo__form {
+  padding: 48px;
+}
+.switcheroo__form-row {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+.switcheroo__form-label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--color-text) !important;
+}
+
+.switcheroo__form-input {
+  padding: 6px !important;
+  font-size: 16px !important;
+  border-radius: 4px !important;
+  width: 100% !important;
+  border-bottom: 2px solid var(--color-accent) !important;
+  background-color: var(--color1) !important;
+  color: var(--color-bg) !important;
+  cursor: text !important;
+}
+
+}
+.switcheroo__form-button {
+  border-radius: 8px;
+  padding: 8px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  align-self: flex-end;
+  color: var(--color-accent);
+  background-color: #5D96BE;
+}
+
+.monomer-overlay {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.2s opacity ease;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.monomer-modal {
+  position: fixed;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  width: 94%;
+  padding: 24px 20px;
+  transition: 0.2s opacity ease;
+  transform: translate(-50%, -50%);
+  border-radius: 2px;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.monomer-modal.monomer-open.monomer-anchored {
+  top: 20px;
+  transform: translate(-50%, 0);
+}
+
+.monomer-modal.monomer-open {
+  opacity: 1;
+}
+
+.monomer-overlay.monomer-open {
+  opacity: 1;
+}
+
+.monomer-close {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  padding: 5px;
+  cursor: pointer;
+  color: #fff;
+  border: 0;
+  outline: none;
+  background: var(--color-delete);
+  border-radius: 50%;
+  padding: 0;
+}
+.monomer-close:hover {
+  opacity: 0.8;
+}
+
