@@ -1,0 +1,174 @@
+/* Thanks Genius Panda aka Kim pour la chronologie */
+/* Code by teenspirit */
+
+:root {
+  --gpTL4-bg1: transparent; /*couleur fond*/
+  --gpTL4-dot-clr: #272727; /*couleur point*/
+  --gpTL4-line-clr: #272727; /*couleur lignes*/
+  --gpTL4-event-bg: #fff; /*fond titre*/
+  --gpTL4-title-clr: #272727; /*couleur titre*/
+  --gpTL4-font: "Roboto", sans-serif; /*typo*/
+}
+
+.dotted-chrono-four {
+  padding: 55px 0px 0px !important;
+}
+.dotted-chrono-four .event {
+  font-family: "Roboto Condensed" !important;
+  font-style: normal !important;
+}
+
+.dotted-chrono-four .event date {
+  width: 80px !important;
+}
+
+.dotted-chrono-four desc {
+  width: calc(100% - 97px) !important;
+  left: 97px !important;
+}
+.fiche_dusky_trois {
+  background-color: rgb(243, 243, 243);
+  width: 500px;
+  color: #272727;
+  font-size: 12px;
+  font-family: Roboto;
+  padding: 20px;
+  border-radius: 5px;
+  margin: auto;
+}
+
+.fiche_dusky_trois a {
+  color: black;
+}
+
+.header_dusky {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.nom_dusky {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container_bulle {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+titre {
+  text-align: left;
+  vertical-align: text-top;
+  font-size: 32px;
+  font-family: Bebas Neue;
+}
+
+sous_titre {
+  text-align: left;
+  vertical-align: text-top;
+  font-size: 16px;
+  font-family: Roboto Condensed;
+  display: block;
+}
+.bulle_dusky {
+  padding: 10px;
+  border-radius: 100px;
+}
+.info_dusky {
+  border-radius: 5px;
+  padding: 15px;
+}
+
+/*Style du contenu des onglets*/
+titre_lien {
+  font-family: Roboto Condensed;
+  font-size: 16px;
+  font-weight: bold;
+  display: block;
+}
+
+titre_rp {
+  font-family: Roboto Condensed;
+  font-weight: bold;
+}
+
+.tableonglets span.ongletcont {
+  display: none;
+}
+.tableonglets input {
+  display: none;
+}
+.tableonglets input:checked + span.ongletcont {
+  display: block;
+}
+.tableonglets span.ongletcont {
+  border-radius: 5px;
+  padding: 15px;
+  display: none;
+  overflow: auto;
+  margin: auto;
+  height: 400px;
+}
+.tableonglets label.onglet {
+  display: inline-block;
+  margin: 0 5px 5px 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/*Style des onglets*/
+.all .systeme_onglets {
+  text-align: left;
+}
+.all .onglet {
+  position: relative;
+  display: inline-block;
+  margin: 0 3px;
+  padding-right: 5px;
+}
+.all .onglet_0,
+.inactif {
+  transition: 2s;
+  border-radius: 100px;
+}
+
+.onglet {
+  font-family: "Bebas Neue";
+  font-size: 24px;
+  color: #272727;
+}
+/***Onglet survolé***/
+.all .onglet_0:hover,
+.inactif:hover {
+  transition: 2s;
+
+  color: #272727;
+}
+
+/***Onglet sélectionné***/
+.all .onglet_1,
+.affiche-contenu-1 {
+  transition: all 1s linear;
+
+  color: #272727;
+}
+
+/***Contenu des onglets principaux***/
+.all .contenu_onglet {
+  background-color: #d6c8df;
+  border-radius: 5px;
+  padding: 15px;
+  display: none;
+  overflow: auto;
+  margin: auto;
+  height: 400px;
+  background-color: #d6c8df;
+}
+.all .conteneur-onglets {
+  margin: 0;
+  padding: 0 0 0 5px;
+}
