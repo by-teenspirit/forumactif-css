@@ -1,0 +1,218 @@
+:root {
+  --accent-color: #99606e;
+  --background: #ffdee6;
+  --text-color: #330c15;
+  --soft-background: #fff8fc;
+  --font-title: "Gochi Hand";
+  --font-text: "Inter";
+  --font-sub-title: "Roboto Condensed";
+}
+
+.fiche-ora {
+  background-color: var(--background);
+  color: var(--text-color);
+  border-radius: 5px;
+  width: 550px;
+  margin: auto;
+  font-family: var(--font-text);
+  font-size: 12px;
+  box-sizing: content-box;
+}
+
+/*Bandeau supérieur*/
+.bandeau-sup {
+  background-color: var(--accent-color);
+  color: var(--soft-background);
+  padding: 15px;
+  border-radius: 5px 5px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.name-cita-ora {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.name-ora {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.name-sup {
+  font-family: var(--font-title);
+  font-size: 32px;
+}
+
+.name-ora .icon-ora {
+  padding: 5px !important;
+}
+
+.name-ora .icon-ora span {
+  font-size: 16px;
+}
+
+.bandeau-sup .icon-ora {
+  background-color: var(--soft-background);
+  color: var(--text-color);
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.cita-ora {
+  font-family: var(--font-sub-title);
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/*Premier encart de la fiche*/
+.contain-info-ora {
+  display: flex;
+  padding: 30px;
+  gap: 20px;
+}
+
+/*Encart de gauche*/
+
+.info-ora {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.info-bg {
+  background-color: var(--soft-background);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.info-sm {
+  display: flex;
+  border-radius: 100px;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.info-lg {
+  overflow: auto;
+  padding: 10px;
+}
+
+.info-bg .cita-ora {
+  font-size: 12px;
+}
+
+.contain-info-ora .icon-ora {
+  background-color: var(--accent-color);
+  color: var(--soft-background);
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.contain-info-ora .icon-ora span {
+  font-size: 16px;
+}
+
+/*Encart de droite*/
+
+.info-ora {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  height: 320px;
+}
+
+.img-ora {
+  width: 200px;
+  height: 320px;
+  border-radius: 5px;
+  background-color: var(--soft-background);
+}
+
+.img-ora img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.titre-bandeau {
+  border-radius: 0px;
+  justify-content: center;
+}
+
+/*Liens du personnage*/
+
+.container-ora {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 30px;
+  height: 400px;
+  overflow: auto;
+}
+
+.contain-lien {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.name-relation {
+  display: flex;
+  gap: 0px;
+  flex-direction: column;
+}
+
+.name-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--font-title);
+  font-size: 24px;
+}
+
+.relation-link {
+  font-family: var(--font-sub-title);
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.descri-link {
+  background-color: var(--soft-background);
+  padding: 10px;
+  border-radius: 5px;
+  height: 80px;
+  overflow: auto;
+}
+
+.evo .descri-link {
+  height: 250px;
+}
+
+.credits {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: var(--font-text);
+  font-size: 9px;
+  padding: 5px;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+}
