@@ -117,6 +117,17 @@ body :is(.gwf_honneur,.gwf_scenario_top,.gwf_pa,#fa_ticker_block) h7{font:400 10
 body :is(.gwf_scenario_top,.gwf_bandeau) h8{font:400 10px/1.5 var(--f4);letter-spacing:.02em;text-transform:lowercase;color:var(--tx)}
 body :is(.gwf_liens,.gwf_pa_liens,.gwf_pa_parto) li a{font:inherit;color:inherit;text-decoration:none}
 body td.bodyline{padding:0 14px 14px}
+/* ====== PAGES INTERNES : socle commun ======
+   .bodyline porte padding:5px !important dans le CSS principal, donc la regle
+   ci-dessus ne passe pas : on cale les conteneurs de page sur la largeur de la
+   banniere plutot que d'y toucher. */
+#page-body,#page-footer{width:var(--L,800px);max-width:100%;margin-left:auto;margin-right:auto;box-sizing:border-box}
+/* .forumline .row1 (0-2-0) du CSS principal remet padding:0 : on repasse devant. */
+table.forumline :is(td.row1,td.row2,td.row3,td.row3Right){padding:10px 14px}
+table.forumline :is(td.row1,td.row2,td.row3):has(.gwf_pa,.gwf_bandeau,.gwf_cate,.gwf_qeel,.gwf_sujets,.gwf_topiclist){padding:0}
+/* en-tetes restes au bleu Forumactif d'origine : .tHead, th sans classe, thead th */
+table.forumline :is(th.tHead,td.tHead,thead th,th:not([class])){background:var(--ch);border:0;padding:10px 14px;text-align:left;font:400 9px/1.5 var(--f1);letter-spacing:.12em;text-transform:uppercase;color:var(--fn)}
+table.forumline th :is(h1,h2,h3,span,div){color:inherit;font:inherit;letter-spacing:inherit;margin:0}
 body img#i_logo{margin:0;width:var(--L);max-width:100%}
 body .gwf_info:empty{display:none}
 body .gwf_qeel_bloc_droit>*{width:auto}
