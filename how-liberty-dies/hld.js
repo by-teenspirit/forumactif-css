@@ -129,3 +129,17 @@
   if(document.readyState!=='loading'){ grilleGroupes(); }
   else { document.addEventListener('DOMContentLoaded', grilleGroupes); }
 })();
+
+/* Les liens de contact perdent leur image au profit d'une icone CSS :
+   on reporte l'alt d'origine en title pour garder l'infobulle. */
+(function(){
+  function infobulles(){
+    var imgs=document.querySelectorAll('#page-body a > img[src*="icon_pm"],#page-body a > img[src*="icon_email"],#page-body a > img[src*="icon_www"],#page-body a > img[src*="presentation.gif"]');
+    for(var i=0;i<imgs.length;i++){
+      var a=imgs[i].parentElement, alt=imgs[i].getAttribute('alt');
+      if(a && alt && !a.getAttribute('title')) a.setAttribute('title', alt);
+    }
+  }
+  if(document.readyState!=='loading'){ infobulles(); }
+  else { document.addEventListener('DOMContentLoaded', infobulles); }
+})();
