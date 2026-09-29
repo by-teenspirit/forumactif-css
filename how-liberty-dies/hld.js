@@ -143,3 +143,120 @@
   if(document.readyState!=='loading'){ infobulles(); }
   else { document.addEventListener('DOMContentLoaded', infobulles); }
 })();
+
+/* Page de profil : Forumactif la rend en tableaux imbriques de paires
+   libelle / valeur. On la reconstruit en fiche — bandeau teinte par la couleur
+   du groupe, avatar en grand, tuiles de statistiques, champs en liste — en
+   DEPLACANT les noeuds d'origine, donc liens, images et champs restent intacts.
+   Les champs vides (valeur "-") sont retires. */
+(function(){
+  var ICO={'Holomessages':'forum','Points de faction':'military_tech','Date d’inscription':'event',"Date d'inscription":'event','Dernière visite':'schedule','Messages':'forum','Date d’enregistrement':'event'};
+  function ficheProfil(){
+    var t=null;
+    var tables=document.querySelectorAll('#page-body table.forumline');
+    for(var i=0;i<tables.length;i++){ if(tables[i].querySelector('h1.h_member')) t=tables[i]; }
+    if(!t || t.getAttribute('data-hld-profil')) return;
+
+    var nomSpan=t.querySelector('.usr_grp_clr');
+    var couleur=(nomSpan && nomSpan.style.color) ? nomSpan.style.color : 'var(--fn)';
+    var nom=nomSpan?(nomSpan.textContent||'').trim():'';
+    if(!nom) return;
+
+    var paires=[], lignes=t.querySelectorAll('td.row1 > table > tbody > tr');
+    for(var j=0;j<lignes.length;j++){
+      if(lignes[j].children.length<2) continue;
+      paires.push({lab:(lignes[j].children[0].textContent||'').replace(/\s*:\s*$/,'').trim(), cell:lignes[j].children[1]});
+    }
+    if(!paires.length) return;
+
+    var racine=document.createElement('div');
+    racine.className='hld_profil';
+    racine.style.setProperty('--gc', couleur);
+
+    var tete=document.createElement('header'); tete.className='hld_profil_tete';
+    var h=document.createElement('p'); h.className='hld_profil_nom'; h.textContent=nom; tete.appendChild(h);
+    var sous=document.createElement('p'); sous.className='hld_profil_rang'; tete.appendChild(sous);
+    racine.appendChild(tete);
+
+    var corps=document.createElement('div'); corps.className='hld_profil_corps';
+    var gauche=document.createElement('aside'); gauche.className='hld_profil_gauche';
+    var droite=document.createElement('div'); droite.className='hld_profil_droite';
+    corps.appendChild(gauche); corps.appendChild(droite);
+    racine.appendChild(corps);
+
+    var boiteAv=document.createElement('div'); boiteAv.className='hld_profil_avatar'; gauche.appendChild(boiteAv);
+    var boiteCt=document.createElement('div'); boiteCt.className='hld_profil_contacts'; gauche.appendChild(boiteCt);
+    var tuiles=document.createElement('div'); tuiles.className='hld_profil_stats';
+    var champs=document.createElement('dl'); champs.className='hld_profil_champs';
+    var meta=[], vus={};
+
+    for(var k=0;k<paires.length;k++){
+      var p=paires[k], txt=(p.cell.textContent||'').trim();
+      if(/^Avatar/i.test(p.lab)){ var im=p.cell.querySelector('img'); if(im) boiteAv.appendChild(im); continue; }
+      if(/^Citation/i.test(p.lab)){
+        if(txt && txt!=='-'){ var q=document.createElement('blockquote'); q.className='hld_profil_citation'; q.textContent=txt; droite.appendChild(q); }
+        continue;
+      }
+      if(/^Administrer/i.test(p.lab)){ p.cell.className='hld_profil_admin'; racine.appendChild(p.cell); continue; }
+      var liensIco=p.cell.querySelectorAll('a');
+      var estContact=false;
+      for(var m=0;m<liensIco.length;m++){
+        var img=liensIco[m].querySelector('img');
+        if(img && /icon_pm|icon_email|icon_www|presentation\.gif/.test(img.getAttribute('src')||'')){
+          estContact=true;
+          var href=liensIco[m].getAttribute('href')||'';
+          if(!vus[href]){ vus[href]=1; boiteCt.appendChild(liensIco[m]); }
+        }
+      }
+      if(estContact) continue;
+      if(ICO[p.lab]){
+        var d=document.createElement('div'); d.className='hld_profil_tuile';
+        var ic=document.createElement('i'); ic.className='hld_ico'; ic.textContent=ICO[p.lab]; d.appendChild(ic);
+        var v=document.createElement('b'); v.textContent=(txt.split(/[\[\n]/)[0]||'').trim(); d.appendChild(v);
+        var l=document.createElement('span'); l.textContent=p.lab; d.appendChild(l);
+        tuiles.appendChild(d);
+        continue;
+      }
+      if(/^(Rang|Statut)$/i.test(p.lab)){ if(txt && txt!=='-') meta.push(txt); continue; }
+      if(!txt || txt==='-') continue;
+      var dt=document.createElement('dt'); dt.textContent=p.lab;
+      var dd=document.createElement('dd');
+      while(p.cell.firstChild) dd.appendChild(p.cell.firstChild);
+      var pair=document.createElement('div'); pair.className='hld_profil_champ';
+      pair.appendChild(dt); pair.appendChild(dd);
+      champs.appendChild(pair);
+    }
+    sous.textContent=meta.join(' · ');
+    if(tuiles.children.length) droite.appendChild(tuiles);
+    if(champs.children.length) droite.appendChild(champs);
+
+    t.setAttribute('data-hld-profil','1');
+    t.parentNode.insertBefore(racine, t);
+    t.style.display='none';
+  }
+  if(document.readyState!=='loading'){ ficheProfil(); }
+  else { document.addEventListener('DOMContentLoaded', ficheProfil); }
+})();
+
+/* Liste des membres : la colonne Humeur n'est pas utilisee sur le forum.
+   On la retire par son en-tete plutot que par sa position, pour rester juste
+   si Forumactif change l'ordre des colonnes. */
+(function(){
+  function sansHumeur(){
+    var tables=document.querySelectorAll('#page-body table.forumline');
+    for(var i=0;i<tables.length;i++){
+      var t=tables[i], premiere=t.querySelector('tr');
+      if(!premiere) continue;
+      var idx=-1, ths=premiere.children;
+      for(var j=0;j<ths.length;j++){ if(/^\s*Humeur\s*$/i.test(ths[j].textContent||'')) idx=j; }
+      if(idx<0) continue;
+      var lignes=t.querySelectorAll('tr');
+      for(var k=0;k<lignes.length;k++){
+        var c=lignes[k].children[idx];
+        if(c) c.style.display='none';
+      }
+    }
+  }
+  if(document.readyState!=='loading'){ sansHumeur(); }
+  else { document.addEventListener('DOMContentLoaded', sansHumeur); }
+})();
