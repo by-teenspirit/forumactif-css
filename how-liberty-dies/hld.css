@@ -393,3 +393,6 @@ table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[al
 .gwf_sujets_avatar{display:block;width:40px;height:40px;overflow:hidden;border-radius:var(--r1);margin:0}
 .gwf_sujets_avatar img{width:40px;height:40px;border-radius:var(--r1);object-fit:cover;display:block}
 .gwf_sujets_lastpost{text-align:left !important;padding-left:12px}
+/* Sans sous-forums, le bloc sous-forums reste dans le DOM mais vide : le titre
+   et la description restaient colles en haut avec du vide dessous. */
+.gwf_cate:has(.gwf_sous_fofo:empty) .gwf_titre_desc,.gwf_cate:not(:has(.gwf_sous_fofo)) .gwf_titre_desc{align-self:center}
