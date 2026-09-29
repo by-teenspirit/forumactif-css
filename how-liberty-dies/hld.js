@@ -260,3 +260,34 @@
   if(document.readyState!=='loading'){ sansHumeur(); }
   else { document.addEventListener('DOMContentLoaded', sansHumeur); }
 })();
+
+/* Panneau de profil : le menu horizontal (Informations | Preferences | ...)
+   devient une barre d'onglets. L'entree courante est un <strong> sans lien. */
+(function(){
+  function onglets(){
+    var lien=document.querySelector('#page-body a.mainmenu[href*="page_profil"]');
+    if(!lien) return;
+    var td=lien.closest('td');
+    if(!td || td.getAttribute('data-hld-ong')) return;
+    var nav=document.createElement('nav');
+    nav.className='hld_onglets';
+    var spans=td.querySelectorAll('span.gen');
+    for(var i=0;i<spans.length;i++){
+      var a=spans[i].querySelector('a'), st=spans[i].querySelector('strong');
+      if(a){ a.className='hld_onglet'; nav.appendChild(a); }
+      else if(st){
+        var b=document.createElement('span');
+        b.className='hld_onglet hld_onglet_actif';
+        b.textContent=(st.textContent||'').trim();
+        nav.appendChild(b);
+      }
+    }
+    if(!nav.children.length) return;
+    var table=td.closest('table');
+    td.setAttribute('data-hld-ong','1');
+    table.parentNode.insertBefore(nav, table);
+    table.style.display='none';
+  }
+  if(document.readyState!=='loading'){ onglets(); }
+  else { document.addEventListener('DOMContentLoaded', onglets); }
+})();
