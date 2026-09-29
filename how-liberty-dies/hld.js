@@ -44,3 +44,27 @@
   window.addEventListener('load', calePA);
   window.addEventListener('resize', calePA);
 })();
+
+/* Les cinq raccourcis du bas portent des libelles Forumactif trop longs
+   pour tenir sur une ligne dans les 800px de la carte : on les raccourcit
+   ici, par leur adresse et non par leur texte, pour rester robuste. */
+(function(){
+  var courts=[
+    ['mark=forums','Tout marquer comme lu'],
+    ['activetopics','Sujets actifs'],
+    ['today_posters','Top 20 du jour'],
+    ['overall_posters','Top 20 du forum'],
+    ['delete_cookies','Cookies']
+  ];
+  function renomme(){
+    var liens=document.querySelectorAll('a.gensmall');
+    for(var i=0;i<liens.length;i++){
+      var h=liens[i].getAttribute('href')||'';
+      for(var j=0;j<courts.length;j++){
+        if(h.indexOf(courts[j][0])>-1){ liens[i].textContent=courts[j][1]; break; }
+      }
+    }
+  }
+  if(document.readyState!=='loading'){ renomme(); }
+  else { document.addEventListener('DOMContentLoaded', renomme); }
+})();

@@ -255,9 +255,8 @@ body :is(#fa_menulist,#notif_list){background:var(--bl);border:.5px solid var(--
 /* la barre de raccourcis a la meme largeur que le reste du forum */
 table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]){width:var(--L,800px) !important;max-width:100%;margin:0 auto}
 /* tout sur une seule ligne : libelles resserres */
-table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) a.gensmall{font-size:8.5px;letter-spacing:.06em;padding:6px 9px}
 /* une seule ligne serree : 5 libelles longs dans 800px */
-table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) a.gensmall{font-size:8px !important;letter-spacing:.04em !important;padding:6px 8px !important;white-space:nowrap}
+table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) a.gensmall{font-size:10.5px;letter-spacing:.05em;padding:6px 10px;white-space:nowrap}
 table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"])>tbody>tr{justify-content:space-between;gap:4px !important;flex-wrap:nowrap !important;align-items:center}
 table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[align="right"]{flex-wrap:nowrap !important;gap:4px !important}
 table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[align="right"]>span{flex-wrap:nowrap !important;gap:4px !important}
