@@ -334,7 +334,8 @@ table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[al
 #page-body table{max-width:100%}
 #page-body table.forumline{width:100%}
 #page-body :is(input,select,textarea){max-width:100%;box-sizing:border-box}
-#page-body table.forumline td :is(input[type="text"],input:not([type]),select,textarea){width:100%}
+#page-body table.forumline :is(td.row1,td.row2,td.row3) :is(input[type="text"],input:not([type]),select,textarea){width:100%}
+#page-body table.forumline tr:has(> td:only-child) :is(input[type="text"],input:not([type]),select,textarea){width:auto;max-width:220px}
 #page-body table td{word-wrap:break-word;overflow-wrap:break-word}
 #page-body table.forumline th{white-space:nowrap;padding-left:8px;padding-right:8px}
 /* ====== FICHE DE PROFIL ======
@@ -343,7 +344,11 @@ table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[al
 .hld_profil_tete{padding:20px 22px;background:color-mix(in srgb,var(--gc) 14%,var(--bl));border-bottom:.5px solid color-mix(in srgb,var(--gc) 40%,var(--fi))}
 .hld_profil_nom{margin:0;font:400 19px/1.2 var(--f2,serif);letter-spacing:.06em;color:var(--gc)}
 .hld_profil_rang{margin:6px 0 0;font:400 9px/1.5 var(--f1);letter-spacing:.14em;text-transform:uppercase;color:var(--pa)}
-.hld_profil_corps{display:grid;grid-template-columns:210px 1fr;gap:22px;padding:22px}
+.hld_profil_corps{display:grid;grid-template-columns:210px 1fr;gap:22px;padding:22px;align-items:start}
+.hld_profil_droite{max-height:560px;overflow-y:auto;padding-right:12px;scrollbar-width:thin;scrollbar-color:rgb(216,216,212) transparent}
+.hld_profil_droite::-webkit-scrollbar{width:4px}
+.hld_profil_droite::-webkit-scrollbar-track{background:transparent}
+.hld_profil_droite::-webkit-scrollbar-thumb{background:rgb(216,216,212);border-radius:9px}
 .hld_profil_avatar img{display:block;width:100%;height:auto;border-radius:var(--r1);border:.5px solid var(--fi)}
 .hld_profil_contacts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;justify-content:center}
 .hld_profil_citation{margin:0 0 18px;padding:0 0 0 14px;border-left:2px solid color-mix(in srgb,var(--gc) 45%,var(--fi));font:italic 400 12px/1.7 var(--f4);color:var(--tx)}
@@ -357,7 +362,7 @@ table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[al
 .hld_profil_champ:first-child{border-top:0}
 .hld_profil_champ dt{font:400 10.5px/1.7 var(--f4);color:var(--pa)}
 .hld_profil_champ dd{margin:0;font:400 11px/1.7 var(--f4);color:var(--tx);min-width:0;overflow-wrap:break-word}
-.hld_profil_champ dd img{max-width:100%;height:auto;border-radius:var(--rp);display:block}
+.hld_profil_champ dd img{max-width:100%;max-height:170px;width:auto;height:auto;object-fit:contain;border-radius:var(--rp);display:block}
 .hld_profil_admin{display:block;padding:12px 22px;border-top:.5px solid var(--sep);background:var(--ch);font:400 10px/1.6 var(--f4);color:var(--pa)}
 @media (max-width:700px){.hld_profil_corps{grid-template-columns:1fr}}
 /* barre d'onglets du panneau de profil (construite par hld.js) */

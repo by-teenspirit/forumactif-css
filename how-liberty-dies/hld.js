@@ -261,32 +261,45 @@
   else { document.addEventListener('DOMContentLoaded', sansHumeur); }
 })();
 
-/* Panneau de profil : le menu horizontal (Informations | Preferences | ...)
-   devient une barre d'onglets. L'entree courante est un <strong> sans lien. */
+/* Barres de navigation en onglets : le menu du panneau de profil
+   (Informations | Preferences | ...) et les dossiers de la messagerie.
+   Dans les deux cas l'entree courante est du texte sans lien, ce qui la rendait
+   visuellement etrangere aux autres. On rebatit la barre a partir des span.gen
+   de la ligne, en deplacant les liens d'origine. */
 (function(){
-  function onglets(){
-    var lien=document.querySelector('#page-body a.mainmenu[href*="page_profil"]');
-    if(!lien) return;
-    var td=lien.closest('td');
-    if(!td || td.getAttribute('data-hld-ong')) return;
-    var nav=document.createElement('nav');
-    nav.className='hld_onglets';
-    var spans=td.querySelectorAll('span.gen');
-    for(var i=0;i<spans.length;i++){
-      var a=spans[i].querySelector('a'), st=spans[i].querySelector('strong');
-      if(a){ a.className='hld_onglet'; nav.appendChild(a); }
-      else if(st){
-        var b=document.createElement('span');
-        b.className='hld_onglet hld_onglet_actif';
-        b.textContent=(st.textContent||'').trim();
-        nav.appendChild(b);
+  function barre(reperes){
+    for(var r=0;r<reperes.length;r++){
+      var lien=document.querySelector(reperes[r]);
+      if(!lien) continue;
+      var ligne=lien.closest('tr') || lien.closest('td');
+      if(!ligne || ligne.getAttribute('data-hld-ong')) continue;
+      var nav=document.createElement('nav');
+      nav.className='hld_onglets';
+      var spans=ligne.querySelectorAll('span.gen');
+      for(var i=0;i<spans.length;i++){
+        var a=spans[i].querySelector('a');
+        if(a){
+          a.className='hld_onglet';
+          a.textContent=(a.textContent||'').trim();
+          nav.appendChild(a);
+        } else {
+          var txt=(spans[i].textContent||'').trim();
+          if(!txt) continue;
+          var b=document.createElement('span');
+          b.className='hld_onglet hld_onglet_actif';
+          b.textContent=txt;
+          nav.appendChild(b);
+        }
       }
+      if(nav.children.length<2) continue;
+      var table=ligne.closest('table');
+      ligne.setAttribute('data-hld-ong','1');
+      table.parentNode.insertBefore(nav, table);
+      table.style.display='none';
     }
-    if(!nav.children.length) return;
-    var table=td.closest('table');
-    td.setAttribute('data-hld-ong','1');
-    table.parentNode.insertBefore(nav, table);
-    table.style.display='none';
+  }
+  function onglets(){
+    barre(['#page-body a.mainmenu[href*="page_profil"]','#page-body a[href$="folder=sentbox"]']);
   }
   if(document.readyState!=='loading'){ onglets(); }
   else { document.addEventListener('DOMContentLoaded', onglets); }
