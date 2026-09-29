@@ -272,3 +272,37 @@ table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"])>tbody
 table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[align="right"]{flex-wrap:nowrap !important;gap:4px !important}
 table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[align="right"]>span{flex-wrap:nowrap !important;gap:4px !important}
 #fa_menulist{max-height:min(80vh,560px) !important;overflow-y:auto;display:none;grid-template-columns:auto max-content;align-items:start;gap:0;padding:0 0 0 152px !important;margin:0;list-style:none;border:.5px solid var(--fi);border-radius:var(--r1);background:var(--bl);overflow-x:hidden;position:absolute;box-shadow:none;top:100%}
+/* ====== PAGE DE PROFIL (profile_view_body) ======
+   Les images du profil n'etaient pas contraintes : la table partait a 921px
+   dans un conteneur de 800. table-layout:fixed la tient, max-width tient les images. */
+#page-body table.forumline:has(h1.h_member){table-layout:fixed;width:100%;border:.5px solid var(--fi);border-radius:var(--r1);overflow:hidden}
+#page-body table.forumline:has(h1.h_member) img{max-width:100%;height:auto}
+#page-body h1.h_member{font:400 11px/1.4 var(--f1);letter-spacing:.14em;text-transform:uppercase;color:var(--fn);margin:0}
+#page-body h1.h_member a{color:var(--or);text-decoration:none}
+#page-body table.forumline:has(h1.h_member) td.row1{vertical-align:top;padding:4px 16px 14px}
+#page-body table.forumline:has(h1.h_member) td.row1>table{width:100%;border-spacing:0}
+#page-body table.forumline:has(h1.h_member) td.row1>table>tbody>tr>td:first-child{width:130px;text-align:left;vertical-align:top;padding:7px 12px 7px 0;font:400 8.5px/1.6 var(--f1);letter-spacing:.11em;text-transform:uppercase;color:var(--pa);white-space:normal}
+#page-body table.forumline:has(h1.h_member) td.row1>table>tbody>tr>td:last-child{vertical-align:top;padding:6px 0;font:400 11px/1.6 var(--f4);color:var(--tx)}
+#page-body table.forumline:has(h1.h_member) td.row1>table>tbody>tr+tr>td{border-top:.5px solid var(--sep)}
+#page-body table.forumline:has(h1.h_member) td.row1 img{max-width:200px;border-radius:var(--r1);display:block}
+#page-body table.forumline:has(h1.h_member) :is(td.catLeft,td.catRight){border-bottom:.5px solid var(--sep)}
+/* icones subsilver d'origine remplacees par des boutons a la charte */
+#page-body :is(a:has(>img[src*="icon_pm"]),a:has(>img[src*="icon_email"]),a:has(>img[src*="icon_www"]),a:has(>img[src*="presentation.gif"])){display:inline-block;padding:6px 14px;border:.5px solid var(--fi);border-radius:var(--rp);background:var(--bl);font:400 9px/1.4 var(--f1);letter-spacing:.12em;text-transform:uppercase;color:var(--fn);text-decoration:none;transition:background .18s ease,color .18s ease}
+#page-body :is(a:has(>img[src*="icon_pm"]),a:has(>img[src*="icon_email"]),a:has(>img[src*="icon_www"]),a:has(>img[src*="presentation.gif"])):hover{background:var(--ch);color:var(--or)}
+#page-body :is(img[src*="icon_pm"],img[src*="icon_email"],img[src*="icon_www"],img[src*="presentation.gif"]){display:none}
+#page-body a:has(>img[src*="icon_pm"])::after{content:"Envoyer un message"}
+#page-body a:has(>img[src*="icon_email"])::after{content:"Envoyer un e-mail"}
+#page-body :is(a:has(>img[src*="icon_www"]),a:has(>img[src*="presentation.gif"]))::after{content:"Voir la page"}
+/* ====== LISTE DES MEMBRES ====== */
+#page-body table.forumline td :is(a,span)>img[src*="avatars"],#page-body table.forumline td img[src*="avatar"]{width:38px;height:38px;border-radius:50%;object-fit:cover;display:block;border:.5px solid var(--fi)}
+/* ====== MESSAGERIE ======
+   Onglets cibles par la fin exacte du href : un lien de lecture de message
+   contient aussi "folder", et un selecteur en *= masquait le sujet. */
+#page-body :is(a[href$="folder=inbox"],a[href$="folder=sentbox"],a[href$="folder=outbox"],a[href$="folder=savebox"]){display:inline-block;padding:7px 15px;margin:0 5px 6px 0;border:.5px solid var(--fi);border-radius:var(--rp);background:var(--bl);font:400 9px/1.4 var(--f1);letter-spacing:.12em;text-transform:uppercase;color:var(--fn);text-decoration:none;transition:background .18s ease,color .18s ease}
+#page-body :is(a[href$="folder=inbox"],a[href$="folder=sentbox"],a[href$="folder=outbox"],a[href$="folder=savebox"]):hover{background:var(--ch);color:var(--or)}
+#page-body :is(a[href$="folder=inbox"]:has(>img),a[href$="folder=sentbox"]:has(>img),a[href$="folder=outbox"]:has(>img),a[href$="folder=savebox"]:has(>img)){display:none}
+#page-body :is(img[src*="msg_inbox"],img[src*="msg_sentbox"],img[src*="msg_outbox"],img[src*="msg_savebox"]){display:none}
+#page-body table.bodyline:has(.pourcentback){width:100%;border:.5px solid var(--fi);border-radius:var(--r1);overflow:hidden;background:var(--bl);border-spacing:0}
+#page-body table.bodyline:has(.pourcentback) td{padding:8px 12px;font:400 9px/1.5 var(--f1);letter-spacing:.1em;text-transform:uppercase;color:var(--pa);text-align:center}
+#page-body td.pourcentback{background:var(--or);height:6px;border-radius:3px;padding:0}
+#page-body td.pourcentback img{display:none}
