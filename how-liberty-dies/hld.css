@@ -487,3 +487,10 @@ table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[al
 #page-body .gwf_viewtopic_petit_titre .hld_mq::after{content:"library_add"}
 #page-body .gwf_viewtopic_petit_titre>div a>img{display:none}
 #page-body .gwf_viewtopic_petit_titre .hld_mq>img{position:absolute;left:0;top:0;width:100%;height:100%;max-height:none;opacity:0;border:0;cursor:pointer}
+
+/* Page de redaction : le panneau de smileys est une iframe heritee
+   (/smilies?mode=smilies_frame) posee dans sa propre cellule, avec sa barre
+   bleue « Voir plus de smileys » qu'on ne peut pas styler depuis ici. Elle
+   fait doublon avec le bouton emoji de l'editeur (twemojifa), donc on retire
+   la cellule entiere plutot que de bricoler autour. */
+#page-body table:has(> tbody > tr > td > #smileyContainer),#page-body td:has(> #smileyContainer){display:none}
