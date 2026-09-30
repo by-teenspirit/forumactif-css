@@ -489,8 +489,11 @@ table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[al
 #page-body .gwf_viewtopic_petit_titre .hld_mq>img{position:absolute;left:0;top:0;width:100%;height:100%;max-height:none;opacity:0;border:0;cursor:pointer}
 
 /* Page de redaction : le panneau de smileys est une iframe heritee
-   (/smilies?mode=smilies_frame) posee dans sa propre cellule, avec sa barre
-   bleue « Voir plus de smileys » qu'on ne peut pas styler depuis ici. Elle
-   fait doublon avec le bouton emoji de l'editeur (twemojifa), donc on retire
-   la cellule entiere plutot que de bricoler autour. */
-#page-body table:has(> tbody > tr > td > #smileyContainer),#page-body td:has(> #smileyContainer){display:none}
+   (/smilies?mode=smilies_frame). Forumactif la loge dans la colonne des
+   libelles, large de 180px, alors qu'elle en fait 238 : d'ou le debordement
+   sur l'editeur. hld.js la deplace sous l'editeur et habille son document
+   interne (meme domaine, donc accessible). Les cellules d'origine passent en
+   block pour ne plus reserver de largeur dans le tableau. */
+#page-body table:has(> tbody > tr > td > #smileyContainer),#page-body td:has(> #smileyContainer){display:block}
+#page-body #smileyContainer{width:auto;margin:10px 0 0;border:.5px solid var(--fi);border-radius:var(--r1);background:var(--bl);overflow:hidden}
+#page-body #smileyContainer iframe{width:100%;height:190px;border:0;display:block;background:var(--bl)}

@@ -393,3 +393,53 @@
   if(document.readyState!=='loading'){ sujet(); }
   else { document.addEventListener('DOMContentLoaded', sujet); }
 })();
+
+/* Page de redaction : panneau de smileys.
+   Forumactif le pose dans la colonne des libelles (180px) alors qu'il en fait
+   238 : il debordait sur l'editeur. On deplace le conteneur existant sous
+   l'editeur — pas de markup recree, les onclick des smileys restent ceux du
+   forum — et on habille le document de l'iframe, qui est sur le meme domaine
+   donc accessible. Le style interne est reapplique a chaque chargement : le
+   menu « Voir plus de smileys » recharge l'iframe. */
+(function(){
+  var interne = 'html,body{background:#FAFAFA;margin:0;padding:0;font-family:Tahoma,sans-serif;color:#3F3F3F}'
+    + '#smilies_header{background:none;border:0;border-bottom:.5px solid #E0E0DD;padding:8px 10px}'
+    + '#smilies_header form{margin:0;display:flex;gap:6px;align-items:center}'
+    + '#smilies_header select{flex:1;min-width:0;padding:5px 8px;border:.5px solid #E0E0DD;border-radius:3px;background:#fff;font:400 11px Tahoma,sans-serif;color:#3F3F3F}'
+    + '#smilies_header input{padding:5px 12px;border:.5px solid #E0E0DD;border-radius:999px;background:#fff;font:400 10px Tahoma,sans-serif;color:#3F3F3F;cursor:pointer}'
+    + 'table{width:100%;border:0;border-collapse:collapse}'
+    + 'td,td.row1{background:none !important;border:0;padding:10px;line-height:2.1}'
+    + 'img[id^=smiley_]{margin:3px;cursor:pointer;vertical-align:middle}';
+
+  function habiller(f){
+    var d;
+    try{ d = f.contentDocument; }catch(e){ return; }
+    if(!d || !d.head || !d.body) return;
+    var ancien = d.getElementById('hld_smileys');
+    if(ancien) ancien.parentNode.removeChild(ancien);
+    var st = d.createElement('style');
+    st.id = 'hld_smileys';
+    st.appendChild(d.createTextNode(interne));
+    d.head.appendChild(st);
+    setTimeout(function(){
+      var h = d.body.scrollHeight;
+      if(h > 0) f.style.height = Math.min(Math.max(h, 120), 280) + 'px';
+    }, 60);
+  }
+
+  function smileys(){
+    var boite = document.getElementById('smileyContainer');
+    if(!boite || boite.getAttribute('data-hld-sm')) return;
+    var ed = document.querySelector('.sceditor-container');
+    var cellule = ed && ed.closest('td');
+    if(cellule) cellule.appendChild(boite);
+    boite.setAttribute('data-hld-sm','1');
+    var f = boite.querySelector('iframe');
+    if(!f) return;
+    f.addEventListener('load', function(){ habiller(f); });
+    habiller(f);
+  }
+
+  if(document.readyState !== 'loading'){ smileys(); }
+  else { document.addEventListener('DOMContentLoaded', smileys); }
+})();
