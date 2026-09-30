@@ -335,3 +335,61 @@
   if(document.readyState!=='loading'){ qeel(); }
   else { document.addEventListener('DOMContentLoaded', qeel); }
 })();
+
+/* Affichage d'un sujet : colonne auteur.
+   On ne recree aucun markup, on deplace les noeuds existants : la valeur de
+   chaque champ (texte nu + images, separes par des <br>) est regroupee dans
+   un span pour pouvoir poser une grille libelle / valeur. Chaque champ est
+   etiquete par son libelle (data-champ) et par la forme de sa valeur
+   (data-type) pour que le CSS traite images, nombres et citation a part. */
+(function(){
+  function slug(s){
+    return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
+            .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+  }
+  function colonne(col){
+    if(col.getAttribute('data-hld-vt')) return;
+    var a=col.querySelector('.usr_grp_clr');
+    col.style.setProperty('--gc', (a && a.style && a.style.color) ? a.style.color : 'var(--fn)');
+    var champs=col.querySelectorAll('.infos-posteur');
+    for(var i=0;i<champs.length;i++){
+      var c=champs[i];
+      var lab=c.querySelector('.label');
+      var nom=lab ? lab.textContent.replace(/\s*:\s*$/,'').trim() : '';
+      if(nom){ c.setAttribute('data-champ', slug(nom)); lab.textContent=nom; }
+      var pl=c.querySelector('.profil_label');
+      var val=document.createElement('span');
+      val.className='hld_champ_val';
+      var n=pl ? pl.nextSibling : c.firstChild;
+      while(n){
+        var suiv=n.nextSibling;
+        if(n.nodeName==='BR'){ c.removeChild(n); } else { val.appendChild(n); }
+        n=suiv;
+      }
+      c.appendChild(val);
+      var txt=val.textContent.replace(/\s+/g,'').trim();
+      var img=val.querySelector('img');
+      if(img && !txt){ c.setAttribute('data-type','image'); }
+      else if(!img && /^\d{1,7}$/.test(txt)){ c.setAttribute('data-type','nombre'); }
+      if(!txt && !img && !val.querySelector('a')){ c.setAttribute('data-vide','1'); }
+    }
+    col.setAttribute('data-hld-vt','1');
+  }
+  function outils(){
+    var mqs=document.querySelectorAll('.gwf_viewtopic_petit_titre>div>img[id^="post_mq"]');
+    for(var i=0;i<mqs.length;i++){
+      var im=mqs[i];
+      var sp=document.createElement('span');
+      sp.className='hld_mq';
+      im.parentNode.insertBefore(sp, im);
+      sp.appendChild(im);
+    }
+  }
+  function sujet(){
+    var cols=document.querySelectorAll('.gwf_viewtopic_left');
+    for(var i=0;i<cols.length;i++) colonne(cols[i]);
+    outils();
+  }
+  if(document.readyState!=='loading'){ sujet(); }
+  else { document.addEventListener('DOMContentLoaded', sujet); }
+})();
