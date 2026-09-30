@@ -4,10 +4,23 @@ Habillage du forum Forumactif **How Liberty Dies** (thème ModernBB).
 
 | Fichier | Rôle |
 | --- | --- |
-| `hld.css` | Partie 2/2 de la maquette : tout ce qui était dans le `<style>` du template `overall_header` |
-| `hld.js` | Les deux scripts du `<head>` : ouverture des notifications et du menu profil, calage de la hauteur de la PA |
+| `hld.css` | Partie 2/2 de la maquette : ce qui était dans le `<style>` d'`overall_header`, plus tout l'habillage des pages internes |
+| `hld.js` | Les scripts du `<head>` et les reconstructions DOM (voir plus bas) |
 
 La **partie 1/2** de la maquette vit dans le CSS principal du forum (Affichage ▸ Couleurs ▸ Feuille de style CSS). Elle n'est pas ici.
+
+## Ce que fait `hld.js`
+
+Deux scripts d'origine — ouverture des notifications et du menu profil, calage de la hauteur de la PA (`--pa-col2`) — et six reconstructions ajoutées ensuite. Toutes **déplacent les nœuds existants**, elles n'en recréent aucun : les liens, les `onclick` et les formulaires de Forumactif survivent.
+
+| Bloc | Ce qu'il fait | Pourquoi pas en CSS |
+| --- | --- | --- |
+| Grille des groupes (`/groups`) | Transforme le tableau en cartes, `--gc` pris sur `.usr_grp_clr` | `display:contents` sur un `tr` avec `rowspan` fait mal calculer la hauteur du tableau dans Chrome |
+| Fiche de profil (`/u1`) | Assemble l'en-tête, les tuiles et les champs | idem : tableaux imbriqués |
+| Barres d'onglets | Profil et messagerie, même fonction sur deux sélecteurs | Les liens sont des frères sans conteneur |
+| Colonne « Humeur » | Retirée de la liste des membres | — |
+| QEEL | Texte d'arrivée raccourci, les deux `.qeel_boite` échangées | — |
+| Colonne auteur d'un sujet | Regroupe la valeur de chaque champ dans un `span`, étiquette le champ (`data-champ`, `data-type`), enveloppe la citation multiple dans `.hld_mq` | La valeur d'un champ est une suite de nœuds texte et d'`img` séparés par des `<br>` : rien à cibler en CSS |
 
 ## Comment le forum charge ces fichiers
 
@@ -27,7 +40,15 @@ Dans `overall_header`, juste avant `</head>` :
 3. Dans `overall_header`, remplacer l'ancien hash par le nouveau, **enregistrer puis publier** le template.
 4. Recharger le forum.
 
-L'étape 3 n'est pas facultative : sans changement d'URL, rien ne sort.
+L'étape 3 n'est pas facultative : sans changement d'URL, rien ne sort. Et l'étape 4 non plus : tant que le template n'est pas *publié* (le nom passe de rouge à vert dans la liste), le forum sert toujours l'ancienne version.
+
+La zone d'édition d'un template est pilotée par **CodeMirror**. Écrire dans le `<textarea name="template">` ne sert à rien : l'éditeur écrase sa valeur au moment de l'envoi. Il faut passer par l'instance, exposée en `window.editor` :
+
+```js
+window.editor.setValue(window.editor.getValue().replace(ancienHash, nouveauHash));
+```
+
+L'interface web de GitHub **refuse environ une écriture sur deux** avec « You can't perform that action at this time ». C'est une limitation de débit, pas un problème de jeton : attendre 20 à 60 secondes et refaire l'envoi complet. Passer par l'éditeur (`/edit/main/…`) n'y change rien.
 
 ## Pourquoi ces fichiers sont sortis du forum
 
@@ -49,6 +70,15 @@ L'étape 3 n'est pas facultative : sans changement d'URL, rien ne sort.
 - La hauteur de la PA est calculée par script (`--pa-col2`) à partir de `.hld_col2`. Ne pas la figer en dur : elle survit ainsi à l'ajout ou au retrait d'un bouton.
 - Le bloc publicitaire `#prebid1fr728x90` (728×90, entre la bannière et le contenu) fait partie des conditions d'utilisation de Forumactif. Il n'est pas masqué, et le bandeau de 93 px sous la bannière vient de lui, pas d'une marge.
 
+### Deux techniques interdites sur ces tableaux
+
+- **`table-layout:fixed`** : Forumactif mélange des lignes à 2 colonnes et des lignes à 7 colonnes dans un même `table`. En `fixed`, tout est découpé en sept parts égales — la page d'un groupe s'est retrouvée avec des colonnes de 114 px. La largeur se contraint autrement : `table.forumline{width:100%}` plus `max-width:100%` sur les champs.
+- **`white-space:nowrap` sur un `th`** : « Envoyer un nouveau message privé » imposait alors 819 px à `/post` et `/privmsg`, qui débordaient. Ce n'était nécessaire qu'à cause de `fixed`.
+
+### Ce qui n'est pas réglable d'ici
+
+La fenêtre « connectés durant les dernières 24 heures » est calculée côté serveur par Forumactif au moment où il génère `{LOGGED_IN_USER_LIST}`. Aucune option ne l'expose dans Général ▸ Forum ▸ Configuration : ni la feuille de style ni les scripts ne peuvent la faire passer à 48 heures.
+
 ## Vérifier avant de committer
 
 ```bash
@@ -61,4 +91,4 @@ console.log('règles:',r,'| erreurs:',err.length); err.forEach(e=>console.log(' 
 "
 ```
 
-État de référence : 264 règles, 5 `@media`, 0 erreur.
+État de référence : 421 règles, 6 `@media`, 0 erreur.
