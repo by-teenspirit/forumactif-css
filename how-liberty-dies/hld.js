@@ -399,11 +399,19 @@
    238 : il debordait sur l'editeur. On deplace le conteneur existant sous
    l'editeur — pas de markup recree, les onclick des smileys restent ceux du
    forum — et on habille le document de l'iframe, qui est sur le meme domaine
-   donc accessible. Le style interne est reapplique a chaque chargement : le
-   menu « Voir plus de smileys » recharge l'iframe. */
+   donc accessible.
+
+   Deux pieges : l'editeur SCEditor est construit par Forumactif apres
+   DOMContentLoaded, donc on attend qu'il existe avant de chercher sa cellule ;
+   et reparenter une iframe la recharge, donc le style interne est pose sur
+   l'evenement load, qui sert aussi quand « Voir plus de smileys » recharge le
+   panneau. */
 (function(){
   var interne = 'html,body{background:#FAFAFA;margin:0;padding:0;font-family:Tahoma,sans-serif;color:#3F3F3F}'
-    + '#smilies_header{background:none;border:0;border-bottom:.5px solid #E0E0DD;padding:8px 10px}'
+    /* Forumactif cible la barre en #sceditor_smilies #smilies_header (deux id) :
+       il faut la meme forme de selecteur pour passer devant, sinon la barre
+       bleue et son back_title.gif restent. */
+    + '#smilies_header,#sceditor_smilies #smilies_header{background:none;background-image:none;height:auto;font-weight:400;text-align:left;color:#3F3F3F;border:0;border-bottom:.5px solid #E0E0DD;padding:8px 10px}'
     + '#smilies_header form{margin:0;display:flex;gap:6px;align-items:center}'
     + '#smilies_header select{flex:1;min-width:0;padding:5px 8px;border:.5px solid #E0E0DD;border-radius:3px;background:#fff;font:400 11px Tahoma,sans-serif;color:#3F3F3F}'
     + '#smilies_header input{padding:5px 12px;border:.5px solid #E0E0DD;border-radius:999px;background:#fff;font:400 10px Tahoma,sans-serif;color:#3F3F3F;cursor:pointer}'
@@ -413,8 +421,8 @@
 
   function habiller(f){
     var d;
-    try{ d = f.contentDocument; }catch(e){ return; }
-    if(!d || !d.head || !d.body) return;
+    try{ d = f.contentDocument; }catch(e){ return false; }
+    if(!d || !d.head || !d.body || !d.getElementById('smilies_header')) return false;
     var ancien = d.getElementById('hld_smileys');
     if(ancien) ancien.parentNode.removeChild(ancien);
     var st = d.createElement('style');
@@ -424,22 +432,36 @@
     setTimeout(function(){
       var h = d.body.scrollHeight;
       if(h > 0) f.style.height = Math.min(Math.max(h, 120), 280) + 'px';
-    }, 60);
+    }, 80);
+    return true;
   }
 
-  function smileys(){
-    var boite = document.getElementById('smileyContainer');
-    if(!boite || boite.getAttribute('data-hld-sm')) return;
-    var ed = document.querySelector('.sceditor-container');
-    var cellule = ed && ed.closest('td');
-    if(cellule) cellule.appendChild(boite);
+  /* L'iframe peut avoir fini de charger avant qu'on pose l'ecouteur : on
+     reessaie quelques fois plutot que de dependre du seul evenement. */
+  function insister(f, n){
+    if(habiller(f) || n <= 0) return;
+    setTimeout(function(){ insister(f, n - 1); }, 300);
+  }
+
+  function poser(boite, cellule){
+    if(boite.getAttribute('data-hld-sm')) return;
     boite.setAttribute('data-hld-sm','1');
+    cellule.appendChild(boite);
     var f = boite.querySelector('iframe');
     if(!f) return;
     f.addEventListener('load', function(){ habiller(f); });
-    habiller(f);
+    insister(f, 20);
   }
 
-  if(document.readyState !== 'loading'){ smileys(); }
-  else { document.addEventListener('DOMContentLoaded', smileys); }
+  function attendre(n){
+    var boite = document.getElementById('smileyContainer');
+    if(!boite) return;
+    var ed = document.querySelector('.sceditor-container');
+    var cellule = ed && ed.closest('td');
+    if(cellule){ poser(boite, cellule); return; }
+    if(n > 0) setTimeout(function(){ attendre(n - 1); }, 300);
+  }
+
+  if(document.readyState !== 'loading'){ attendre(30); }
+  else { document.addEventListener('DOMContentLoaded', function(){ attendre(30); }); }
 })();
