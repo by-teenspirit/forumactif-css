@@ -304,3 +304,34 @@
   if(document.readyState!=='loading'){ onglets(); }
   else { document.addEventListener('DOMContentLoaded', onglets); }
 })();
+
+/* QEEL : deux retouches demandees le 30/09.
+   - la phrase d'arrivee s'arrete a "vient d'atterrir" ;
+   - la liste des connectes et celle des dernieres 24h echangent de colonne.
+   Les deux se font ici plutot que dans index_body pour garder toutes les
+   retouches au meme endroit ; le garde-fou evite une double inversion. */
+(function(){
+  function qeel(){
+    var q=document.querySelector('.gwf_qeel');
+    if(!q || q.getAttribute('data-hld-qeel')) return;
+    var n=document.querySelector('.gwf_qeel_new');
+    if(n){
+      for(var i=0;i<n.childNodes.length;i++){
+        var nd=n.childNodes[i];
+        if(nd.nodeType===3 && /atterrir/.test(nd.nodeValue)) nd.nodeValue=' vient d’atterrir';
+      }
+    }
+    var g=document.querySelector('.gwf_qeel_bloc_gauche .qeel_boite');
+    var d=document.querySelector('.gwf_qeel_bloc_droit .qeel_boite');
+    if(g && d){
+      var repere=document.createComment('hld');
+      g.parentNode.insertBefore(repere,g);
+      d.parentNode.insertBefore(g,d);
+      repere.parentNode.insertBefore(d,repere);
+      repere.parentNode.removeChild(repere);
+    }
+    q.setAttribute('data-hld-qeel','1');
+  }
+  if(document.readyState!=='loading'){ qeel(); }
+  else { document.addEventListener('DOMContentLoaded', qeel); }
+})();
