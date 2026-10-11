@@ -21,6 +21,8 @@ Deux scripts d'origine — ouverture des notifications et du menu profil, calage
 | Colonne « Humeur » | Retirée de la liste des membres | — |
 | QEEL | Texte d'arrivée raccourci, les deux `.qeel_boite` échangées | — |
 | Colonne auteur d'un sujet | Regroupe la valeur de chaque champ dans un `span`, étiquette le champ (`data-champ`, `data-type`), enveloppe la citation multiple dans `.hld_mq` | La valeur d'un champ est une suite de nœuds texte et d'`img` séparés par des `<br>` : rien à cibler en CSS |
+| Bloc des partenaires | Recrée le `<summary>` et remonte le `<ul>` dans le `<details>` au rendu | SCEditor, qui édite le message d'accueil, ne connaît pas `<details>` : il éjecte le `<ul>` et vide le `<summary>` à chaque enregistrement |
+| Description d'un sujet | Descend le `<span class="genmed">` dans `.gwf_sujets_titre`, sous l'auteur | Forumactif le pose en frère du bloc titre, donc il devient une colonne à part dans le flex de la ligne |
 
 ## Comment le forum charge ces fichiers
 
@@ -50,6 +52,44 @@ window.editor.setValue(window.editor.getValue().replace(ancienHash, nouveauHash)
 
 L'interface web de GitHub **refuse environ une écriture sur deux** avec « You can't perform that action at this time ». C'est une limitation de débit, pas un problème de jeton : attendre 20 à 60 secondes et refaire l'envoi complet. Passer par l'éditeur (`/edit/main/…`) n'y change rien.
 
+### Remplacer un fichier dans l'éditeur de GitHub
+
+L'éditeur de GitHub est un **CodeMirror 6 virtualisé** : seules les lignes
+visibles existent dans le DOM. « Tout sélectionner puis coller » n'est donc pas
+fiable — quand la sélection ne couvre que les lignes rendues, le collage
+**ajoute une seconde copie du fichier** au lieu de le remplacer, et ça ne se
+voit qu'au diff (`@@ -630,3 +630,663 @@` au lieu de `+630,32`).
+
+L'instance n'est pas exposée en `cmView` comme dans un CodeMirror standard ;
+GitHub la range sous `cmTile`. On la récupère depuis n'importe quelle ligne :
+
+```js
+const vue = document.querySelector('.cm-line').cmTile.dom.cmTile.parent.view;
+vue.dispatch({ changes: { from: 0, to: vue.state.doc.length, insert: texte } });
+```
+
+Et comme `vue.state.doc.toString()` rend le document entier, on peut vérifier
+l'empreinte **avant** de committer :
+
+```js
+const t = vue.state.doc.toString();
+crypto.subtle.digest('SHA-256', new TextEncoder().encode(t))
+  .then(b => console.log(Array.from(new Uint8Array(b))
+    .map(x => x.toString(16).padStart(2,'0')).join('')));
+```
+
+Reconstruire le contenu en repartant d'une URL **figée au commit**
+(`raw.githubusercontent.com/…/<SHA>/…`), jamais de `main` : le CDN sert `main`
+avec plusieurs minutes de retard et on réécrirait alors par-dessus le commit
+précédent.
+
+Dernier détail : dans la boîte de dialogue de commit, le message est pré-rempli
+par Copilot **en anglais et en différé**. Le remplacer trop tôt ne sert à rien,
+la suggestion arrive après et écrase. Attendre qu'elle soit là, puis écrire le
+message, puis valider. Et viser le bon champ : `document` contient aussi la
+recherche de fichiers de la colonne de gauche, qui est le premier
+`input[type=text]` de la page.
+
 ## Pourquoi ces fichiers sont sortis du forum
 
 - Le **CSS principal** est plein : Forumactif refuse silencieusement l'enregistrement au-delà d'environ 65 000 caractères, et il en fait déjà 63 410.
@@ -75,9 +115,14 @@ L'interface web de GitHub **refuse environ une écriture sur deux** avec « You 
 - **`table-layout:fixed`** : Forumactif mélange des lignes à 2 colonnes et des lignes à 7 colonnes dans un même `table`. En `fixed`, tout est découpé en sept parts égales — la page d'un groupe s'est retrouvée avec des colonnes de 114 px. La largeur se contraint autrement : `table.forumline{width:100%}` plus `max-width:100%` sur les champs.
 - **`white-space:nowrap` sur un `th`** : « Envoyer un nouveau message privé » imposait alors 819 px à `/post` et `/privmsg`, qui débordaient. Ce n'était nécessaire qu'à cause de `fixed`.
 
-### Ce qui n'est pas réglable d'ici
+### Ce qui n'est pas réglable d'ici, mais l'est ailleurs
 
-La fenêtre « connectés durant les dernières 24 heures » est calculée côté serveur par Forumactif au moment où il génère `{LOGGED_IN_USER_LIST}`. Aucune option ne l'expose dans Général ▸ Forum ▸ Configuration : ni la feuille de style ni les scripts ne peuvent la faire passer à 48 heures.
+La fenêtre « connectés durant les dernières 24 heures » est calculée côté
+serveur au moment où Forumactif génère `{LOGGED_IN_USER_LIST}` : ni la feuille
+de style ni les scripts ne peuvent y toucher. En revanche elle **est** réglable
+dans le panneau d'administration, en **Affichage ▸ Page d'accueil ▸
+Généralités** (`period_connected_members`, à 24). Ce n'est pas dans Général ▸
+Forum ▸ Configuration, où on la cherche d'abord.
 
 ## Vérifier avant de committer
 
@@ -91,14 +136,15 @@ console.log('règles:',r,'| erreurs:',err.length); err.forEach(e=>console.log(' 
 "
 ```
 
-État de référence : 443 règles, 6 `@media`, 0 erreur.
+État de référence : 468 règles, 6 `@media`, 0 erreur.
 
-## Le CSS principal gagne à spécificité égale
+## Perdre contre le CSS principal
 
 `0-ltr.css` — qui contient la feuille de base ModernBB **et** le CSS principal du
-forum — est servi **après** `hld.css`. À spécificité égale, c'est donc lui qui
-l'emporte, et une règle d'ici qui reprend simplement son sélecteur n'a aucun
-effet. Les pièges rencontrés :
+forum — est un `<link>` du `<head>`, alors que celui de `hld.css` est posé dans
+le `<body>`. `hld.css` est donc bien le dernier servi et l'emporte à spécificité
+égale : les règles d'ici qui n'ont eu aucun effet ont toutes perdu sur la
+**spécificité**, pas sur l'ordre.
 
 | Ce qu'il écrit | Spécificité | Ce qu'il faut ici |
 |---|---|---|
@@ -107,5 +153,28 @@ effet. Les pièges rencontrés :
 | `.gwf_lastpost > span > span > a:not([title])` | (0,2,3) | `body .gwf_lastpost a.last-post-icon[href]` |
 | `.gwf_desc{font:…}` | (0,1,0) | `body .gwf_desc` — un raccourci `font` écrase `font-size` |
 
-Dans le doute, préfixer par `body` et **vérifier en direct** : trois règles de la
-passe du 11/10 sont passées à la publication sans produire aucun effet.
+Attention aussi au piège inverse : une règle d'`hld.css` qui reprend exactement
+le sélecteur d'une autre règle d'`hld.css`, posée **plus haut** dans le fichier,
+gagne — c'est l'ordre qui tranche. D'où les ajouts en fin de fichier.
+
+Et toutes les feuilles ne sont pas lisibles depuis la console : `hld.css` vient
+de jsDelivr, donc `sheet.cssRules` lève une erreur dessus. Parcourir
+`document.styleSheets` pour trouver « qui gagne » ne montre qu'une partie du
+tableau. Quand une déclaration refuse de s'appliquer sans explication, le test
+qui tranche est `el.style.setProperty('…','…','important')` : si ça bouge, c'est
+qu'un `!important` est posé ailleurs — c'est le cas des liens de la barre
+Forumactif, à qui une feuille servie par Forumactif impose `display:block`.
+
+## Deux blocs publicitaires, pas un
+
+Outre `#prebid1fr728x90` (728×90, entre la bannière et le contenu), un invité
+reçoit `#pa81541e`, qui porte `#prebid2fr300x250` et `#prebid3fr300x250`. Ils
+font partie des conditions d'utilisation du Package Gratuit : ils ne sont pas
+masqués.
+
+## Deux sessions distinctes
+
+Être connectée au forum ne suffit pas pour le panneau d'administration : il a sa
+propre expiration et renvoie alors sur `/admin/login.php`. La session du forum,
+elle, reste valide — d'où le cas déroutant où le forum affiche « bienvenue » et
+où `/admin/` rebascule sur une page de connexion.
