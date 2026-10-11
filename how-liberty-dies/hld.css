@@ -506,7 +506,7 @@ body .gwf_cate{grid-template-columns:58px minmax(0,1fr) 148px;column-gap:20px;pa
 /* Abril Fatface laisse la place a Bodoni Moda partout. --f2 n'est defini
    qu'une fois, sur :root, dans le CSS principal : le redefinir ici suffit,
    les deux feuilles suivent. Chakra Petch est charge par overall_header. */
-body{--f2:'Bodoni Moda',serif}
+html:root{--f2:'Bodoni Moda',serif}
 
 /* Air entre le bord blanc du bandeau et « bienvenue sur Dantooine ». */
 body .hld_titre{padding-top:26px;padding-bottom:16px}
@@ -533,9 +533,9 @@ body .gwf_qeel_list_gr .ongle{min-height:24px;padding:4px 8px;line-height:1.3}
    droite du nom en icone Material. */
 body .gwf_lastpost :is(a:not(.last-post-icon),.lp-date){font:400 9px/1.55 var(--f4);text-transform:lowercase;letter-spacing:0}
 body .gwf_lastpost :is(.usr_grp_clr,.usr_grp_clr strong){font-family:'Chakra Petch',sans-serif;font-weight:600;font-size:9.5px;text-transform:uppercase;letter-spacing:.06em}
-body .gwf_lastpost .last-post-icon{display:inline-flex;align-items:center;vertical-align:middle;margin-left:5px;text-decoration:none}
-body .gwf_lastpost .last-post-icon img{display:none}
-body .gwf_lastpost .last-post-icon::after{font-family:"Material Icons";font-size:13px;line-height:1;content:"east";color:var(--pa)}
+body .gwf_lastpost a.last-post-icon[href]{display:inline-flex;align-items:center;vertical-align:middle;margin-left:5px;text-decoration:none;width:auto;padding:0}
+body .gwf_lastpost a.last-post-icon[href] img{display:none}
+body .gwf_lastpost a.last-post-icon[href]::after{font-family:"Material Icons";font-size:13px;line-height:1;content:"east";color:var(--pa)}
 
 /* Partenaires : la liste est en position absolue, donc elle restait visible
    meme quand le <details> est ferme. On commande l'ouverture explicitement
@@ -558,3 +558,7 @@ body #hld_nav a{border-radius:0;padding:4px 7px}
    display:block les etirait sur toute la largeur du bloc ; en inline-block
    chacune reprend la largeur de son libelle, et le padding resserre. */
 body :is(.hld_chip,.gwf_bandeau h7){display:inline-block;width:auto;padding:2px 7px;line-height:1.25}
+
+/* Le CSS principal arrondit l'ascenseur via :is(.systab .tab, …, .elevator a),
+   soit (0,2,0) : il faut au moins autant, d'ou l'attribut. */
+body .elevator a[href]{border-radius:0}
