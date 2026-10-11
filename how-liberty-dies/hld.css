@@ -543,3 +543,7 @@ body .gwf_lastpost .last-post-icon::after{font-family:"Material Icons";font-size
    le <details> et le libelle dans le <summary> a chaque chargement. */
 body details.hld_parto:not([open]) > ul{display:none}
 body details.hld_parto[open] > ul{display:block;top:100%}
+
+/* Liens rapides : meme gris que les liens de sous-forum (#555), a la place
+   du dore. La couleur est posee sur le lien, pas sur la pastille. */
+body .hld_liens li a{color:#555}
