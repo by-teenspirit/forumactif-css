@@ -91,4 +91,21 @@ console.log('règles:',r,'| erreurs:',err.length); err.forEach(e=>console.log(' 
 "
 ```
 
-État de référence : 421 règles, 6 `@media`, 0 erreur.
+État de référence : 443 règles, 6 `@media`, 0 erreur.
+
+## Le CSS principal gagne à spécificité égale
+
+`0-ltr.css` — qui contient la feuille de base ModernBB **et** le CSS principal du
+forum — est servi **après** `hld.css`. À spécificité égale, c'est donc lui qui
+l'emporte, et une règle d'ici qui reprend simplement son sélecteur n'a aucun
+effet. Les pièges rencontrés :
+
+| Ce qu'il écrit | Spécificité | Ce qu'il faut ici |
+|---|---|---|
+| `:root{--f2:…}` | (0,1,0) | `html:root` — `body` seul vaut (0,0,1) et perd |
+| `:is(.systab .tab,…,.elevator a)` | (0,2,0) | `body .elevator a[href]` — l'attribut compte comme une classe |
+| `.gwf_lastpost > span > span > a:not([title])` | (0,2,3) | `body .gwf_lastpost a.last-post-icon[href]` |
+| `.gwf_desc{font:…}` | (0,1,0) | `body .gwf_desc` — un raccourci `font` écrase `font-size` |
+
+Dans le doute, préfixer par `body` et **vérifier en direct** : trois règles de la
+passe du 11/10 sont passées à la publication sans produire aucun effet.
