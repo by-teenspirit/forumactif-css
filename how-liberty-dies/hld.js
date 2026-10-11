@@ -548,3 +548,33 @@
   if(document.readyState !== 'loading'){ auteurs(); }
   else { document.addEventListener('DOMContentLoaded', auteurs); }
 })();
+
+/* Liste des sujets : la description du sujet.
+   Forumactif la pose dans un <span class="genmed"> frere du bloc titre, donc
+   elle devient une colonne a part dans le flex de .gwf_sujets_left et se
+   retrouve au milieu de la ligne. On la descend dans .gwf_sujets_titre, apres
+   l'auteur. Le noeud est deplace, pas recree : les liens qu'elle peut
+   contenir survivent. */
+(function(){
+  function descriptions(){
+    var lignes = document.querySelectorAll('.gwf_sujets .gwf_sujets_left');
+    for(var i = 0; i < lignes.length; i++){
+      var g = lignes[i];
+      if(g.getAttribute('data-hld-desc')) continue;
+      g.setAttribute('data-hld-desc','1');
+      var titre = g.querySelector('.gwf_sujets_titre');
+      if(!titre) continue;
+      var sp = g.querySelector(':scope > span.genmed');
+      if(!sp) continue;
+      while(sp.firstChild && (sp.firstChild.nodeName === 'BR' ||
+            (sp.firstChild.nodeType === 3 && !sp.firstChild.nodeValue.trim()))){
+        sp.removeChild(sp.firstChild);
+      }
+      if(!sp.textContent.trim()){ sp.remove(); continue; }
+      sp.className = (sp.className + ' hld_sujet_desc').trim();
+      titre.appendChild(sp);
+    }
+  }
+  if(document.readyState !== 'loading'){ descriptions(); }
+  else { document.addEventListener('DOMContentLoaded', descriptions); }
+})();
