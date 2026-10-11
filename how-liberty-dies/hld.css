@@ -595,9 +595,10 @@ body .gwf_sujets :is(.gwf_sujets_name,.gwf_sujets_name a,.gwf_sujets_name strong
 /* « note » et « annonce » en gras */
 body .gwf_sujets .gwf_sujets_type{font-weight:700}
 
-/* La description vit dans le div vide qui suit l'auteur : on la passe sous la
-   ligne, plus petite, grise et italique. */
-body .gwf_sujets .gwf_sujets_name>div{display:block;margin-top:2px;font:italic 400 9px/1.5 var(--f4);color:var(--pa);text-transform:none;letter-spacing:0}
+/* La description est un span.genmed frere du bloc titre, donc une colonne a
+   part dans le flex de .gwf_sujets_left : hld.js la descend dans le bloc
+   titre, sous l'auteur, et on l'habille ici. */
+body .gwf_sujets .hld_sujet_desc{display:block;margin-top:2px;font:italic 400 9px/1.5 var(--f4);color:var(--pa);text-transform:none;letter-spacing:0}
 
 /* Vues et reponses resserrees */
 body .gwf_sujets .gwf_sujets_view{gap:0}
@@ -608,3 +609,24 @@ body .gwf_sujets .gwf_sujets_lastpost{font:400 9.5px/1.5 var(--f4);text-transfor
 
 /* Avatar du dernier posteur sans arrondi */
 body .gwf_sujets .gwf_sujets_avatar img{border-radius:0}
+
+/* ------------------------------------------------------------------
+   Liste des sujets : la fleche, la pastille « nouveau », le bandeau
+   ------------------------------------------------------------------ */
+
+/* La fleche a gauche du titre est l'icone d'etat de Forumactif
+   (icon_topic_latest.png) posee dans .gwf_sujets_minicon. */
+body .gwf_sujets .gwf_sujets_minicon{display:none}
+
+/* Bouton « nouveau » : pas d'arrondi, comme le reste */
+body .gwf_nouv_rep a{border-radius:0}
+
+/* Le bloc blanc du fil d'Ariane et du titre de categorie. Les deux traits
+   autour du titre sont les ::before et ::after de son lien (40px de large,
+   une bordure basse) : places de part et d'autre d'un flex item en colonne,
+   ils passent a la ligne et encadrent le mot. On les retire, et le bloc
+   descend de 96 a 63px : 14px de padding a 8, et plus rien sur
+   #gwf_header_topic. */
+body #gwf_header_topic>a::before,body #gwf_header_topic>a::after{display:none}
+body .gwf_grand_titre_list{padding-top:8px;padding-bottom:8px}
+body #gwf_header_topic{padding:0}
