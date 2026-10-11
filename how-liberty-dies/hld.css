@@ -575,11 +575,36 @@ body details.hld_parto[data-hld-vide]{display:none}
    !important invisible depuis le document la force en transparent. La <tr>
    l'accepte et couvre toute la barre : c'est elle qui porte le fond. */
 table[width="800px"]:has(a[href*="search_id=newposts"]){border-radius:0}
-table[width="800px"]:has(a[href*="search_id=newposts"])>tbody>tr{background-color:var(--bl);border-radius:0}
+/* Comme pour le fond, la cellule refuse le padding — une regle !important
+   invisible depuis le document le remet a zero. La <tr> l'accepte. */
+table[width="800px"]:has(a[href*="search_id=newposts"])>tbody>tr{background-color:var(--bl);border-radius:0;padding:9px 16px}
 table[width="800px"]:has(a[href*="search_id=newposts"]) td:has(div.nav){display:none}
 table[width="800px"]:has(a[href*="search_id=newposts"])>tbody>tr{justify-content:center;flex-wrap:nowrap;gap:4px}
 /* La barre jumelle impose flex-direction:column a td[align="right"] (ligne
    236) : ici on veut une rangee, d'ou le !important sur ces deux la. */
-table[width="800px"]:has(a[href*="search_id=newposts"]) td[align="right"]{display:flex;flex-direction:row !important;flex-wrap:nowrap !important;align-items:center;justify-content:center !important;gap:4px;width:100%;margin:0;padding:9px 16px !important}
+table[width="800px"]:has(a[href*="search_id=newposts"]) td[align="right"]{display:flex;flex-direction:row !important;flex-wrap:nowrap !important;align-items:center;justify-content:center !important;gap:4px;width:100%;margin:0;padding:0}
 table[width="800px"]:has(a[href*="search_id=newposts"]) br{display:none}
 table[width="800px"]:has(a[href*="search_id=newposts"]) a.gensmall{display:inline-block;font-size:10.5px;letter-spacing:.05em;padding:6px 10px;white-space:nowrap}
+
+/* ====== LISTE DES SUJETS : typographie ======
+   La typo de base du forum (--f4) partout et en bas de casse ; seul le titre
+   monte d'un cran. Les tailles s'etagent : titre 12, auteur 10, description 9. */
+body .gwf_sujets a.topictitle{font:400 12px/1.45 var(--f4);text-transform:lowercase;letter-spacing:0}
+body .gwf_sujets :is(.gwf_sujets_name,.gwf_sujets_name a,.gwf_sujets_name strong,.gwf_sujets_name span){font-family:var(--f4);font-size:10px;text-transform:lowercase;letter-spacing:0}
+
+/* « note » et « annonce » en gras */
+body .gwf_sujets .gwf_sujets_type{font-weight:700}
+
+/* La description vit dans le div vide qui suit l'auteur : on la passe sous la
+   ligne, plus petite, grise et italique. */
+body .gwf_sujets .gwf_sujets_name>div{display:block;margin-top:2px;font:italic 400 9px/1.5 var(--f4);color:var(--pa);text-transform:none;letter-spacing:0}
+
+/* Vues et reponses resserrees */
+body .gwf_sujets .gwf_sujets_view{gap:0}
+
+/* La date est le noeud texte de .gwf_sujets_lastpost ; le nom du dernier
+   posteur est dans un div enfant et garde sa propre regle. */
+body .gwf_sujets .gwf_sujets_lastpost{font:400 9.5px/1.5 var(--f4);text-transform:lowercase;letter-spacing:0}
+
+/* Avatar du dernier posteur sans arrondi */
+body .gwf_sujets .gwf_sujets_avatar img{border-radius:0}

@@ -525,3 +525,26 @@
   if(document.readyState !== 'loading'){ partenaires(); }
   else { document.addEventListener('DOMContentLoaded', partenaires); }
 })();
+
+/* Liste des sujets : « par X » devient « sujet ouvert par X ».
+   Le « par » est un noeud texte nu au debut de .gwf_sujets_name, donc hors
+   de portee du CSS : on le reecrit, sans toucher au lien qui suit. */
+(function(){
+  function auteurs(){
+    var lignes = document.querySelectorAll('.gwf_sujets_name');
+    for(var i = 0; i < lignes.length; i++){
+      var l = lignes[i];
+      if(l.getAttribute('data-hld-par')) continue;
+      for(var j = 0; j < l.childNodes.length; j++){
+        var n = l.childNodes[j];
+        if(n.nodeType === 3 && /^\s*par\s*$/i.test(n.nodeValue)){
+          n.nodeValue = n.nodeValue.replace(/par/i, 'sujet ouvert par');
+          break;
+        }
+      }
+      l.setAttribute('data-hld-par','1');
+    }
+  }
+  if(document.readyState !== 'loading'){ auteurs(); }
+  else { document.addEventListener('DOMContentLoaded', auteurs); }
+})();
