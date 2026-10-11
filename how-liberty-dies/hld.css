@@ -571,9 +571,11 @@ body details.hld_parto[data-hld-vide]{display:none}
    date du jour, lien du forum) prenait 416px et forcait les trois liens a se
    mettre les uns sous les autres. On retire cette colonne, on passe les liens
    sur une ligne et on donne a la barre le fond de « tout marquer comme lu ». */
-table[width="800px"]:has(a[href*="search_id=newposts"]){background:var(--bl);border-radius:var(--r1)}
+table[width="800px"]:has(a[href*="search_id=newposts"]){background-color:var(--bl);border-radius:var(--r1)}
 table[width="800px"]:has(a[href*="search_id=newposts"]) td:has(div.nav){display:none}
 table[width="800px"]:has(a[href*="search_id=newposts"])>tbody>tr{justify-content:center;flex-wrap:nowrap;gap:4px}
-table[width="800px"]:has(a[href*="search_id=newposts"]) td[align="right"]{display:flex;flex-wrap:nowrap;align-items:center;justify-content:center;gap:4px;width:100%;margin:0}
+/* La barre jumelle impose flex-direction:column a td[align="right"] (ligne
+   236) : ici on veut une rangee, d'ou le !important sur ces deux la. */
+table[width="800px"]:has(a[href*="search_id=newposts"]) td[align="right"]{display:flex;flex-direction:row !important;flex-wrap:nowrap !important;align-items:center;justify-content:center;gap:4px;width:100%;margin:0}
 table[width="800px"]:has(a[href*="search_id=newposts"]) br{display:none}
 table[width="800px"]:has(a[href*="search_id=newposts"]) a.gensmall{display:inline-block;font-size:10.5px;letter-spacing:.05em;padding:6px 10px;white-space:nowrap}
