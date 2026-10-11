@@ -547,3 +547,9 @@ body details.hld_parto[open] > ul{display:block;top:100%}
 /* Liens rapides : meme gris que les liens de sous-forum (#555), a la place
    du dore. La couleur est posee sur le lien, pas sur la pastille. */
 body .hld_liens li a{color:#555}
+
+/* Barre de navigation : plus fine, et pas de pastille arrondie au survol.
+   La hauteur tient dans --nav, utilisee aussi par #fa_right et #fa_menu et
+   par le decalage du contenu : la redefinir suffit, tout suit. */
+body{--nav:34px}
+body #hld_nav a{border-radius:0;padding:4px 7px}
