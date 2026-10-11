@@ -506,6 +506,20 @@
   function partenaires(){
     var blocs = document.querySelectorAll('details.hld_parto');
     for(var i = 0; i < blocs.length; i++) reparer(blocs[i]);
+
+    /* SCEditor laisse parfois un second <details> derriere lui, vide : pas de
+       libelle, pas de liste. Il s'affichait comme une deuxieme barre
+       « partenaires ». On le marque une fois la reparation faite — a ce
+       moment-la, un bloc encore sans <li> n'a rien a montrer — et le CSS le
+       masque. On ne le supprime pas : si des partenaires y sont ajoutes un
+       jour, il revient tout seul. */
+    for(var j = 0; j < blocs.length; j++){
+      var b = blocs[j];
+      var sum = b.querySelector('summary');
+      var vide = !b.querySelector('li') && !(sum && sum.textContent.trim());
+      if(vide) b.setAttribute('data-hld-vide','1');
+      else b.removeAttribute('data-hld-vide');
+    }
   }
 
   if(document.readyState !== 'loading'){ partenaires(); }

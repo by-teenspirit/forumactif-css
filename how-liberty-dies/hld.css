@@ -562,3 +562,18 @@ body :is(.hld_chip,.gwf_bandeau h7){display:inline-block;width:auto;padding:2px 
 /* Le CSS principal arrondit l'ascenseur via :is(.systab .tab, …, .elevator a),
    soit (0,2,0) : il faut au moins autant, d'ou l'attribut. */
 body .elevator a[href]{border-radius:0}
+
+/* Le second bloc partenaires laisse vide par l'editeur, marque par hld.js. */
+body details.hld_parto[data-hld-vide]{display:none}
+
+/* Barre « nouveaux messages ». La table est deja en width="800px", donc deja
+   dans le groupe stylé plus haut, mais sa colonne de gauche (derniere visite,
+   date du jour, lien du forum) prenait 416px et forcait les trois liens a se
+   mettre les uns sous les autres. On retire cette colonne, on passe les liens
+   sur une ligne et on donne a la barre le fond de « tout marquer comme lu ». */
+table[width="800px"]:has(a[href*="search_id=newposts"]){background:var(--bl);border-radius:var(--r1)}
+table[width="800px"]:has(a[href*="search_id=newposts"]) td:has(div.nav){display:none}
+table[width="800px"]:has(a[href*="search_id=newposts"])>tbody>tr{justify-content:center;flex-wrap:nowrap;gap:4px}
+table[width="800px"]:has(a[href*="search_id=newposts"]) td[align="right"]{display:flex;flex-wrap:nowrap;align-items:center;justify-content:center;gap:4px;width:100%;margin:0}
+table[width="800px"]:has(a[href*="search_id=newposts"]) br{display:none}
+table[width="800px"]:has(a[href*="search_id=newposts"]) a.gensmall{display:inline-block;font-size:10.5px;letter-spacing:.05em;padding:6px 10px;white-space:nowrap}
