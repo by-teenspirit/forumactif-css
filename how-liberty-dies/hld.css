@@ -630,3 +630,31 @@ body .gwf_nouv_rep a{border-radius:0}
 body #gwf_header_topic>a::before,body #gwf_header_topic>a::after{display:none}
 body .gwf_grand_titre_list{padding-top:8px;padding-bottom:8px}
 body #gwf_header_topic{padding:0}
+
+/* ------------------------------------------------------------------
+   Index : la puce du bandeau, l'air sous la description, la QEEL
+   ------------------------------------------------------------------ */
+body :is(.hld_chip,.gwf_bandeau h7){padding:1px 5px;line-height:1.2}
+body .gwf_titre_desc .gwf_sous_fofo{margin-top:12px}
+
+/* Les trois ecarts de la QEEL (ligne de compteurs / boite / onglets) sont le
+   meme gap de flex sur les deux colonnes : 11px a 6px tasse l'ensemble. */
+body :is(.gwf_qeel_bloc_gauche,.gwf_qeel_bloc_droit){gap:6px}
+
+/* ------------------------------------------------------------------
+   Ce que voit un invite
+   ------------------------------------------------------------------ */
+
+/* « Connexion » et « S'enregistrer » de la barre Forumactif. Cette barre est
+   en position static sous la barre fixe du forum : les deux liens sont donc
+   deja recouverts, et ils doublent ceux de la navigation. Une feuille servie
+   par Forumactif leur impose display:block en !important, d'ou le !important
+   ici. On ne vise que ces deux liens, pas #fa_right, qui porte les
+   notifications et le menu du profil cote membre. */
+body #fa_toolbar #fa_right>a.rightHeaderLink[href$="/login"],
+body #fa_toolbar #fa_right>a.rightHeaderLink[href$="/register"]{display:none!important}
+
+/* Le « Ou » de la page de connexion : le theme lui donne une largeur et une
+   hauteur fixes trop etroites pour deux lettres, d'ou le mot coupe en
+   « o » / « u ». On le libere et on l'habille comme le reste. */
+body .fb_or{width:auto;min-width:0;height:auto;padding:0;border:0;background:none;white-space:nowrap;font:400 9px/1.4 var(--f1);letter-spacing:.12em;text-transform:uppercase;color:var(--pa)}
