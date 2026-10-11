@@ -553,3 +553,8 @@ body .hld_liens li a{color:#555}
    par le decalage du contenu : la redefinir suffit, tout suit. */
 body{--nav:34px}
 body #hld_nav a{border-radius:0;padding:4px 7px}
+
+/* Pastilles du bandeau : le degrade collait a la colonne et non au texte.
+   display:block les etirait sur toute la largeur du bloc ; en inline-block
+   chacune reprend la largeur de son libelle, et le padding resserre. */
+body :is(.hld_chip,.gwf_bandeau h7){display:inline-block;width:auto;padding:2px 7px;line-height:1.25}
