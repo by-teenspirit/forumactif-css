@@ -571,9 +571,11 @@ body details.hld_parto[data-hld-vide]{display:none}
    date du jour, lien du forum) prenait 416px et forcait les trois liens a se
    mettre les uns sous les autres. On retire cette colonne, on passe les liens
    sur une ligne et on donne a la barre le fond de « tout marquer comme lu ». */
-/* Le CSS principal pose le fond de ces tables via body :is(…, #main_menu, …),
-   soit (1,0,1) a cause de l'id : rien de raisonnable ne passe devant. */
-table[width="800px"]:has(a[href*="search_id=newposts"]){background-color:var(--bl) !important;border-radius:var(--r1)}
+/* La <table> refuse tout fond ici — meme en style inline, donc une regle
+   !important invisible depuis le document la force en transparent. La <tr>
+   l'accepte et couvre toute la barre : c'est elle qui porte le fond. */
+table[width="800px"]:has(a[href*="search_id=newposts"]){border-radius:var(--r1)}
+table[width="800px"]:has(a[href*="search_id=newposts"])>tbody>tr{background-color:var(--bl);border-radius:var(--r1)}
 table[width="800px"]:has(a[href*="search_id=newposts"]) td:has(div.nav){display:none}
 table[width="800px"]:has(a[href*="search_id=newposts"])>tbody>tr{justify-content:center;flex-wrap:nowrap;gap:4px}
 /* La barre jumelle impose flex-direction:column a td[align="right"] (ligne
