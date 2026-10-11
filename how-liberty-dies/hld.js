@@ -465,3 +465,49 @@
   if(document.readyState !== 'loading'){ attendre(30); }
   else { document.addEventListener('DOMContentLoaded', function(){ attendre(30); }); }
 })();
+
+/* Bloc des partenaires de la page d'accueil.
+
+   Le message d'accueil (Affichage > Page d'accueil > Generalites) est edite
+   par SCEditor, qui ne connait pas <details>/<summary>. A chaque
+   enregistrement il re-serialise le HTML : le <ul> des partenaires sort du
+   <details> et devient un frere, et le libelle sort du <summary>, qui reste
+   vide. Resultat : la liste s'affiche en permanence et l'entete est muette.
+
+   On ne peut pas empecher l'editeur de faire ca. On repare donc a
+   l'affichage, a chaque chargement : le libelle retourne dans le <summary>
+   et la liste rentre dans le <details>. Le bloc survit ainsi a toutes les
+   modifications de la page d'accueil. */
+(function(){
+  function reparer(d){
+    if(d.getAttribute('data-hld-parto')) return;
+    var sum = d.querySelector('summary');
+    if(!sum){ sum = document.createElement('summary'); d.insertBefore(sum, d.firstChild); }
+
+    /* Le libelle : les noeuds texte restes directement dans le <details>. */
+    if(!sum.textContent.trim()){
+      var mots = [];
+      for(var i = 0; i < d.childNodes.length; i++){
+        var n = d.childNodes[i];
+        if(n.nodeType === 3 && n.nodeValue.trim()){ mots.push(n.nodeValue.trim()); n.nodeValue = ''; }
+      }
+      if(mots.length) sum.textContent = mots.join(' ');
+    }
+
+    /* La liste : le premier <ul> frere, s'il n'est pas deja dedans. */
+    if(!d.querySelector('ul')){
+      var f = d.nextElementSibling;
+      while(f && f.tagName !== 'UL' && !f.querySelector('li')) f = f.nextElementSibling;
+      if(f && f.tagName === 'UL') d.appendChild(f);
+    }
+    d.setAttribute('data-hld-parto','1');
+  }
+
+  function partenaires(){
+    var blocs = document.querySelectorAll('details.hld_parto');
+    for(var i = 0; i < blocs.length; i++) reparer(blocs[i]);
+  }
+
+  if(document.readyState !== 'loading'){ partenaires(); }
+  else { document.addEventListener('DOMContentLoaded', partenaires); }
+})();

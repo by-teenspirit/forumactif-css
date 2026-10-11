@@ -102,7 +102,7 @@ body #fa_menulist li.fa_separator{background:var(--sep)}
 body #fa_usermenu img{border-radius:var(--r2)}
 body #fa_ranktitle{font:400 8.5px/1.5 var(--f1);letter-spacing:.14em;text-transform:uppercase;color:var(--pa)}
 .elevator{display:flex;flex-direction:column;gap:5px}
-.elevator a{display:flex;align-items:center;justify-content:center;gap:6px;margin:0;padding:7px 12px;width:auto}
+.elevator a{display:flex;align-items:center;justify-content:center;gap:6px;margin:0;padding:7px 12px;width:auto;border-radius:0}
 .elevator a[href="#top"]:before{content:'\2191';font-size:10px;line-height:1}
 .elevator a[href="#bottom"]:before{content:'\2193';font-size:10px;line-height:1}
 .theme-switch{width:46px;height:24px}
@@ -234,7 +234,7 @@ table[width="800px"] td:first-child .nav{order:-1;margin:0}
 table[width="800px"] td:first-child .nav a{font:400 13px/1.7 var(--f2,serif);letter-spacing:.14em;text-transform:uppercase;color:var(--fn);text-decoration:none}
 table[width="800px"] td:first-child span.gensmall{color:var(--pa);font-size:9.5px;line-height:1.75;letter-spacing:.06em}
 table[width="800px"] td[align="right"]{flex-direction:column;flex-wrap:nowrap;align-items:flex-end;gap:6px}
-.gwf_desc t6{color:var(--rg,#6C2E2C);font-family:var(--f1,'Karla',sans-serif);font-weight:400;letter-spacing:.1em}
+body .gwf_desc t6{color:#B9AFA2;font-family:'Chakra Petch',sans-serif;font-weight:500;letter-spacing:.08em}
 .gwf_title_cate>a{font-size:13px;color:var(--pa,#8A8A8A)}
 .contenu_ongles{max-height:110px;padding:8px 10px}
 .contenu_ongles .gwf_qeel_groupe>p{width:auto;height:auto;padding:0;margin:0}
@@ -395,12 +395,12 @@ table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[al
 .gwf_sujets_lastpost{text-align:left !important;padding-left:12px}
 /* Sans sous-forums, le bloc sous-forums reste dans le DOM mais vide : le titre
    et la description restaient colles en haut avec du vide dessous. */
-.gwf_cate:has(.gwf_sous_fofo:empty) .gwf_titre_desc,.gwf_cate:not(:has(.gwf_sous_fofo)) .gwf_titre_desc{align-self:center}
+body .gwf_cate .gwf_titre_desc{align-self:center}
 /* ====== INDEX : passe de densite du 30/09 ======
    Description des categories sur 3,5 lignes, bloc du dernier message resserre
    et retreci au profit de la marge autour de l'avatar. */
 .gwf_desc{height:60px;max-height:60px}
-.gwf_cate{grid-template-columns:78px 1fr 148px}
+body .gwf_cate{grid-template-columns:58px minmax(0,1fr) 148px;column-gap:20px;padding:18px 20px}
 .gwf_lastpost,.gwf_lastpost span,.gwf_lastpost a,.gwf_lastpost .lp-date,.gwf_lastpost strong{line-height:1.35}
 .gwf_suj_mes{padding:4px 8px}
 /* PA : une ligne de texte en moins, prise sur la hauteur des boutons */
@@ -497,3 +497,49 @@ table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[al
 #page-body table:has(> tbody > tr > td > #smileyContainer),#page-body td:has(> #smileyContainer){display:block}
 #page-body #smileyContainer{width:auto;margin:10px 0 0;border:.5px solid var(--fi);border-radius:var(--r1);background:var(--bl);overflow:hidden}
 #page-body #smileyContainer iframe{width:100%;height:190px;border:0;display:block;background:var(--bl)}
+
+/* ====== PASSE DU 11/10 ======
+   Le CSS principal est servi dans 0-ltr.css et gagne sur plusieurs
+   proprietes a specificite egale : les regles ci-dessous sont prefixees
+   par body pour passer devant. */
+
+/* Abril Fatface laisse la place a Bodoni Moda partout. --f2 n'est defini
+   qu'une fois, sur :root, dans le CSS principal : le redefinir ici suffit,
+   les deux feuilles suivent. Chakra Petch est charge par overall_header. */
+body{--f2:'Bodoni Moda',serif}
+
+/* Air entre le bord blanc du bandeau et « bienvenue sur Dantooine ». */
+body .hld_titre{padding-top:26px;padding-bottom:16px}
+
+/* Descriptions a 11px : le CSS principal les repasse a 11.5 avec un
+   raccourci font, d'ou le prefixe. */
+body :is(.gwf_desc,.gwf_desc p){font-size:11px;line-height:17px}
+
+/* Le :hover du CSS principal relachait le line-clamp de la description, ce
+   qui faisait sauter l'espace sous le T6. On le neutralise en restituant
+   l'etat de repos. */
+body .gwf_desc p:hover{-webkit-line-clamp:5;overflow:hidden}
+
+/* Titres de section. */
+body :is(.gwf_grand_titre,.gwf_grand_titre_list){font-family:'Chakra Petch',sans-serif;font-weight:600;color:#752929}
+
+/* QEEL : compteurs et pastilles de groupe moins hauts. */
+body .gwf_qeel .qeel_case{padding:5px 8px}
+body .gwf_qeel_list_gr .ongle{min-height:24px;padding:4px 8px;line-height:1.3}
+
+/* Bloc du dernier message : le sujet et la date en Tahoma minuscule, le nom
+   du posteur en Chakra majuscule, et la fleche vers le dernier message —
+   deja presente en .last-post-icon, mais servie en gif vide — remise a
+   droite du nom en icone Material. */
+body .gwf_lastpost :is(a:not(.last-post-icon),.lp-date){font:400 9px/1.55 var(--f4);text-transform:lowercase;letter-spacing:0}
+body .gwf_lastpost :is(.usr_grp_clr,.usr_grp_clr strong){font-family:'Chakra Petch',sans-serif;font-weight:600;font-size:9.5px;text-transform:uppercase;letter-spacing:.06em}
+body .gwf_lastpost .last-post-icon{display:inline-flex;align-items:center;vertical-align:middle;margin-left:5px;text-decoration:none}
+body .gwf_lastpost .last-post-icon img{display:none}
+body .gwf_lastpost .last-post-icon::after{font-family:"Material Icons";font-size:13px;line-height:1;content:"east";color:var(--pa)}
+
+/* Partenaires : la liste est en position absolue, donc elle restait visible
+   meme quand le <details> est ferme. On commande l'ouverture explicitement
+   plutot que de dependre du comportement natif. hld.js remet la liste dans
+   le <details> et le libelle dans le <summary> a chaque chargement. */
+body details.hld_parto:not([open]) > ul{display:none}
+body details.hld_parto[open] > ul{display:block;top:100%}
