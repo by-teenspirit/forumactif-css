@@ -580,6 +580,6 @@ table[width="800px"]:has(a[href*="search_id=newposts"]) td:has(div.nav){display:
 table[width="800px"]:has(a[href*="search_id=newposts"])>tbody>tr{justify-content:center;flex-wrap:nowrap;gap:4px}
 /* La barre jumelle impose flex-direction:column a td[align="right"] (ligne
    236) : ici on veut une rangee, d'ou le !important sur ces deux la. */
-table[width="800px"]:has(a[href*="search_id=newposts"]) td[align="right"]{display:flex;flex-direction:row !important;flex-wrap:nowrap !important;align-items:center;justify-content:center !important;gap:4px;width:100%;margin:0;padding:8px 16px}
+table[width="800px"]:has(a[href*="search_id=newposts"]) td[align="right"]{display:flex;flex-direction:row !important;flex-wrap:nowrap !important;align-items:center;justify-content:center !important;gap:4px;width:100%;margin:0;padding:9px 16px !important}
 table[width="800px"]:has(a[href*="search_id=newposts"]) br{display:none}
 table[width="800px"]:has(a[href*="search_id=newposts"]) a.gensmall{display:inline-block;font-size:10.5px;letter-spacing:.05em;padding:6px 10px;white-space:nowrap}
