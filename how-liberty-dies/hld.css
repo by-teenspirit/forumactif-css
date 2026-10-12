@@ -630,8 +630,8 @@ body .gwf_nouv_rep a[href]{border-radius:0}
    descend de 96 a 63px : 14px de padding a 8, et plus rien sur
    #gwf_header_topic. */
 body #gwf_header_topic>a::before,body #gwf_header_topic>a::after{display:none}
-body .gwf_grand_titre_list{padding-top:8px;padding-bottom:8px}
-body #gwf_header_topic{padding:0}
+body .gwf_grand_titre_list{padding-top:1px;padding-bottom:1px}
+body #gwf_header_topic{padding:0;gap:0}
 
 /* ------------------------------------------------------------------
    Index : la puce du bandeau, l'air sous la description, la QEEL
@@ -700,3 +700,20 @@ body:has(.gwf_topiclist) table[width="800px"]{display:none}
    messages a lui. Le lien « s'enregistrer » du menu d'origine de Forumactif
    marque les pages vues en invite. */
 body:has(a.mainmenu[href$="/register"]) table[width="800px"]:has(div.nav){display:none}
+
+/* Le bloc du fil d'Ariane a la hauteur du bouton « nouveau ». Le rang est en
+   align-items:stretch, donc il suffit que le contenu tienne sous les 32px du
+   bouton : titre a 12px, fil d'Ariane a 8px, plus de gouttiere ni de marge,
+   et 1px de padding. Les deux colonnes tombent alors a 32px pile. */
+body #gwf_header_topic>a{font-size:12px;line-height:1.25}
+body #gwf_header_topic .nav{margin:0;font-size:8px;line-height:1.25}
+body #gwf_header_topic .nav :is(a,span,h1,span1,i){font-size:8px;line-height:1.25}
+
+/* En invite il n'y a pas de bouton « nouveau » : la colonne reste dans le
+   flex et sa gouttiere de 8px decale tout le bloc vers la droite. */
+body .gwf_topiclist .gwf_nouv_rep:empty{display:none}
+
+/* Titre d'un sujet en Tahoma. Le raccourci « font » plus haut posait deja
+   var(--f4), sans effet : une feuille servie par Forumactif impose la
+   famille en !important. Il faut le meme poids. */
+body .gwf_sujets a.topictitle{font-family:var(--f4)!important}
