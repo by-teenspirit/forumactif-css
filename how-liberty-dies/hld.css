@@ -668,10 +668,13 @@ body .fb_or{width:auto;min-width:0;height:auto;padding:0;border:0;background:non
 /* Categories plus proches les unes des autres */
 body .gwf_grand_titre{margin-top:10px}
 
-/* Titre de categorie en Chakra. La feuille de base le cible par
-   .gwf_grand_titre :is(h2,.ligne), soit (0,2,0) : il faut passer par .ligne
-   pour repasser devant. */
-body .gwf_grand_titre .ligne h2{font-family:'Chakra Petch',sans-serif;font-weight:600}
+/* Titre de categorie en Chakra, et titre de la QEEL avec. Les deux sont des
+   .gwf_grand_titre, mais le h2 d'une categorie est enveloppe dans .ligne et
+   celui de la QEEL ne l'est pas. La feuille de base les cible par
+   .gwf_grand_titre :is(h2,.ligne), soit (0,2,0) : le :is() ci-dessous prend
+   la specificite de sa branche la plus forte (.ligne h2) et couvre les deux
+   formes d'un coup. */
+body .gwf_grand_titre :is(.ligne h2,h2){font-family:'Chakra Petch',sans-serif;font-weight:600}
 
 /* Titre des forums en gras. Bodoni Moda est charge en variable 400..900,
    donc le gras est un vrai gras, pas une graisse simulee. */
@@ -689,3 +692,13 @@ body .gwf_sujets a.topictitle{color:var(--pa)}
 /* Liste des sujets : une bande de fond autour du fil d'Ariane, qui detache le
    bloc des sous-forums de la liste elle-meme. */
 body .gwf_topiclist{background:var(--fond-interieur);padding:10px 0}
+
+/* La barre « derniere visite / fil d'Ariane / voir les messages ».
+   Dans un forum elle fait doublon avec le bloc blanc du fil d'Ariane juste
+   en dessous : .gwf_topiclist n'existe que la, il sert de marqueur de page. */
+body:has(.gwf_topiclist) table[width="800px"]{display:none}
+
+/* Et pour un invite, elle n'a aucun sens : pas de derniere visite, pas de
+   messages a lui. Le lien « s'enregistrer » du menu d'origine de Forumactif
+   marque les pages vues en invite. */
+body:has(a.mainmenu[href$="/register"]) table[width="800px"]:has(div.nav){display:none}
