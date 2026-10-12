@@ -618,8 +618,10 @@ body .gwf_sujets .gwf_sujets_avatar img{border-radius:0}
    (icon_topic_latest.png) posee dans .gwf_sujets_minicon. */
 body .gwf_sujets .gwf_sujets_minicon{display:none}
 
-/* Bouton « nouveau » : pas d'arrondi, comme le reste */
-body .gwf_nouv_rep a{border-radius:0}
+/* Bouton « nouveau » : pas d'arrondi, comme le reste. Le theme le groupe dans
+   un :is(.systab .tab,…,.gwf_nouv_rep a), qui vaut (0,2,0) : il faut
+   l'attribut pour repasser devant, comme pour l'ascenseur. */
+body .gwf_nouv_rep a[href]{border-radius:0}
 
 /* Le bloc blanc du fil d'Ariane et du titre de categorie. Les deux traits
    autour du titre sont les ::before et ::after de son lien (40px de large,
