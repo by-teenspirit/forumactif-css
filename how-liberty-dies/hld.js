@@ -578,3 +578,24 @@
   if(document.readyState !== 'loading'){ descriptions(); }
   else { document.addEventListener('DOMContentLoaded', descriptions); }
 })();
+
+/* Index : le lien vers le dernier sujet.
+   Forumactif tronque le libelle cote serveur (« // Dantooine, Kh... ») et
+   garde le titre entier dans l'attribut title. On remet le titre complet ;
+   le CSS limite l'affichage a deux lignes. */
+(function(){
+  function derniers(){
+    var liens = document.querySelectorAll('.gwf_lastpost a[title]');
+    for(var i = 0; i < liens.length; i++){
+      var a = liens[i];
+      if(a.getAttribute('data-hld-titre')) continue;
+      a.setAttribute('data-hld-titre','1');
+      var t = (a.getAttribute('title') || '').trim();
+      if(!t) continue;
+      if(!/\.\.\.$/.test(a.textContent.trim())) continue;
+      a.textContent = t;
+    }
+  }
+  if(document.readyState !== 'loading'){ derniers(); }
+  else { document.addEventListener('DOMContentLoaded', derniers); }
+})();
