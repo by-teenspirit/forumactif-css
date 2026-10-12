@@ -680,11 +680,9 @@ body .gwf_grand_titre :is(.ligne h2,h2){font-family:'Chakra Petch',sans-serif;fo
    donc le gras est un vrai gras, pas une graisse simulee. */
 body .gwf_cate .gwf_title_cate{font-weight:700}
 
-/* Lien du dernier sujet : un cran plus gros et sur deux lignes. Forumactif
-   tronque le libelle cote serveur (« // Dantooine, Kh... ») mais garde le
-   titre entier dans l'attribut title : hld.js le remet, le clamp s'occupe de
-   ce qui depasse encore. */
-body .gwf_lastpost a[title]{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;font-size:10.5px;line-height:1.35}
+/* Lien du dernier sujet : un cran plus gros. On garde la coupure que
+   Forumactif applique cote serveur (« // Dantooine, Kh... »). */
+body .gwf_lastpost a[title]{font-size:10.5px;line-height:1.35}
 
 /* Liste des sujets : titre du sujet en gris, comme les titres de forum */
 body .gwf_sujets a.topictitle{color:var(--pa)}
