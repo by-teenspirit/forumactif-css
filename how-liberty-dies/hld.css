@@ -637,7 +637,7 @@ body #gwf_header_topic{padding:0}
    Index : la puce du bandeau, l'air sous la description, la QEEL
    ------------------------------------------------------------------ */
 body :is(.hld_chip,.gwf_bandeau h7){padding:1px 5px;line-height:1.2}
-body .gwf_titre_desc .gwf_sous_fofo{margin-top:12px}
+body .gwf_titre_desc .gwf_sous_fofo{margin-top:9px}
 
 /* Les trois ecarts de la QEEL (ligne de compteurs / boite / onglets) sont le
    meme gap de flex sur les deux colonnes : 11px a 6px tasse l'ensemble. */
@@ -660,3 +660,32 @@ body #fa_toolbar #fa_right>a.rightHeaderLink[href$="/register"]{display:none!imp
    hauteur fixes trop etroites pour deux lettres, d'ou le mot coupe en
    « o » / « u ». On le libere et on l'habille comme le reste. */
 body .fb_or{width:auto;min-width:0;height:auto;padding:0;border:0;background:none;white-space:nowrap;font:400 9px/1.4 var(--f1);letter-spacing:.12em;text-transform:uppercase;color:var(--pa)}
+
+/* ------------------------------------------------------------------
+   Index et liste des sujets : passe du 12/10
+   ------------------------------------------------------------------ */
+
+/* Categories plus proches les unes des autres */
+body .gwf_grand_titre{margin-top:10px}
+
+/* Titre de categorie en Chakra. La feuille de base le cible par
+   .gwf_grand_titre :is(h2,.ligne), soit (0,2,0) : il faut passer par .ligne
+   pour repasser devant. */
+body .gwf_grand_titre .ligne h2{font-family:'Chakra Petch',sans-serif;font-weight:600}
+
+/* Titre des forums en gras. Bodoni Moda est charge en variable 400..900,
+   donc le gras est un vrai gras, pas une graisse simulee. */
+body .gwf_cate .gwf_title_cate{font-weight:700}
+
+/* Lien du dernier sujet : un cran plus gros et sur deux lignes. Forumactif
+   tronque le libelle cote serveur (« // Dantooine, Kh... ») mais garde le
+   titre entier dans l'attribut title : hld.js le remet, le clamp s'occupe de
+   ce qui depasse encore. */
+body .gwf_lastpost a[title]{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;font-size:10.5px;line-height:1.35}
+
+/* Liste des sujets : titre du sujet en gris, comme les titres de forum */
+body .gwf_sujets a.topictitle{color:var(--pa)}
+
+/* Liste des sujets : une bande de fond autour du fil d'Ariane, qui detache le
+   bloc des sous-forums de la liste elle-meme. */
+body .gwf_topiclist{background:var(--fond-interieur);padding:10px 0}
