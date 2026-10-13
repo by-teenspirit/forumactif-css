@@ -741,3 +741,12 @@ body .gwf_cate :is(.gwf_title_cate,.gwf_title_cate a){color:#706767;font-size:12
 
 /* Colonne de droite d'un forum : compteurs, dernier message, vignette */
 body .gwf_cate .gw_cate_right{gap:3px}
+
+/* Les boites « contexte » et « actualites » de la PA defilent en overflow:auto,
+   et le texte venait mourir contre le bord bas, souvent en coupant une ligne
+   par le milieu. Deux choses : une bordure basse pleine, de la couleur du
+   fond, que le contenu ne peut pas traverser (le clip se fait au bord de la
+   boite de padding, pas au bord de la bordure), et un degrade en position
+   sticky qui estompe la derniere ligne au lieu de la trancher. */
+body .hld_boite:not(.hld_nu){border-bottom:12px solid #fff}
+body .hld_boite:not(.hld_nu)::after{content:"";display:block;position:sticky;bottom:-12px;height:18px;margin:-18px -13px -12px;background:linear-gradient(to bottom,rgba(255,255,255,0),#fff 85%);pointer-events:none}
