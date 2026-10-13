@@ -750,3 +750,9 @@ body .gwf_cate .gw_cate_right{gap:3px}
    sticky qui estompe la derniere ligne au lieu de la trancher. */
 body .hld_boite:not(.hld_nu){border-bottom:12px solid #fff}
 body .hld_boite:not(.hld_nu)::after{content:"";display:block;position:sticky;bottom:-12px;height:18px;margin:-18px -13px -12px;background:linear-gradient(to bottom,rgba(255,255,255,0),#fff 85%);pointer-events:none}
+
+/* Colonne du milieu de la PA : le staff, les liens rapides et les partenaires
+   ne remplissaient pas toute la hauteur et « partenaires » s'arretait 10px
+   au-dessus des deux autres colonnes. space-between repartit ce reste dans
+   les deux gouttieres, donc le dernier bloc tombe pile sur la meme ligne. */
+body .hld_col2{justify-content:space-between}
