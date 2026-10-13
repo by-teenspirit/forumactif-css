@@ -509,7 +509,7 @@ body .gwf_cate{grid-template-columns:58px minmax(0,1fr) 148px;column-gap:20px;pa
 html:root{--f2:'Bodoni Moda',serif}
 
 /* Air entre le bord blanc du bandeau et « bienvenue sur Dantooine ». */
-body .hld_titre{padding-top:26px;padding-bottom:16px}
+body .hld_titre{padding-top:26px;padding-bottom:5px}
 
 /* Descriptions a 11px : le CSS principal les repasse a 11.5 avec un
    raccourci font, d'ou le prefixe. */
@@ -589,7 +589,7 @@ table[width="800px"]:has(a[href*="search_id=newposts"]) a.gensmall{display:inlin
 /* ====== LISTE DES SUJETS : typographie ======
    La typo de base du forum (--f4) partout et en bas de casse ; seul le titre
    monte d'un cran. Les tailles s'etagent : titre 12, auteur 10, description 9. */
-body .gwf_sujets a.topictitle{font:400 12px/1.45 var(--f4);text-transform:lowercase;letter-spacing:0}
+body .gwf_sujets a.topictitle{font:700 11px/1.45 var(--f4);text-transform:lowercase;letter-spacing:0}
 body .gwf_sujets :is(.gwf_sujets_name,.gwf_sujets_name a,.gwf_sujets_name strong,.gwf_sujets_name span){font-family:var(--f4);font-size:10px;text-transform:lowercase;letter-spacing:0}
 
 /* « note » et « annonce » en gras */
@@ -598,7 +598,7 @@ body .gwf_sujets .gwf_sujets_type{font-weight:700}
 /* La description est un span.genmed frere du bloc titre, donc une colonne a
    part dans le flex de .gwf_sujets_left : hld.js la descend dans le bloc
    titre, sous l'auteur, et on l'habille ici. */
-body .gwf_sujets .hld_sujet_desc{display:block;margin-top:2px;font:italic 400 9px/1.5 var(--f4);color:var(--pa);text-transform:none;letter-spacing:0}
+body .gwf_sujets .hld_sujet_desc{display:block;margin-top:2px;font:italic 400 11px/1.5 var(--f4);color:var(--pa);text-transform:none;letter-spacing:0}
 
 /* Vues et reponses resserrees */
 body .gwf_sujets .gwf_sujets_view{gap:0}
@@ -666,7 +666,7 @@ body .fb_or{width:auto;min-width:0;height:auto;padding:0;border:0;background:non
    ------------------------------------------------------------------ */
 
 /* Categories plus proches les unes des autres */
-body .gwf_grand_titre{margin-top:10px}
+body .gwf_grand_titre{margin-top:5px;padding-bottom:5px}
 
 /* Titre de categorie en Chakra, et titre de la QEEL avec. Les deux sont des
    .gwf_grand_titre, mais le h2 d'une categorie est enveloppe dans .ligne et
@@ -682,10 +682,10 @@ body .gwf_cate .gwf_title_cate{font-weight:700}
 
 /* Lien du dernier sujet : un cran plus gros. On garde la coupure que
    Forumactif applique cote serveur (« // Dantooine, Kh... »). */
-body .gwf_lastpost a[title]{font-size:11.5px;line-height:1.35}
+body .gwf_lastpost a[title]{font-size:10px;line-height:1.35}
 
 /* Liste des sujets : titre du sujet en gris, comme les titres de forum */
-body .gwf_sujets a.topictitle{color:var(--pa)}
+body .gwf_sujets a.topictitle{color:#111}
 
 /* Liste des sujets : une bande de fond autour du fil d'Ariane, qui detache le
    bloc des sous-forums de la liste elle-meme. */
@@ -716,4 +716,26 @@ body .gwf_topiclist .gwf_nouv_rep:empty{display:none}
 /* Titre d'un sujet en Tahoma. Le raccourci « font » plus haut posait deja
    var(--f4), sans effet : une feuille servie par Forumactif impose la
    famille en !important. Il faut le meme poids. */
-body .gwf_sujets a.topictitle{font-family:var(--f4)!important}
+body .gwf_sujets a.topictitle{font-family:var(--f4)!important;font-weight:700!important}
+
+/* ------------------------------------------------------------------
+   Passe du 13/10
+   ------------------------------------------------------------------ */
+
+/* Le bloc du fil d'Ariane n'a plus de fond ni de filet : il repose sur la
+   bande de .gwf_topiclist. */
+body .gwf_grand_titre_list{background:none;border:0}
+
+/* « Note: », « Annonce: » en Bodoni gras. Le <strong> interne a sa propre
+   graisse, il faut le viser aussi. */
+body .gwf_sujets :is(.gwf_sujets_type,.gwf_sujets_type strong){font-family:var(--f2);font-weight:700}
+
+/* Titre de categorie : le .ligne ne vise que les categories, pas le titre de
+   la QEEL, dont le <span> interne garde sa propre taille. */
+body .gwf_grand_titre .ligne h2{font-size:10px;color:#8C5F58}
+
+/* Titre d'un forum */
+body .gwf_cate :is(.gwf_title_cate,.gwf_title_cate a){color:#706767;font-size:12.5px}
+
+/* Colonne de droite d'un forum : compteurs, dernier message, vignette */
+body .gwf_cate .gw_cate_right{gap:3px}
