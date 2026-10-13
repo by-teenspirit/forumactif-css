@@ -756,3 +756,9 @@ body .hld_boite:not(.hld_nu)::after{content:"";display:block;position:sticky;bot
    au-dessus des deux autres colonnes. space-between repartit ce reste dans
    les deux gouttieres, donc le dernier bloc tombe pile sur la meme ligne. */
 body .hld_col2{justify-content:space-between}
+
+/* L'ecart sous le pseudo du dernier posteur est la gouttiere de lignes de la
+   grille .gwf_cate, entre la rangee des trois colonnes et la vignette : c'est
+   elle qu'il faut descendre a 3px, pas celle de .gw_cate_right. La gouttiere
+   de colonnes reste a 20px. */
+body .gwf_cate{row-gap:3px}
