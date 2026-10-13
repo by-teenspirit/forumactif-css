@@ -730,9 +730,11 @@ body .gwf_grand_titre_list{background:none;border:0}
    graisse, il faut le viser aussi. */
 body .gwf_sujets :is(.gwf_sujets_type,.gwf_sujets_type strong){font-family:var(--f2);font-weight:700}
 
-/* Titre de categorie : le .ligne ne vise que les categories, pas le titre de
-   la QEEL, dont le <span> interne garde sa propre taille. */
-body .gwf_grand_titre .ligne h2{font-size:10px;color:#8C5F58}
+/* Titre de categorie, et titre de la QEEL avec. Le <span> interne du titre de
+   la QEEL a sa propre taille et sa propre couleur : on le fait heriter, sinon
+   il ressort plus gros que son propre titre. */
+body .gwf_grand_titre :is(.ligne h2,h2){font-size:10px;color:#8C5F58}
+body .gwf_grand_titre h2 :is(span,i,b,strong){font-size:inherit;color:inherit}
 
 /* Titre d'un forum */
 body .gwf_cate :is(.gwf_title_cate,.gwf_title_cate a){color:#706767;font-size:12.5px}
