@@ -323,14 +323,21 @@ table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[al
 .hld_groupe_info{margin:0;text-align:center;font:400 10px/1.5 var(--f4);color:var(--pa)}
 .hld_groupe_nb{margin:0;text-align:center;font:400 10.5px/1.4 var(--f4);color:var(--fn)}
 /* page d'un groupe : paires libelle / valeur, et sous-titres au gris de la charte */
-#page-body table.forumline tr:has(>td.row1+td.row2)>td.row1{width:180px;max-width:180px;overflow-wrap:break-word;font:400 10.5px/1.7 var(--f4);color:var(--pa);vertical-align:top}
-#page-body table.forumline tr:has(>td.row1+td.row2)>td.row1 :is(span,b,strong,label){color:var(--pa);font-weight:400}
+/* Mise en page label / valeur des formulaires (profil, recherche). Le garde-fou
+   :not(:has(>td:nth-child(5))) est indispensable : sur les tableaux de
+   resultats, le script de survol de Forumactif bascule la classe d'une cellule
+   de row1 a row2, ce qui cree une adjacence td.row1+td.row2 et declenchait
+   cette regle le temps du survol — toutes les td.row1 de la ligne passaient a
+   180px et la page se deformait. Les lignes label/valeur n'ont que deux ou
+   quatre cellules, les listes en ont cinq ou plus. */
+#page-body table.forumline tr:has(>td.row1+td.row2):not(:has(>td:nth-child(5)))>td.row1{width:180px;max-width:180px;overflow-wrap:break-word;font:400 10.5px/1.7 var(--f4);color:var(--pa);vertical-align:top}
+#page-body table.forumline tr:has(>td.row1+td.row2):not(:has(>td:nth-child(5)))>td.row1 :is(span,b,strong,label){color:var(--pa);font-weight:400}
 /* l'editeur de message imposait 553px a sa colonne, ce qui poussait la page
    a 820 ; on laisse sa barre d'outils s'enrouler. */
 #page-body td.row2 table{width:100% !important;max-width:100%}
 #page-body td.row2 td{min-width:0}
 #page-body td.row2 :is(select,input[type="text"]){max-width:100%}
-#page-body table.forumline tr:has(>td.row1+td.row2)>td.row2{font:400 11px/1.6 var(--f4);color:var(--tx)}
+#page-body table.forumline tr:has(>td.row1+td.row2):not(:has(>td:nth-child(5)))>td.row2{font:400 11px/1.6 var(--f4);color:var(--tx)}
 #page-body span.cattitle{font:400 9px/1.5 var(--f1);letter-spacing:.12em;text-transform:uppercase;color:var(--fn)}
 /* Les tableaux se dimensionnaient sur leur contenu et sortaient des 800px.
    table-layout:fixed a ete essaye puis abandonne : Forumactif melange dans un
