@@ -287,15 +287,19 @@ table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[al
 #page-body table.forumline:has(h1.h_member) td.row1 img{max-width:200px;border-radius:var(--r1);display:block}
 #page-body table.forumline:has(h1.h_member) :is(td.catLeft,td.catRight){border-bottom:.5px solid var(--sep)}
 /* icones subsilver d'origine remplacees par des boutons a la charte */
-#page-body :is(img[src*="icon_pm"],img[src*="icon_email"],img[src*="icon_www"],img[src*="presentation.gif"]){display:none}
+#page-body :is(img[src*="icon_pm"],img[src*="icon_email"],img[src*="icon_www"],img[src*="presentation.gif"],img[src*="icon_quote"],img[src*="icon_profile"]){display:none}
 /* Liens de contact : les icones subsilver d'origine deviennent des pastilles
    Material Icons (police deja chargee par le forum), sans texte. */
-#page-body :is(a:has(>img[src*="icon_pm"]),a:has(>img[src*="icon_email"]),a:has(>img[src*="icon_www"]),a:has(>img[src*="presentation.gif"])){width:32px;height:32px;padding:0;display:inline-flex;align-items:center;justify-content:center;border:.5px solid var(--fi);border-radius:50%;background:var(--bl);color:var(--fn);text-decoration:none;vertical-align:middle;transition:background .18s ease,color .18s ease}
-#page-body :is(a:has(>img[src*="icon_pm"]),a:has(>img[src*="icon_email"]),a:has(>img[src*="icon_www"]),a:has(>img[src*="presentation.gif"])):hover{background:var(--ch);color:var(--or)}
-#page-body :is(a:has(>img[src*="icon_pm"]),a:has(>img[src*="icon_email"]),a:has(>img[src*="icon_www"]),a:has(>img[src*="presentation.gif"]))::after{font-family:"Material Icons";font-size:16px;line-height:1;letter-spacing:0;text-transform:none;font-weight:400}
+#page-body :is(a:has(>img[src*="icon_pm"]),a:has(>img[src*="icon_email"]),a:has(>img[src*="icon_www"]),a:has(>img[src*="presentation.gif"]),a:has(>img[src*="icon_quote"]),a:has(>img[src*="icon_profile"])){width:32px;height:32px;padding:0;display:inline-flex;align-items:center;justify-content:center;border:.5px solid var(--fi);border-radius:50%;background:var(--bl);color:var(--fn);text-decoration:none;vertical-align:middle;transition:background .18s ease,color .18s ease}
+#page-body :is(a:has(>img[src*="icon_pm"]),a:has(>img[src*="icon_email"]),a:has(>img[src*="icon_www"]),a:has(>img[src*="presentation.gif"]),a:has(>img[src*="icon_quote"]),a:has(>img[src*="icon_profile"])):hover{background:var(--ch)}
+#page-body :is(a:has(>img[src*="icon_pm"]),a:has(>img[src*="icon_email"]),a:has(>img[src*="icon_www"]),a:has(>img[src*="presentation.gif"]),a:has(>img[src*="icon_quote"]),a:has(>img[src*="icon_profile"]))::after{font-family:"Material Icons";font-size:16px;line-height:1;letter-spacing:0;text-transform:none;font-weight:400}
 #page-body a:has(>img[src*="icon_pm"])::after{content:"mail"}
 #page-body a:has(>img[src*="icon_email"])::after{content:"alternate_email"}
 #page-body :is(a:has(>img[src*="icon_www"]),a:has(>img[src*="presentation.gif"]))::after{content:"link"}
+/* Boutons « citer » et « profil » d'un message prive : memes pastilles, pour
+   ne pas laisser deux gifs orange au milieu des icones rondes. */
+#page-body a:has(>img[src*="icon_quote"])::after{content:"format_quote"}
+#page-body a:has(>img[src*="icon_profile"])::after{content:"person"}
 /* ====== LISTE DES MEMBRES ====== */
 /* Vignette ronde pour les avatars de la liste des membres uniquement : on les
    reconnait au lien vers le profil, sinon le panneau "Avatar" du profil se
@@ -381,7 +385,9 @@ table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[al
 /* barre d'onglets du panneau de profil (construite par hld.js) */
 .hld_onglets{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
 .hld_onglet{display:inline-block;padding:8px 15px;border:.5px solid var(--fi);border-radius:var(--rp);background:var(--bl);font:400 10px/1.3 var(--f4);color:var(--pa);text-decoration:none;transition:background .18s ease,color .18s ease}
-.hld_onglet:hover{background:var(--ch);color:var(--or)}
+/* Pas d'effet au survol : le texte qui passait a l'orange donnait
+   l'impression que toute la barre changeait d'etat (demande du 22/10). */
+.hld_onglet:hover{background:var(--ch)}
 .hld_onglet_actif{background:var(--fn);border-color:var(--fn);color:var(--bl)}
 /* ====== LISTE DES SUJETS (viewforum) ======
    Maquette : un seul bloc pour toute la liste, pas de contour par sujet ;
