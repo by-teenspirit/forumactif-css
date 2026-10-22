@@ -596,8 +596,14 @@ table[width="800px"]:has(a[href*="search_id=newposts"]) a.gensmall{display:inlin
 /* ====== LISTE DES SUJETS : typographie ======
    La typo de base du forum (--f4) partout et en bas de casse ; seul le titre
    monte d'un cran. Les tailles s'etagent : titre 12, auteur 10, description 9. */
-body .gwf_sujets a.topictitle{font:700 11px/1.45 var(--f4);text-transform:lowercase;letter-spacing:0}
+body .gwf_sujets a.topictitle{font:700 10.5px/16px var(--f4);text-transform:lowercase;letter-spacing:0}
 body .gwf_sujets :is(.gwf_sujets_name,.gwf_sujets_name a,.gwf_sujets_name strong,.gwf_sujets_name span){font-family:var(--f4);font-size:10px;text-transform:lowercase;letter-spacing:0}
+
+/* Les trois lignes du bloc titre (titre, « sujet ouvert par », sous-titre)
+   n'ont pas la meme taille : on leur donne la meme hauteur de ligne en px
+   et aucune marge, pour un interligne identique d'une ligne a l'autre. */
+body .gwf_sujets .gwf_sujets_titre{line-height:16px}
+body .gwf_sujets .gwf_sujets_name{margin:0;line-height:16px}
 
 /* « note » et « annonce » en gras */
 body .gwf_sujets .gwf_sujets_type{font-weight:700}
@@ -605,7 +611,7 @@ body .gwf_sujets .gwf_sujets_type{font-weight:700}
 /* La description est un span.genmed frere du bloc titre, donc une colonne a
    part dans le flex de .gwf_sujets_left : hld.js la descend dans le bloc
    titre, sous l'auteur, et on l'habille ici. */
-body .gwf_sujets .hld_sujet_desc{display:block;margin-top:2px;font:italic 400 11px/1.5 var(--f4);color:var(--pa);text-transform:none;letter-spacing:0}
+body .gwf_sujets .hld_sujet_desc{display:block;margin-top:0;font:400 10.5px/16px var(--f4);color:var(--pa);text-transform:none;letter-spacing:0}
 
 /* Vues et reponses resserrees */
 body .gwf_sujets .gwf_sujets_view{gap:0}
@@ -689,10 +695,14 @@ body .gwf_cate .gwf_title_cate{font-weight:700}
 
 /* Lien du dernier sujet : un cran plus gros. On garde la coupure que
    Forumactif applique cote serveur (« // Dantooine, Kh... »). */
-body .gwf_lastpost a[title]{font-size:10px;line-height:1.35}
+body .gwf_lastpost a[title]{font-size:10px;line-height:1.35;margin-top:1px}
+
+/* Les trois lignes du dernier message etaient espacees de 3 / 6 / 4 px ;
+   on egalise a 4px partout (la date portait 6 en haut et 4 en bas). */
+body .gwf_lastpost .lp-date{margin-top:4px;margin-bottom:4px}
 
 /* Liste des sujets : titre du sujet en gris, comme les titres de forum */
-body .gwf_sujets a.topictitle{color:#111}
+body .gwf_sujets a.topictitle{color:#565656}
 
 /* Liste des sujets : une bande de fond autour du fil d'Ariane, qui detache le
    bloc des sous-forums de la liste elle-meme. */
@@ -751,12 +761,22 @@ body .gwf_cate .gw_cate_right{gap:3px}
 
 /* Les boites « contexte » et « actualites » de la PA defilent en overflow:auto,
    et le texte venait mourir contre le bord bas, souvent en coupant une ligne
-   par le milieu. Deux choses : une bordure basse pleine, de la couleur du
-   fond, que le contenu ne peut pas traverser (le clip se fait au bord de la
-   boite de padding, pas au bord de la bordure), et un degrade en position
-   sticky qui estompe la derniere ligne au lieu de la trancher. */
-body .hld_boite:not(.hld_nu){border-bottom:12px solid #fff}
-body .hld_boite:not(.hld_nu)::after{content:"";display:block;position:sticky;bottom:-12px;height:18px;margin:-18px -13px -12px;background:linear-gradient(to bottom,rgba(255,255,255,0),#fff 85%);pointer-events:none}
+   par le milieu. Une bordure basse pleine, de la couleur du fond, fait une
+   vraie marge que le contenu ne peut pas traverser : le clip se fait au bord
+   de la boite de padding, pas au bord de la bordure. Le padding bas et la
+   marge du dernier <p> s'ajoutaient a cette bordure en fin de defilement et
+   laissaient 32px de blanc ; on les remet a zero pour n'avoir que les 12px. */
+body .hld_boite:not(.hld_nu){border-bottom:12px solid #fff;padding-bottom:0}
+body .hld_boite:not(.hld_nu)::after{content:none}
+body .hld_boite:not(.hld_nu)>:last-child{margin-bottom:0}
+
+/* L'etiquette « contexte » / « actualites » en gras, le « // » dore reste fin */
+body .hld_boite b1{font-weight:700}
+body .hld_boite b1::after{font-weight:400}
+
+/* Les credits tiennent presque dans leur boite : on masque l'ascenseur */
+body .hld_boite.hld_nu{scrollbar-width:none}
+body .hld_boite.hld_nu::-webkit-scrollbar{display:none}
 
 /* Colonne du milieu de la PA : le staff, les liens rapides et les partenaires
    ne remplissaient pas toute la hauteur et « partenaires » s'arretait 10px
