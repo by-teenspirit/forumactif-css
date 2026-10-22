@@ -267,6 +267,12 @@
    visuellement etrangere aux autres. On rebatit la barre a partir des span.gen
    de la ligne, en deplacant les liens d'origine. */
 (function(){
+  /* Forumactif separe ses entrees par un « | » qui fait partie du texte du
+     span : « Informations | ». En onglets il n'a plus de sens, on le retire
+     des deux cotes du libelle. */
+  function libelle(t){
+    return (t||'').replace(/^[\s|]+/,'').replace(/[\s|]+$/,'');
+  }
   function barre(reperes){
     for(var r=0;r<reperes.length;r++){
       var lien=document.querySelector(reperes[r]);
@@ -280,10 +286,10 @@
         var a=spans[i].querySelector('a');
         if(a){
           a.className='hld_onglet';
-          a.textContent=(a.textContent||'').trim();
+          a.textContent=libelle(a.textContent);
           nav.appendChild(a);
         } else {
-          var txt=(spans[i].textContent||'').trim();
+          var txt=libelle(spans[i].textContent);
           if(!txt) continue;
           var b=document.createElement('span');
           b.className='hld_onglet hld_onglet_actif';
@@ -430,8 +436,12 @@
     st.appendChild(d.createTextNode(interne));
     d.head.appendChild(st);
     setTimeout(function(){
+      /* Le plafond etait a 280px alors que la grille en fait ~325 : la
+         derniere rangee de smileys etait coupee par le bord du panneau.
+         On laisse la place au contenu, avec un plafond assez haut pour
+         « voir plus de smileys » sans etirer la page a l'infini. */
       var h = d.body.scrollHeight;
-      if(h > 0) f.style.height = Math.min(Math.max(h, 120), 280) + 'px';
+      if(h > 0) f.style.height = Math.min(Math.max(h + 6, 120), 460) + 'px';
     }, 80);
     return true;
   }
