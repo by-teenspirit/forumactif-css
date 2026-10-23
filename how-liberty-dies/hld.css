@@ -405,7 +405,7 @@ table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[al
 .gwf_sujets_view,.gwf_sujets_view *{text-align:center !important}
 .gwf_sujets_avatar{display:block;width:40px;height:40px;overflow:hidden;border-radius:var(--r1);margin:0}
 .gwf_sujets_avatar img{width:40px;height:40px;border-radius:var(--r1);object-fit:cover;display:block}
-.gwf_sujets_lastpost{text-align:right !important;padding-left:12px;padding-right:0}
+.gwf_sujets_lastpost{text-align:right !important;padding-left:0;padding-right:0;white-space:nowrap}
 /* Sans sous-forums, le bloc sous-forums reste dans le DOM mais vide : le titre
    et la description restaient colles en haut avec du vide dessous. */
 body .gwf_cate .gwf_titre_desc{align-self:center}
@@ -841,7 +841,7 @@ body .gwf_cate .gwf_title_cate:hover,body .gwf_cate .gwf_title_cate:hover a{colo
    de 27px, et un filet vertical de 1px entre les compteurs et le dernier
    message. Le filet deborde de 6px en haut et en bas pour retrouver les 50px
    de la maquette, ou il est plus haut que le bloc de texte. */
-body .gwf_sujets{grid-template-columns:minmax(0,1fr) 100px 27px 150px;column-gap:11px;padding-top:9px;padding-bottom:9px;padding-right:16px}
+body .gwf_sujets{grid-template-columns:minmax(0,1fr) 100px 27px max-content;column-gap:11px;padding-top:9px;padding-bottom:9px;padding-right:16px}
 body .gwf_sujets .gwf_sujets_imgnew{margin:0 24px 0 10px}
 body .gwf_sujets .gwf_sujets_imgnew img{width:18px;height:18px}
 body .gwf_sujets :is(.gwf_sujets_avatar,.gwf_sujets_avatar img){width:27px;height:27px}
