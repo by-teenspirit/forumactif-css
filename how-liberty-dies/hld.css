@@ -841,13 +841,13 @@ body .gwf_cate .gwf_title_cate:hover,body .gwf_cate .gwf_title_cate:hover a{colo
    de 27px, et un filet vertical de 1px entre les compteurs et le dernier
    message. Le filet deborde de 6px en haut et en bas pour retrouver les 50px
    de la maquette, ou il est plus haut que le bloc de texte. */
-body .gwf_sujets{grid-template-columns:minmax(0,1fr) 120px 27px 150px;padding-top:9px;padding-bottom:9px}
+body .gwf_sujets{grid-template-columns:minmax(0,1fr) 100px 27px 150px;column-gap:11px;padding-top:9px;padding-bottom:9px;padding-right:12px}
 body .gwf_sujets .gwf_sujets_imgnew{margin:0 24px 0 10px}
 body .gwf_sujets .gwf_sujets_imgnew img{width:18px;height:18px}
 body .gwf_sujets :is(.gwf_sujets_avatar,.gwf_sujets_avatar img){width:27px;height:27px}
 /* Compteurs : les messages au-dessus des vues, comme sur la maquette.
    column-reverse evite de toucher a l'ordre du gabarit. */
-body .gwf_sujets .gwf_sujets_view{position:relative;align-self:stretch;flex-direction:column-reverse;justify-content:center}
+body .gwf_sujets .gwf_sujets_view{position:relative;align-self:stretch;flex-direction:column-reverse;justify-content:center;padding:2px 4px}
 body .gwf_sujets .gwf_sujets_view div{margin:0;line-height:13px}
 body .gwf_sujets .gwf_sujets_view::after{content:"";position:absolute;top:-6px;bottom:-6px;right:0;width:1px;background:#F2F2F2}
 /* Le pseudo du dernier posteur en bas de casse (la maquette ecrit « the
@@ -880,20 +880,24 @@ body .gwf_topiclist{background:var(--bl);margin-top:14px;margin-bottom:0}
    Il etait bati en deux colonnes : le bloc avatar en position absolue a
    gauche, les liens dans une colonne de grille a droite. L'absolu ne se
    calait pas la ou il fallait et venait recouvrir les liens, d'ou le rang
-   qu'on ne voyait plus. On repasse a une seule colonne : le bloc avatar en
-   haut, les liens dessous, tout aligne a gauche et sans capitales.
+   qu'on ne voyait plus. On garde les deux colonnes — avatar a gauche, liens
+   a droite — mais sans position absolue : le bloc avatar flotte a gauche sur
+   152px et les liens prennent la meme marge. La colonne grise est peinte par
+   un degrade sur la liste, pour qu'elle descende sur toute la hauteur meme
+   quand les liens sont plus longs. Tout est aligne a gauche, sans capitales.
    Le dore et le fond blanc au survol venaient de la feuille du forum, qui
    colore les liens visites et leur pose un fond blanc des que la souris est
    sur le menu : d'ou les !important, qui ne portent que sur la couleur et le
    fond. On ne touche surtout pas a display, que Forumactif pilote en ligne
-   pour ouvrir et fermer le menu. */
-body #fa_menulist{grid-template-columns:none;padding:0!important}
-body #fa_usermenu{position:static;grid-column:1;grid-row:auto;width:auto;display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:14px 16px;border-right:0;border-bottom:.5px solid var(--sep);background:var(--ch)}
-body #fa_usermenu img{width:72px;height:auto;border-radius:6px}
+   pour ouvrir et fermer le menu : on ne redefinit que la grille et le
+   flottement, qui valent pour l'un comme pour l'autre. */
+body #fa_menulist{grid-template-columns:152px 1fr;padding:0!important;background:linear-gradient(to right,var(--ch) 0 152px,var(--bl) 152px 100%)}
+body #fa_usermenu{float:left;position:static;grid-column:1;grid-row:1/span 50;width:152px;box-sizing:border-box;display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:14px 16px;border-right:.5px solid var(--sep);border-bottom:0;background:none}
+body #fa_usermenu img{width:100px;height:auto;border-radius:6px}
 body #fa_usermenu a#fa_ranktitle{color:var(--pa);text-transform:none;letter-spacing:.04em;font-size:10.5px;text-align:left}
 body #fa_usermenu td.first{text-align:left;padding-right:6px;text-transform:none;letter-spacing:.02em;font-size:10px}
-body #fa_menulist li{grid-column:1;display:block;margin:0;padding:0;list-style:none;text-align:left}
-body #fa_menulist li a{display:block;text-align:left;text-transform:none;letter-spacing:.02em;font:400 11px/1.4 var(--f4);padding:7px 16px;border-radius:0}
+body #fa_menulist li{grid-column:2;display:block;margin:0 0 0 152px;padding:0;list-style:none;text-align:left}
+body #fa_menulist li a{display:block;text-align:left;text-transform:none;letter-spacing:.02em;font:400 11px/1.4 var(--f4);padding:7px 20px 7px 16px;border-radius:0}
 body #fa_menulist :is(a,a:link,a:visited){color:var(--fn)!important;background:none}
 body #fa_menu:hover #fa_menulist :is(a,a:visited){background:none!important;color:var(--fn)!important}
 body #fa_menulist li a:hover{background:var(--ch)!important}
