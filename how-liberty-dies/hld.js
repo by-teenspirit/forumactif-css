@@ -453,10 +453,28 @@
     setTimeout(function(){ insister(f, n - 1); }, 300);
   }
 
+  /* Le gabarit reserve a gauche de l'editeur une colonne de libelles de
+     180px. Sur la page de signature elle est vide : on la marque pour que
+     le CSS la masque et rende sa largeur a l'editeur, qui partage desormais
+     sa cellule avec le panneau de smileys. Si elle contient quoi que ce soit
+     (page de redaction d'un message), on n'y touche pas. */
+  function colonneVide(cellule){
+    /* L'editeur est dans un tableau imbrique : on remonte au forumline
+       exterieur, dont la premiere rangee porte la colonne des libelles. */
+    var tbl = cellule.closest('table.forumline');
+    if(!tbl) return;
+    var g = tbl.querySelector(':scope > tbody > tr > td.row1');
+    if(!g || g === cellule || g.contains(cellule)) return;
+    if(g.textContent.trim()) return;
+    if(g.querySelector('input,select,textarea,img,a')) return;
+    g.setAttribute('data-hld-vide','1');
+  }
+
   function poser(boite, cellule){
     if(boite.getAttribute('data-hld-sm')) return;
     boite.setAttribute('data-hld-sm','1');
     cellule.appendChild(boite);
+    colonneVide(cellule);
     var f = boite.querySelector('iframe');
     if(!f) return;
     f.addEventListener('load', function(){ habiller(f); });
