@@ -811,3 +811,11 @@ body .hld_pied .hld_pied_lien:hover{background:none;color:var(--fn)}
    le rouge des titres de section, #752929. On vise le survol du bloc du
    titre pour que le lien suive, meme en survolant a cote du texte. */
 body .gwf_cate .gwf_title_cate:hover,body .gwf_cate .gwf_title_cate:hover a{color:#752929}
+
+/* Pied de page : le bloc perd son fond blanc et les liens d'administration
+   redeviennent du texte, comme la barre de liens juste au-dessus. La
+   gouttiere de 7px remplace le padding des anciennes pastilles, sinon les
+   deux liens et leur « | » se touchent (demande du 23/10). */
+#page-footer .gen{background:none}
+#page-footer .gen>strong:first-child{gap:7px}
+#page-footer .gen>strong:first-child a,#page-footer .gen>strong:first-child a:hover{padding:0;margin:0;border:0;border-radius:0;background:none}
