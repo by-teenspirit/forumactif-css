@@ -875,3 +875,25 @@ body .gwf_topiclist{background:var(--bl);margin-top:14px;margin-bottom:0}
    rendant souple, compteurs, vignette et dernier message viennent se caler
    sur le bord droit, dans l'axe de « DATABASE » et du bloc des sous-forums
    au-dessus ; la colonne des compteurs perd 10px au passage (23/10). */
+
+/* ====== MENU UTILISATEUR (23/10) ======
+   Il etait bati en deux colonnes : le bloc avatar en position absolue a
+   gauche, les liens dans une colonne de grille a droite. L'absolu ne se
+   calait pas la ou il fallait et venait recouvrir les liens, d'ou le rang
+   qu'on ne voyait plus. On repasse a une seule colonne : le bloc avatar en
+   haut, les liens dessous, tout aligne a gauche et sans capitales.
+   Le dore et le fond blanc au survol venaient de la feuille du forum, qui
+   colore les liens visites et leur pose un fond blanc des que la souris est
+   sur le menu : d'ou les !important, qui ne portent que sur la couleur et le
+   fond. On ne touche surtout pas a display, que Forumactif pilote en ligne
+   pour ouvrir et fermer le menu. */
+body #fa_menulist{grid-template-columns:none;padding:0!important}
+body #fa_usermenu{position:static;grid-column:1;grid-row:auto;width:auto;display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:14px 16px;border-right:0;border-bottom:.5px solid var(--sep);background:var(--ch)}
+body #fa_usermenu img{width:72px;height:auto;border-radius:6px}
+body #fa_usermenu a#fa_ranktitle{color:var(--pa);text-transform:none;letter-spacing:.04em;font-size:10.5px;text-align:left}
+body #fa_usermenu td.first{text-align:left;padding-right:6px;text-transform:none;letter-spacing:.02em;font-size:10px}
+body #fa_menulist li{grid-column:1;display:block;margin:0;padding:0;list-style:none;text-align:left}
+body #fa_menulist li a{display:block;text-align:left;text-transform:none;letter-spacing:.02em;font:400 11px/1.4 var(--f4);padding:7px 16px;border-radius:0}
+body #fa_menulist :is(a,a:link,a:visited){color:var(--fn)!important;background:none}
+body #fa_menu:hover #fa_menulist :is(a,a:visited){background:none!important;color:var(--fn)!important}
+body #fa_menulist li a:hover{background:var(--ch)!important}
