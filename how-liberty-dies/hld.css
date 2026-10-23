@@ -405,7 +405,7 @@ table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[al
 .gwf_sujets_view,.gwf_sujets_view *{text-align:center !important}
 .gwf_sujets_avatar{display:block;width:40px;height:40px;overflow:hidden;border-radius:var(--r1);margin:0}
 .gwf_sujets_avatar img{width:40px;height:40px;border-radius:var(--r1);object-fit:cover;display:block}
-.gwf_sujets_lastpost{text-align:left !important;padding-left:12px}
+.gwf_sujets_lastpost{text-align:right !important;padding-left:12px;padding-right:0}
 /* Sans sous-forums, le bloc sous-forums reste dans le DOM mais vide : le titre
    et la description restaient colles en haut avec du vide dessous. */
 body .gwf_cate .gwf_titre_desc{align-self:center}
@@ -841,7 +841,7 @@ body .gwf_cate .gwf_title_cate:hover,body .gwf_cate .gwf_title_cate:hover a{colo
    de 27px, et un filet vertical de 1px entre les compteurs et le dernier
    message. Le filet deborde de 6px en haut et en bas pour retrouver les 50px
    de la maquette, ou il est plus haut que le bloc de texte. */
-body .gwf_sujets{grid-template-columns:minmax(0,1fr) 100px 27px 150px;column-gap:11px;padding-top:9px;padding-bottom:9px;padding-right:12px}
+body .gwf_sujets{grid-template-columns:minmax(0,1fr) 100px 27px 150px;column-gap:11px;padding-top:9px;padding-bottom:9px;padding-right:16px}
 body .gwf_sujets .gwf_sujets_imgnew{margin:0 24px 0 10px}
 body .gwf_sujets .gwf_sujets_imgnew img{width:18px;height:18px}
 body .gwf_sujets :is(.gwf_sujets_avatar,.gwf_sujets_avatar img){width:27px;height:27px}
@@ -894,7 +894,11 @@ body .gwf_topiclist{background:var(--bl);margin-top:14px;margin-bottom:0}
 body #fa_menulist{grid-template-columns:152px 1fr;padding:0!important;background:linear-gradient(to right,var(--ch) 0 152px,var(--bl) 152px 100%)}
 body #fa_usermenu{float:left;position:static;grid-column:1;grid-row:1/span 50;width:152px;box-sizing:border-box;display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:14px 16px;border-right:.5px solid var(--sep);border-bottom:0;background:none}
 body #fa_usermenu img{width:100px;height:auto;border-radius:6px}
-body #fa_usermenu a#fa_ranktitle{color:var(--pa);text-transform:none;letter-spacing:.04em;font-size:10.5px;text-align:left}
+body #fa_usermenu a#fa_ranktitle{color:var(--pa);text-transform:none;letter-spacing:.04em;font-size:10.5px;width:100px;text-align:center}
+/* Le separateur partait du bord gauche du <ul> et traversait la colonne
+   grise de l'avatar : on le decale de la largeur de cette colonne pour
+   qu'il n'appartienne qu'a la colonne des liens. */
+body #fa_menulist li.fa_separator{width:auto;margin-left:152px;margin-right:0}
 body #fa_usermenu td.first{text-align:left;padding-right:6px;text-transform:none;letter-spacing:.02em;font-size:10px}
 body #fa_menulist li{grid-column:2;display:block;margin:0 0 0 152px;padding:0;list-style:none;text-align:left}
 body #fa_menulist li a{display:block;text-align:left;text-transform:none;letter-spacing:.02em;font:400 11px/1.4 var(--f4);padding:7px 20px 7px 16px;border-radius:0}
