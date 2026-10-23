@@ -795,3 +795,19 @@ body .hld_col2{justify-content:space-between}
    elle qu'il faut descendre a 3px, pas celle de .gw_cate_right. La gouttiere
    de colonnes reste a 20px. */
 body .gwf_cate{row-gap:3px}
+
+/* ====== INDEX : BARRE DE LIENS DE BAS DE PAGE ======
+   hld.js reunit les liens des deux tableaux d'origine dans un seul <nav>
+   place sous le QEEL, et marque les tableaux data-hld-pied. Texte a meme le
+   fond, sans cadre ni pastille, les liens cote a cote et centres ; ils ne
+   tiennent pas sur une seule ligne dans les 800px, le flex passe donc a la
+   ligne en gardant le centrage. */
+body table[data-hld-pied]{display:none}
+body .hld_pied{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;column-gap:18px;row-gap:6px;width:var(--L,800px);max-width:100%;margin:14px auto 4px;padding:0;background:none;border:0}
+body .hld_pied .hld_pied_lien{display:inline-block;margin:0;padding:0;background:none;border:0;border-radius:0;font:400 9px/1.6 var(--f1);letter-spacing:.11em;text-transform:uppercase;color:var(--pa);text-decoration:none;white-space:nowrap;transition:color .15s ease}
+body .hld_pied .hld_pied_lien:hover{background:none;color:var(--fn)}
+
+/* Le titre d'un forum repasse en rouge au survol (demande du 23/10) : c'est
+   le rouge des titres de section, #752929. On vise le survol du bloc du
+   titre pour que le lien suive, meme en survolant a cote du texte. */
+body .gwf_cate .gwf_title_cate:hover,body .gwf_cate .gwf_title_cate:hover a{color:#752929}
