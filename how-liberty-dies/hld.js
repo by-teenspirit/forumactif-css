@@ -475,6 +475,14 @@
     boite.setAttribute('data-hld-sm','1');
     cellule.appendChild(boite);
     colonneVide(cellule);
+    /* Page de redaction : la cellule d'origine porte le meme id et reste dans
+       la rangee, vide (elle ne contient que le script qui fabrique le
+       panneau). Elle reservait 232px pour rien : on la marque, le CSS la
+       retire. On vise l'attribut id, pour ne pas dependre de l'unicite. */
+    var doublons = document.querySelectorAll('[id="smileyContainer"]');
+    for(var k=0;k<doublons.length;k++){
+      if(doublons[k] !== boite) doublons[k].setAttribute('data-hld-reste','1');
+    }
     var f = boite.querySelector('iframe');
     if(!f) return;
     f.addEventListener('load', function(){ habiller(f); });
