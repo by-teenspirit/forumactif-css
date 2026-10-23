@@ -588,3 +588,45 @@
   if(document.readyState !== 'loading'){ descriptions(); }
   else { document.addEventListener('DOMContentLoaded', descriptions); }
 })();
+
+/* Index : les liens de bas de page.
+   Forumactif les repartit sur deux tableaux : celui de la derniere visite
+   (« voir les nouveaux messages… »), que le gabarit place juste sous la PA,
+   et celui de « tout marquer comme lu », coince entre la derniere categorie
+   et le QEEL. On en fait une seule barre, tout en bas, sous le QEEL : les
+   liens sont deplaces (pas recrees, donc les href restent ceux du forum) et
+   les deux tableaux d'origine sont marques pour que le CSS les masque. Si
+   ce bloc ne tourne pas, rien n'est masque et la page reste utilisable. */
+(function(){
+  var ORDRE = ['search_id=newposts','search_id=egosearch','search_id=unanswered',
+               'mark=forums','search_id=activetopics','mode=today_posters',
+               'mode=overall_posters','mode=delete_cookies'];
+  function pied(){
+    /* .gwf_pa n'existe que sur l'index : ailleurs on ne touche a rien. */
+    if(!document.querySelector('.gwf_pa')) return;
+    if(document.querySelector('.hld_pied')) return;
+    var a = document.querySelector('a[href*="search_id=newposts"]');
+    var b = document.querySelector('a[href*="mark=forums"]');
+    var A = a && a.closest('table');
+    var B = b && b.closest('table');
+    if(!A || !B) return;
+    var nav = document.createElement('nav');
+    nav.className = 'hld_pied';
+    for(var i=0;i<ORDRE.length;i++){
+      var lien = A.querySelector('a[href*="'+ORDRE[i]+'"]') ||
+                 B.querySelector('a[href*="'+ORDRE[i]+'"]');
+      if(!lien) continue;
+      lien.className = 'hld_pied_lien';
+      lien.removeAttribute('style');
+      nav.appendChild(lien);
+    }
+    if(!nav.children.length) return;
+    var qeel = document.querySelector('.gwf_qeel');
+    var ancre = (qeel && qeel.parentNode === B.parentNode) ? qeel : B;
+    ancre.insertAdjacentElement('afterend', nav);
+    A.setAttribute('data-hld-pied','1');
+    B.setAttribute('data-hld-pied','1');
+  }
+  if(document.readyState !== 'loading'){ pied(); }
+  else { document.addEventListener('DOMContentLoaded', pied); }
+})();
