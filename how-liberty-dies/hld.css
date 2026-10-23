@@ -841,7 +841,7 @@ body .gwf_cate .gwf_title_cate:hover,body .gwf_cate .gwf_title_cate:hover a{colo
    de 27px, et un filet vertical de 1px entre les compteurs et le dernier
    message. Le filet deborde de 6px en haut et en bas pour retrouver les 50px
    de la maquette, ou il est plus haut que le bloc de texte. */
-body .gwf_sujets{grid-template-columns:406px 130px 27px 150px;padding-top:9px;padding-bottom:9px}
+body .gwf_sujets{grid-template-columns:minmax(0,1fr) 120px 27px 150px;padding-top:9px;padding-bottom:9px}
 body .gwf_sujets .gwf_sujets_imgnew{margin:0 24px 0 10px}
 body .gwf_sujets .gwf_sujets_imgnew img{width:18px;height:18px}
 body .gwf_sujets :is(.gwf_sujets_avatar,.gwf_sujets_avatar img){width:27px;height:27px}
@@ -869,3 +869,9 @@ body .gwf_topiclist{background:var(--bl);margin-top:14px;margin-bottom:0}
    de gouttiere passent sur .gwf_topiclist, et .gwf_grand_titre_list rend les
    siens, sinon « DATABASE » et le fil d'Ariane se retrouvaient a 35px du bord
    a droite. Resultat : 17px des deux cotes (23/10). */
+
+/* La colonne du titre etait figee a 406px : les 13px qui restaient en bout de
+   grille repoussaient tout le groupe de droite vers l'interieur. En la
+   rendant souple, compteurs, vignette et dernier message viennent se caler
+   sur le bord droit, dans l'axe de « DATABASE » et du bloc des sous-forums
+   au-dessus ; la colonne des compteurs perd 10px au passage (23/10). */
