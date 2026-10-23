@@ -630,3 +630,26 @@
   if(document.readyState !== 'loading'){ pied(); }
   else { document.addEventListener('DOMContentLoaded', pied); }
 })();
+
+/* Liste des sujets : la colonne des compteurs.
+   La maquette affiche « 30 MESSAGES / 249 VUES ». Le gabarit, lui, donne le
+   nombre de REPONSES, qui vaut un de moins que le nombre de messages du
+   sujet : on ajoute donc 1 avant de changer le libelle, sinon un sujet qui
+   vient d'etre ouvert afficherait « 0 message » alors qu'il en contient un.
+   L'ordre d'affichage (messages au-dessus des vues) est fait en CSS. */
+(function(){
+  function compteurs(){
+    var cases = document.querySelectorAll('.gwf_sujets_view div');
+    for(var i=0;i<cases.length;i++){
+      var d = cases[i];
+      if(d.getAttribute('data-hld-msg')) continue;
+      var m = (d.textContent||'').match(/^\s*(\d+)\s+r[ée]ponses?\s*$/i);
+      if(!m) continue;
+      var n = parseInt(m[1],10) + 1;
+      d.textContent = n + (n > 1 ? ' messages' : ' message');
+      d.setAttribute('data-hld-msg','1');
+    }
+  }
+  if(document.readyState !== 'loading'){ compteurs(); }
+  else { document.addEventListener('DOMContentLoaded', compteurs); }
+})();
