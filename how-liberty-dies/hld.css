@@ -726,7 +726,7 @@ body .gwf_sujets a.topictitle{color:#565656}
 
 /* Liste des sujets : une bande de fond autour du fil d'Ariane, qui detache le
    bloc des sous-forums de la liste elle-meme. */
-body .gwf_topiclist{background:var(--fond-interieur);padding:10px 0}
+body .gwf_topiclist{background:var(--fond-interieur);padding:10px 16px}
 
 /* La barre « derniere visite / fil d'Ariane / voir les messages ».
    Dans un forum elle fait doublon avec le bloc blanc du fil d'Ariane juste
@@ -761,7 +761,7 @@ body .gwf_sujets a.topictitle{font-family:var(--f4)!important;font-weight:700!im
 
 /* Le bloc du fil d'Ariane n'a plus de fond ni de filet : il repose sur la
    bande de .gwf_topiclist. */
-body .gwf_grand_titre_list{background:none;border:0}
+body .gwf_grand_titre_list{background:none;border:0;padding-left:0;padding-right:0}
 
 /* « Note: », « Annonce: » en Bodoni gras. Le <strong> interne a sa propre
    graisse, il faut le viser aussi. */
@@ -863,3 +863,8 @@ body #gwf_header_topic>a{font-size:14px}
    .gwf_topiclist, herite du gabarit. Sans elle, le blanc de la cellule
    traverse et le bloc est d'un seul tenant, comme sur la maquette (23/10). */
 body .gwf_topiclist{background:none}
+
+/* Le bouton « nouveau » collait le bord gauche de la carte (1px) : les 16px
+   de gouttiere passent sur .gwf_topiclist, et .gwf_grand_titre_list rend les
+   siens, sinon « DATABASE » et le fil d'Ariane se retrouvaient a 35px du bord
+   a droite. Resultat : 17px des deux cotes (23/10). */
