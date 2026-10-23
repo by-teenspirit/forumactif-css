@@ -504,12 +504,21 @@ body .gwf_cate{grid-template-columns:58px minmax(0,1fr) 148px;column-gap:20px;pa
 /* Page de redaction : le panneau de smileys est une iframe heritee
    (/smilies?mode=smilies_frame). Forumactif la loge dans la colonne des
    libelles, large de 180px, alors qu'elle en fait 238 : d'ou le debordement
-   sur l'editeur. hld.js la deplace sous l'editeur et habille son document
-   interne (meme domaine, donc accessible). Les cellules d'origine passent en
-   block pour ne plus reserver de largeur dans le tableau. */
-#page-body table:has(> tbody > tr > td > #smileyContainer),#page-body td:has(> #smileyContainer){display:block}
-#page-body #smileyContainer{width:auto;margin:10px 0 0;border:.5px solid var(--fi);border-radius:var(--r1);background:var(--bl);overflow:hidden}
+   sur l'editeur. hld.js la deplace dans la cellule de l'editeur et habille
+   son document interne (meme domaine, donc accessible). Cette cellule devient
+   une rangee flex : les smileys a gauche, l'editeur a droite (23/10). */
+#page-body table:has(> tbody > tr > td > #smileyContainer){display:block}
+#page-body td:has(> #smileyContainer){display:flex;align-items:flex-start;gap:12px}
+#page-body td:has(> #smileyContainer)>span.gen{flex:1 1 auto;min-width:0;width:auto!important;height:auto!important}
+#page-body #smileyContainer{order:-1;flex:0 0 232px;width:232px;margin:0;border:.5px solid var(--fi);border-radius:var(--r1);background:var(--bl);overflow:hidden}
 #page-body #smileyContainer iframe{width:100%;height:190px;border:0;display:block;background:var(--bl)}
+/* L'editeur prend la largeur restante : SCEditor pose ses largeurs en ligne
+   et la feuille du forum plafonne les textarea a 220px, d'ou les !important. */
+#page-body .sceditor-container{width:100%!important;max-width:none}
+#page-body .sceditor-container>:is(iframe,textarea){width:100%!important;max-width:none!important}
+/* Colonne de libelles vide a gauche de l'editeur : hld.js la marque quand
+   elle ne contient rien, pour rendre ses 180px a l'editeur. */
+#page-body td.row1[data-hld-vide]{display:none}
 
 /* ====== PASSE DU 11/10 ======
    Le CSS principal est servi dans 0-ltr.css et gagne sur plusieurs
@@ -612,7 +621,7 @@ body .gwf_sujets .gwf_sujets_titre{line-height:14px}
 body .gwf_sujets .gwf_sujets_name{margin:0;line-height:14px}
 
 /* « note » et « annonce » en gras */
-body .gwf_sujets .gwf_sujets_type{font-weight:700}
+body .gwf_sujets .gwf_sujets_type{font-weight:400}
 
 /* La description est un span.genmed frere du bloc titre, donc une colonne a
    part dans le flex de .gwf_sujets_left : hld.js la descend dans le bloc
@@ -627,7 +636,7 @@ body .gwf_sujets .gwf_sujets_view{gap:0}
 body .gwf_sujets .gwf_sujets_lastpost{font:400 9.5px/1.5 var(--f4);text-transform:lowercase;letter-spacing:0}
 
 /* Avatar du dernier posteur sans arrondi */
-body .gwf_sujets .gwf_sujets_avatar img{border-radius:0}
+body .gwf_sujets :is(.gwf_sujets_avatar,.gwf_sujets_avatar img){border-radius:0}
 
 /* ------------------------------------------------------------------
    Liste des sujets : la fleche, la pastille « nouveau », le bandeau
@@ -751,7 +760,7 @@ body .gwf_grand_titre_list{background:none;border:0}
 
 /* « Note: », « Annonce: » en Bodoni gras. Le <strong> interne a sa propre
    graisse, il faut le viser aussi. */
-body .gwf_sujets :is(.gwf_sujets_type,.gwf_sujets_type strong){font-family:var(--f2);font-weight:700}
+body .gwf_sujets :is(.gwf_sujets_type,.gwf_sujets_type strong){font-family:'Chakra Petch',sans-serif;font-weight:400;color:#333}
 
 /* Titre de categorie, et titre de la QEEL avec. Le <span> interne du titre de
    la QEEL a sa propre taille et sa propre couleur : on le fait heriter, sinon
@@ -841,5 +850,11 @@ body .gwf_sujets .gwf_sujets_view::after{content:"";position:absolute;top:-6px;b
 body .gwf_sujets .gwf_sujets_lastpost strong{text-transform:lowercase}
 /* Bouton « nouveau » : plus large et moins haut, texte d'un demi-point plus
    gros ; titre du forum a 14px. */
-body .gwf_nouv_rep a[href]{font-size:10.5px;padding:5px 26px}
+body .gwf_nouv_rep a[href]{font-family:'Chakra Petch',sans-serif;font-weight:500;font-size:10.5px;padding:4px 23px}
 body #gwf_header_topic>a{font-size:14px}
+
+/* Le bandeau « nouveau / nom du forum / fil d'Ariane » est sur le meme fond
+   blanc que la liste des sujets : la bande grise venait du fond propre de
+   .gwf_topiclist, herite du gabarit. Sans elle, le blanc de la cellule
+   traverse et le bloc est d'un seul tenant, comme sur la maquette (23/10). */
+body .gwf_topiclist{background:none}
