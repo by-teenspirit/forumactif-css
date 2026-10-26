@@ -928,6 +928,10 @@ body #page-body .gwf_topiclist,body #page-body .gwf_topiclist *{border-radius:0}
 /* ====== MESSAGERIE PRIVEE (privmsg) ======
    De l'air sous la banniere. */
 body .hld_onglets{margin-top:36px;align-items:flex-start}
+/* Le bloc du quota, a droite, est dans un autre tableau que les onglets :
+   il ne suivait pas et restait colle a la banniere. Meme ecart pour que les
+   deux hauts se rejoignent. */
+body #page-body table.bodyline[width="250"]{margin-top:36px}
 
 /* L'onglet actif est un <span> et les autres des <a> : seuls les <a>
    heritaient de la typo des liens (Karla majuscule) et de la couleur doree
