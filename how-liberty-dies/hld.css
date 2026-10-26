@@ -1129,7 +1129,7 @@ body #page-body .gwf_liens_profil{order:4}
    graisse normale, le rang juste dessous dans la pastille de la charte. */
 body #page-body .gwf_viewtopic_name{padding:0 0 2px;background:none;border:0;text-align:center}
 body #page-body .gwf_viewtopic_name>strong{display:block;margin:0 0 8px}
-body #page-body .gwf_viewtopic_name :is(a,strong,span){font:400 14px/1.3 var(--f1);letter-spacing:.04em;text-transform:none;color:var(--gc)}
+body #page-body .gwf_viewtopic_name :is(a,strong,span){font:700 14px/1.3 var(--f1);letter-spacing:.04em;text-transform:none;color:var(--gc)}
 body #page-body .gwf_viewtopic_name .hld_rang,
 body #page-body .gwf_viewtopic_name .hld_rang strong{font:500 8.5px/1.4 'Chakra Petch',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#fff}
 body #page-body .gwf_viewtopic_name .hld_rang{display:block;width:auto;padding:4px 8px;text-align:center}
@@ -1206,6 +1206,6 @@ body #page-body .gwf_viewtopic_all{padding-left:0;padding-right:0}
 /* Plus d'angles arrondis dans un message. Le contenu de la fiche, ecrit par
    le membre, garde les siens : ses ronds d'avatar notamment. */
 body #page-body tr.post>td,
-body #page-body :is(.gwf_viewtopic_left,.gwf_viewtopic_petit_titre,.postbody),
+body #page-body :is(.gwf_viewtopic_top,.gwf_viewtopic_titre,.gwf_viewtopic_left,.gwf_viewtopic_petit_titre,.postbody),
 body #page-body .gwf_viewtopic_left *,
 body #page-body .hld_champ_val img{border-radius:0}
