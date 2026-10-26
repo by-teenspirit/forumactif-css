@@ -447,12 +447,15 @@
     return true;
   }
 
-  /* Le panneau prend la hauteur du bloc d'edition (26/10). On remesure au
-     redimensionnement, la hauteur de l'editeur dependant de la largeur. */
+  /* Le panneau s'arrete en meme temps que le bloc d'edition (26/10). Il
+     commence plus bas que lui, sous le libelle « Corps du message » : on
+     mesure donc l'ecart jusqu'au bas de l'editeur plutot que de recopier sa
+     hauteur, sinon le panneau depassait d'une ligne. La hauteur de l'editeur
+     dependant de sa largeur, on remesure au redimensionnement. */
   function aligner(boite){
     var ed = document.querySelector('.sceditor-container');
     if(!ed) return;
-    var h = Math.round(ed.getBoundingClientRect().height);
+    var h = Math.round(ed.getBoundingClientRect().bottom - boite.getBoundingClientRect().top);
     if(h > 60) boite.style.height = h + 'px';
   }
 
