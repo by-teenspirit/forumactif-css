@@ -1001,6 +1001,15 @@ body #page-body td.catBottom input[type=submit]{padding:8px 11px;letter-spacing:
   --f_cadre:#E6E6E6;   /* les contours */
   font:400 10.5px/1.75 var(--f4);color:var(--f_tx);text-align:justify}
 .hld_fiche *{box-sizing:border-box}
+/* Forumactif remplace chaque retour a la ligne du message par un <br>. Entre
+   deux blocs il ne sert a rien, et dans une rangee flex il compte comme un
+   element : trois <br> ajoutaient trois fois la gouttiere et retrecissaient
+   les colonnes. On les neutralise la ou ils sont structurels ; ceux qui sont
+   a l'interieur d'un paragraphe continuent de couper la ligne. */
+.hld_fiche>br,.hld_f_duo>br,.hld_f_avatars>br,.hld_f_texte>br{display:none}
+/* La feuille des messages colore le gras en dore : dans une fiche il reste
+   de la couleur du texte, le dore est reserve aux balises. */
+.hld_fiche :is(b,strong){color:inherit}
 .hld_fiche p{margin:0 0 10px}
 .hld_fiche p:last-child{margin-bottom:0}
 
