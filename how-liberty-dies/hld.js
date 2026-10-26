@@ -479,8 +479,17 @@
   function poser(boite, cellule){
     if(boite.getAttribute('data-hld-sm')) return;
     boite.setAttribute('data-hld-sm','1');
-    cellule.appendChild(boite);
-    colonneVide(cellule);
+    /* Le panneau va sous le libelle « Corps du message », dans la colonne de
+       gauche, et non dans la cellule de l'editeur (26/10). On vise la cellule
+       de libelle qui precede celle de l'editeur dans la meme rangee ; si elle
+       n'existe pas, on retombe sur l'ancien comportement. */
+    var cel2 = cellule.closest('td.row2') || cellule;
+    var prec = cel2.previousElementSibling;
+    var hote = (prec && prec.matches && prec.matches('td.row1')) ? prec : cellule;
+    hote.appendChild(boite);
+    /* La colonne de libelles n'est masquee que si le panneau n'y est pas :
+       sinon on masquerait les smileys avec elle. */
+    if(hote === cellule) colonneVide(cellule);
     /* Page de redaction : la cellule d'origine porte le meme id et reste dans
        la rangee, vide (elle ne contient que le script qui fabrique le
        panneau). Elle reservait 232px pour rien : on la marque, le CSS la
