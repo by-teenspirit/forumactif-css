@@ -1147,7 +1147,7 @@ body #page-body .gwf_viewtopic_avatar a>img{width:100%;height:100%;object-fit:co
    onglets et leur contenu : il est gris, le dore reste aux libelles. */
 body #page-body .systab{order:3;padding:14px 0 0}
 body #page-body .systab .tabs{display:flex;justify-content:center;gap:10px;margin:0;padding-bottom:11px;border-bottom:1px solid var(--fi)}
-body #page-body .systab .tab{flex:0 1 auto;min-width:0;padding:0;border:0;border-radius:0;background:none;font:500 7.5px/1.4 'Chakra Petch',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--pa);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body #page-body .systab .tab{flex:0 1 auto;min-width:0;padding:0;border:0;border-radius:0;background:none;font:500 9.5px/1.4 'Chakra Petch',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--pa);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 body #page-body .systab .tab:hover{background:none;color:var(--fn)}
 body #page-body .systab .tab.selected{background:none;border:0;color:var(--fn)}
 
