@@ -436,10 +436,27 @@
       sp.appendChild(im);
     }
   }
+  /* Le bloc de liens n'est pas dans le HTML servi : un script du forum le
+     construit apres le chargement. On repasse donc dessus des qu'il arrive,
+     et on arrete de surveiller une fois toutes les colonnes servies. */
+  function veille(cols){
+    if(!cols.length || !window.MutationObserver) return;
+    var obs=new MutationObserver(function(){
+      var reste=0;
+      for(var i=0;i<cols.length;i++){
+        liens(cols[i]);
+        if(!cols[i].querySelector('.gwf_liens_profil a[data-lien]')) reste++;
+      }
+      if(!reste) obs.disconnect();
+    });
+    for(var i=0;i<cols.length;i++) obs.observe(cols[i],{childList:true,subtree:true});
+    setTimeout(function(){ obs.disconnect(); }, 10000);
+  }
   function sujet(){
     var cols=document.querySelectorAll('.gwf_viewtopic_left');
     for(var i=0;i<cols.length;i++) colonne(cols[i]);
     outils();
+    veille(cols);
   }
   if(document.readyState!=='loading'){ sujet(); }
   else { document.addEventListener('DOMContentLoaded', sujet); }
