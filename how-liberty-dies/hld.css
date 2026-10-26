@@ -1152,16 +1152,19 @@ body #page-body .systab .content::-webkit-scrollbar-thumb{background:#B9AFA2}
 /* Les champs collent aux bords de la colonne, se separent d'un filet dore,
    et leurs libelles passent en Chakra doree majuscule. */
 body #page-body .gwf_viewtopic_label{padding:14px 0 0}
-body #page-body .gwf_viewtopic_label .infos-posteur{border-top:1px solid var(--or)}
+body #page-body .gwf_viewtopic_label .infos-posteur{grid-template-columns:86px minmax(0,1fr);gap:8px;text-align:left;border-top:1px solid var(--or)}
 body #page-body .gwf_viewtopic_label .infos-posteur:first-child{border-top:1px solid var(--or);padding-top:8px}
-body #page-body .infos-posteur .label{font:500 8.5px/1.6 'Chakra Petch',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--or)}
+body #page-body .infos-posteur .label{font:500 8px/1.6 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--or)}
 
 /* Les liens du bas : le mot a la place de l'icone subsilver. Le site web est
    servi deux fois par le gabarit, et le courriel n'est pas dans la maquette :
    les deux sont masques. */
 body #page-body .gwf_liens_profil{padding:14px 0 0;margin-top:14px;border-top:1px solid var(--or)}
-body #page-body .gwf_liens_profil tr{justify-content:center;gap:4px 14px}
-body #page-body .gwf_liens_profil a[data-lien]{font:500 8.5px/1.4 'Chakra Petch',sans-serif;letter-spacing:.13em;text-transform:uppercase;text-decoration:none}
+body #page-body .gwf_liens_profil :is(tr,td){display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px}
+body #page-body .gwf_liens_profil a[data-lien]{display:inline-block;width:auto;height:auto;min-width:0;padding:0;border:0;border-radius:0;background:none;text-decoration:none}
+/* le mot remplace l'icone : la regle des liens de contact les mettait en
+   Material Icons, ce qui transformait « profil » en ligatures. */
+body #page-body .gwf_liens_profil a[data-lien]::after{font:500 8.5px/1.4 'Chakra Petch',sans-serif;letter-spacing:.13em;text-transform:uppercase}
 body #page-body .gwf_liens_profil a[data-lien]:is(:link,:visited){color:var(--pa)}
 body #page-body .gwf_liens_profil a[data-lien]:hover{color:var(--fn)}
 body #page-body .gwf_liens_profil a[data-lien]>img{display:none}
