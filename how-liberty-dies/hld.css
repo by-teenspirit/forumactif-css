@@ -1196,11 +1196,11 @@ body #page-body .gwf_liens_profil a[data-lien="presentation"]::after{content:"pr
 body #page-body .gwf_liens_profil a:is([data-lien="site"],[data-lien="email"]){display:none}
 body #page-body .gwf_liens_profil td>img{display:none}
 
-/* Un seul filet dore, tout en haut du bloc des messages : il est pose sur
-   le tableau lui-meme, pas sur chaque message. Le conteneur perd ses 10px
-   de marge laterale pour qu'il aille d'un bord a l'autre du bloc. */
+/* Un seul filet dore, en haut du bloc qui porte le fil d'Ariane. Le
+   conteneur des messages perd ses 10px de marge laterale pour que le bloc
+   et les messages soient cales sur les memes bords. */
 body #page-body .gwf_viewtopic_all{padding-left:0;padding-right:0}
-body #page-body table.forumline:has(tr.post){border-top:2px solid var(--or,#A68953)}
+body .gwf_viewtopic_top{border-top:2px solid var(--or,#A68953)}
 
 /* Plus d'angles arrondis dans un message. Le contenu de la fiche, ecrit par
    le membre, garde les siens : ses ronds d'avatar notamment. */
