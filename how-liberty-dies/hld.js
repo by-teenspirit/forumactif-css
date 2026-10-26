@@ -441,15 +441,19 @@
     st.id = 'hld_smileys';
     st.appendChild(d.createTextNode(interne));
     d.head.appendChild(st);
-    setTimeout(function(){
-      /* Le plafond etait a 280px alors que la grille en fait ~325 : la
-         derniere rangee de smileys etait coupee par le bord du panneau.
-         On laisse la place au contenu, avec un plafond assez haut pour
-         « voir plus de smileys » sans etirer la page a l'infini. */
-      var h = d.body.scrollHeight;
-      if(h > 0) f.style.height = Math.min(Math.max(h + 6, 120), 460) + 'px';
-    }, 80);
+    /* La hauteur ne vient plus du contenu : le panneau se cale sur celle du
+       bloc d'edition (voir aligner), l'iframe fait 100% et la grille defile
+       a l'interieur si elle est plus haute. */
     return true;
+  }
+
+  /* Le panneau prend la hauteur du bloc d'edition (26/10). On remesure au
+     redimensionnement, la hauteur de l'editeur dependant de la largeur. */
+  function aligner(boite){
+    var ed = document.querySelector('.sceditor-container');
+    if(!ed) return;
+    var h = Math.round(ed.getBoundingClientRect().height);
+    if(h > 60) boite.style.height = h + 'px';
   }
 
   /* L'iframe peut avoir fini de charger avant qu'on pose l'ecouteur : on
@@ -498,6 +502,8 @@
     for(var k=0;k<doublons.length;k++){
       if(doublons[k] !== boite) doublons[k].setAttribute('data-hld-reste','1');
     }
+    setTimeout(function(){ aligner(boite); }, 400);
+    window.addEventListener('resize', function(){ aligner(boite); });
     var f = boite.querySelector('iframe');
     if(!f) return;
     f.addEventListener('load', function(){ habiller(f); });
