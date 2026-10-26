@@ -519,7 +519,7 @@ body .gwf_cate{grid-template-columns:58px minmax(0,1fr) 148px;column-gap:20px;pa
 #page-body table.forumline:has(#smileyContainer[data-hld-sm]) > tbody > tr > td.row1{flex:0 0 238px;width:238px;max-width:238px;box-sizing:border-box}
 #page-body table.forumline:has(#smileyContainer[data-hld-sm]) > tbody > tr > td:not(.row1){flex:1 1 auto;min-width:0;box-sizing:border-box}
 #page-body #smileyContainer[data-hld-sm]{display:block;width:100%;min-width:0;box-sizing:border-box;margin:10px 0 0;border:.5px solid var(--fi);border-radius:var(--r1);background:var(--bl);overflow:hidden}
-#page-body #smileyContainer[data-hld-sm] iframe{width:100%;min-width:0;border:0;display:block;background:var(--bl)}
+#page-body #smileyContainer[data-hld-sm] iframe{width:100%;min-width:0;height:100%;border:0;display:block;background:var(--bl)}
 /* Sur la page de redaction, Forumactif laisse en place la cellule d'origine
    (meme id, vide : elle ne porte que le script qui fabrique le panneau) et
    elle reservait 232px pour rien. hld.js la marque, on la retire. */
