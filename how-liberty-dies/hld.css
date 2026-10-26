@@ -1114,10 +1114,11 @@ body .gwf_participants_nb{font:500 9px/1.5 'Chakra Petch',sans-serif;font-style:
    chaque bloc prend sa place par `order` ; hld.js enveloppe le rang, qui
    n'etait qu'un noeud de texte, dans .hld_rang.
    La largeur vient de l'avatar : Forumactif les sert en 200 x 320 et on les
-   affiche a leur taille native, donc 224 = 200 + 24 de marge interne. La
-   colonne n'a pas de cadre : seul l'avatar porte un filet. --or est le dore
-   de la charte : le changer ici le change partout dans la colonne. */
-body #page-body .gwf_viewtopic_left{--or:#A68953;width:224px;display:flex;flex-direction:column;padding:14px 12px;background:#fff;border:0;border-radius:0;overflow:visible}
+   affiche a leur taille native, donc 228 = 200 + les 4 du filet de l'avatar
+   + 24 de marge interne. La colonne n'a pas de cadre : seul l'avatar porte
+   un filet. --or est le dore de la charte : le changer ici le change partout
+   dans la colonne. */
+body #page-body .gwf_viewtopic_left{--or:#A68953;width:228px;display:flex;flex-direction:column;padding:14px 12px;background:#fff;border:0;border-radius:0;overflow:visible}
 body #page-body .gwf_viewtopic_left>br{display:none}
 body #page-body .gwf_viewtopic_name{order:1}
 body #page-body .gwf_viewtopic_avatar{order:2}
@@ -1132,8 +1133,10 @@ body #page-body .gwf_viewtopic_name :is(a,strong,span){font:400 14px/1.3 var(--f
 body #page-body .gwf_viewtopic_name .hld_rang,
 body #page-body .gwf_viewtopic_name .hld_rang strong{font:500 8.5px/1.4 'Chakra Petch',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#fff}
 
-/* L'avatar a sa taille d'origine, contour gris, sans arrondi. */
-body #page-body .gwf_viewtopic_avatar{width:200px;height:320px;padding:0;border:.5px solid var(--fi);border-radius:0;background:#fff;font-size:0}
+/* L'avatar a sa taille d'origine et un contour gris de 2px. box-sizing est
+   remis en content-box : en border-box le filet mangeait l'image, qui
+   tombait a 199 x 319. */
+body #page-body .gwf_viewtopic_avatar{box-sizing:content-box;width:200px;height:320px;padding:0;border:2px solid var(--fi);border-radius:0;background:#fff;font-size:0}
 body #page-body .gwf_viewtopic_avatar a{display:block;width:100%;height:100%}
 body #page-body .gwf_viewtopic_avatar a>img{width:100%;height:100%;object-fit:cover;border-radius:0}
 
