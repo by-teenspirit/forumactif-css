@@ -1127,7 +1127,7 @@ body #page-body .gwf_liens_profil{order:4}
 
 /* Pseudo et rang : plus de bandeau teinte, le pseudo en minuscules et en
    graisse normale, le rang juste dessous dans la pastille de la charte. */
-body #page-body .gwf_viewtopic_name{padding:0 0 12px;background:none;border:0;text-align:center}
+body #page-body .gwf_viewtopic_name{padding:0 0 6px;background:none;border:0;text-align:center}
 body #page-body .gwf_viewtopic_name>strong{display:block;margin:0 0 8px}
 body #page-body .gwf_viewtopic_name :is(a,strong,span){font:400 14px/1.3 var(--f1);letter-spacing:.04em;text-transform:none;color:var(--gc)}
 body #page-body .gwf_viewtopic_name .hld_rang,
@@ -1195,3 +1195,10 @@ body #page-body .gwf_liens_profil a[data-lien="mp"]::after{content:"mp"}
 body #page-body .gwf_liens_profil a[data-lien="presentation"]::after{content:"présentation"}
 body #page-body .gwf_liens_profil a:is([data-lien="site"],[data-lien="email"]){display:none}
 body #page-body .gwf_liens_profil td>img{display:none}
+
+/* Un filet dore separe deux messages. Chaque message occupe deux lignes :
+   la ligne du message (tr.post) et une ligne de pied (meme classe post--NN
+   mais sans .post) ou vivent les fleches haut / bas. Le filet se pose sous
+   cette ligne de pied, sauf pour le dernier message. */
+#page-body tr[class*="post--"]:not(.post)>td{border-bottom:1px solid var(--or,#A68953)}
+#page-body tr[class*="post--"]:not(.post):is(:last-child,:nth-last-child(2))>td{border-bottom:0}
