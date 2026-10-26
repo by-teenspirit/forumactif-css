@@ -305,7 +305,13 @@
     }
   }
   function onglets(){
-    barre(['#page-body a.mainmenu[href*="page_profil"]','#page-body a[href$="folder=sentbox"]']);
+    /* Le repere doit exister sur toutes les pages de la messagerie. Sur
+       /privmsg?folder=sentbox l'entree « Messages envoyes » est justement
+       celle qui n'a pas de lien : il faut donc aussi viser la boite de
+       reception, sinon la barre n'est pas reconstruite sur cette page. La
+       ligne est marquee data-hld-ong, le second repere ne fait donc jamais
+       le travail deux fois. */
+    barre(['#page-body a.mainmenu[href*="page_profil"]','#page-body a[href$="folder=sentbox"]','#page-body a[href$="folder=inbox"]']);
   }
   if(document.readyState!=='loading'){ onglets(); }
   else { document.addEventListener('DOMContentLoaded', onglets); }
