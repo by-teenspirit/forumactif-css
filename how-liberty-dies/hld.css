@@ -1129,7 +1129,7 @@ body #page-body .gwf_liens_profil{order:4}
    graisse normale, le rang juste dessous dans la pastille de la charte. */
 body #page-body .gwf_viewtopic_name{padding:0 0 2px;background:none;border:0;text-align:center}
 body #page-body .gwf_viewtopic_name>strong{display:block;margin:0 0 8px}
-body #page-body .gwf_viewtopic_name :is(a,strong,span){font:700 14px/1.3 var(--f1);letter-spacing:.04em;text-transform:none;color:var(--gc)}
+body #page-body .gwf_viewtopic_name :is(a,strong,span){font:700 19px/1.25 var(--f2);letter-spacing:.01em;text-transform:none;color:var(--gc)}
 body #page-body .gwf_viewtopic_name .hld_rang,
 body #page-body .gwf_viewtopic_name .hld_rang strong{font:500 8.5px/1.4 'Chakra Petch',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#fff}
 body #page-body .gwf_viewtopic_name .hld_rang{display:block;width:auto;padding:4px 8px;text-align:center}
@@ -1196,12 +1196,11 @@ body #page-body .gwf_liens_profil a[data-lien="presentation"]::after{content:"pr
 body #page-body .gwf_liens_profil a:is([data-lien="site"],[data-lien="email"]){display:none}
 body #page-body .gwf_liens_profil td>img{display:none}
 
-/* Un filet dore ouvre chaque message : il se pose en haut de la ligne du
-   message, donc au-dessus du premier comme entre deux messages. Le
-   conteneur perd ses 10px de marge laterale pour que le filet aille d'un
-   bord a l'autre du bloc. */
+/* Un seul filet dore, tout en haut du bloc des messages : il est pose sur
+   le tableau lui-meme, pas sur chaque message. Le conteneur perd ses 10px
+   de marge laterale pour qu'il aille d'un bord a l'autre du bloc. */
 body #page-body .gwf_viewtopic_all{padding-left:0;padding-right:0}
-#page-body tr.post>td{border-top:2px solid var(--or,#A68953)}
+body #page-body table.forumline:has(tr.post){border-top:2px solid var(--or,#A68953)}
 
 /* Plus d'angles arrondis dans un message. Le contenu de la fiche, ecrit par
    le membre, garde les siens : ses ronds d'avatar notamment. */
@@ -1209,3 +1208,10 @@ body #page-body tr.post>td,
 body #page-body :is(.gwf_viewtopic_top,.gwf_viewtopic_titre,.gwf_viewtopic_left,.gwf_viewtopic_petit_titre,.postbody),
 body #page-body .gwf_viewtopic_left *,
 body #page-body .hld_champ_val img{border-radius:0}
+
+/* Les boutons « nouveau » et « repondre » du bas : le gabarit les sert en
+   simples liens dans un <span class="nav">, alors que ceux du haut sont
+   deja en pastilles. Meme boite pour les deux. */
+body #page-body span.nav a:has(>img[src*="topic_fr"],>img[src*="reply_fr"]){display:inline-block;padding:5px 16px;border:.5px solid var(--fi);border-radius:0;background:#fff;font:400 9.5px/1.4 var(--f1);letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+body #page-body span.nav a:is(:link,:visited):has(>img[src*="topic_fr"],>img[src*="reply_fr"]){color:var(--fn)}
+body #page-body span.nav a:hover:has(>img[src*="topic_fr"],>img[src*="reply_fr"]){background:var(--ch)}
