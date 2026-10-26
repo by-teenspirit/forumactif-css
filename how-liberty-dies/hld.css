@@ -1113,9 +1113,11 @@ body .gwf_participants_nb{font:500 9px/1.5 'Chakra Petch',sans-serif;font-style:
    derriere le pseudo dans le meme bloc. La colonne passe donc en flex et
    chaque bloc prend sa place par `order` ; hld.js enveloppe le rang, qui
    n'etait qu'un noeud de texte, dans .hld_rang.
-   --or est le dore de la charte : le changer ici le change sur les filets
-   et sur les libelles de champs d'un coup. */
-body #page-body .gwf_viewtopic_left{--or:#A68953;display:flex;flex-direction:column;padding:14px 12px;background:#fff;border-radius:0;overflow:visible}
+   La largeur vient de l'avatar : Forumactif les sert en 200 x 320 et on les
+   affiche a leur taille native, donc 226 = 200 + 24 de marge interne + le
+   filet. --or est le dore de la charte : le changer ici le change partout
+   dans la colonne. */
+body #page-body .gwf_viewtopic_left{--or:#A68953;width:226px;display:flex;flex-direction:column;padding:14px 12px;background:#fff;border-radius:0;overflow:visible}
 body #page-body .gwf_viewtopic_left>br{display:none}
 body #page-body .gwf_viewtopic_name{order:1}
 body #page-body .gwf_viewtopic_avatar{order:2}
@@ -1130,36 +1132,52 @@ body #page-body .gwf_viewtopic_name :is(a,strong,span){font:400 14px/1.3 var(--f
 body #page-body .gwf_viewtopic_name .hld_rang,
 body #page-body .gwf_viewtopic_name .hld_rang strong{font:500 8.5px/1.4 'Chakra Petch',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#fff}
 
-/* L'avatar prend un contour gris et perd ses angles arrondis. */
-body #page-body .gwf_viewtopic_avatar{padding:0;border:.5px solid var(--fi);border-radius:0;background:#fff;font-size:0}
-body #page-body .gwf_viewtopic_avatar a>img{border-radius:0}
+/* L'avatar a sa taille d'origine, contour gris, sans arrondi. */
+body #page-body .gwf_viewtopic_avatar{width:200px;height:320px;padding:0;border:.5px solid var(--fi);border-radius:0;background:#fff;font-size:0}
+body #page-body .gwf_viewtopic_avatar a{display:block;width:100%;height:100%}
+body #page-body .gwf_viewtopic_avatar a>img{width:100%;height:100%;object-fit:cover;border-radius:0}
 
-/* Les onglets perdent leur pastille : deux mots en Chakra majuscule, le
-   selectionne en noir, l'autre en gris. */
-body #page-body .systab{padding:14px 0 0}
-body #page-body .systab .tabs{display:flex;justify-content:center;gap:14px;margin:0}
-body #page-body .systab .tab{flex:0 1 auto;padding:0;border:0;border-radius:0;background:none;font:500 8.5px/1.4 'Chakra Petch',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--pa)}
+/* Les onglets : en Chakra majuscule, le selectionne en noir et l'autre en
+   gris. Chacun tient sur une ligne ; un nom trop long est coupe plutot que
+   renvoye a la ligne. Le seul filet dore de la colonne est ici, entre les
+   onglets et leur contenu. */
+body #page-body .systab{order:3;padding:14px 0 0}
+body #page-body .systab .tabs{display:flex;justify-content:center;gap:10px;margin:0;padding-bottom:11px;border-bottom:1px solid var(--or)}
+body #page-body .systab .tab{flex:0 1 auto;min-width:0;padding:0;border:0;border-radius:0;background:none;font:500 7.5px/1.4 'Chakra Petch',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--pa);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 body #page-body .systab .tab:hover{background:none;color:var(--fn)}
 body #page-body .systab .tab.selected{background:none;border:0;color:var(--fn)}
 
 /* Le contenu d'un onglet est plafonne et defile, pour que la colonne ne
-   depasse jamais le premier message quel que soit le nombre de champs. */
-body #page-body .systab .content{max-height:320px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#B9AFA2 transparent}
+   depasse jamais le premier message quel que soit le nombre de champs.
+   Le script des onglets pose un overflow:hidden en style en ligne sur le
+   premier message de la page : d'ou le !important. */
+body #page-body .systab .content{max-height:320px;overflow-y:auto !important;scrollbar-width:thin;scrollbar-color:#B9AFA2 transparent}
 body #page-body .systab .content::-webkit-scrollbar{width:6px}
 body #page-body .systab .content::-webkit-scrollbar-track{background:none}
 body #page-body .systab .content::-webkit-scrollbar-thumb{background:#B9AFA2}
 
-/* Les champs collent aux bords de la colonne, se separent d'un filet dore,
-   et leurs libelles passent en Chakra doree majuscule. */
-body #page-body .gwf_viewtopic_label{padding:14px 0 0}
-body #page-body .gwf_viewtopic_label .infos-posteur{grid-template-columns:86px minmax(0,1fr);gap:8px;text-align:left;border-top:1px solid var(--or)}
-body #page-body .gwf_viewtopic_label .infos-posteur:first-child{border-top:1px solid var(--or);padding-top:8px}
-body #page-body .infos-posteur .label{font:500 8px/1.6 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--or)}
+/* Les champs : libelle et valeur sur la meme ligne, separes par //. Rien
+   d'autre que le libelle n'a de typo propre — ni gros chiffres pour les
+   compteurs, ni exergue pour la citation. */
+body #page-body .gwf_viewtopic_label{padding:12px 0 0}
+body #page-body .gwf_viewtopic_label .infos-posteur{display:block;padding:5px 0;border:0;text-align:left}
+body #page-body .gwf_viewtopic_label .infos-posteur:first-child{padding-top:0;border:0}
+body #page-body .infos-posteur .profil_label{display:inline}
+body #page-body .infos-posteur .label{font:500 8px/1.7 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--or)}
+body #page-body .infos-posteur .profil_label::after{content:"//";margin:0 5px;font:500 8px/1.7 'Chakra Petch',sans-serif;letter-spacing:0;color:var(--or)}
+body #page-body .hld_champ_val,
+body #page-body .infos-posteur[data-type="nombre"] .hld_champ_val,
+body #page-body .infos-posteur[data-champ="citation"] .hld_champ_val{display:inline;padding-left:0;border-left:0;text-align:left;font:400 11px/1.7 var(--f4);color:var(--fn)}
+body #page-body .gwf_viewtopic_label .infos-posteur[data-champ="citation"]{display:block;padding:5px 0}
+body #page-body .infos-posteur[data-champ="citation"] .profil_label{display:inline}
+/* un champ image reste pleine largeur et sans libelle */
+body #page-body .infos-posteur[data-type="image"] .profil_label{display:none}
+body #page-body .gwf_viewtopic_label .infos-posteur[data-type="image"]{padding:8px 0}
 
-/* Les liens du bas : le mot a la place de l'icone subsilver. Le site web est
-   servi deux fois par le gabarit, et le courriel n'est pas dans la maquette :
-   les deux sont masques. */
-body #page-body .gwf_liens_profil{padding:14px 0 0;margin-top:14px;border-top:1px solid var(--or)}
+/* Les liens du bas : le mot a la place de l'icone subsilver, sans filet. Le
+   site web est servi deux fois par le gabarit, et le courriel n'est pas dans
+   la maquette : les deux sont masques. */
+body #page-body .gwf_liens_profil{padding:14px 0 0;margin-top:0;border:0}
 body #page-body .gwf_liens_profil :is(tr,td){display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px}
 body #page-body .gwf_liens_profil a[data-lien]{display:inline-block;width:auto;height:auto;min-width:0;padding:0;border:0;border-radius:0;background:none;text-decoration:none}
 /* le mot remplace l'icone : la regle des liens de contact les mettait en
