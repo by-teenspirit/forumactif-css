@@ -1127,7 +1127,7 @@ body #page-body .gwf_liens_profil{order:4}
 
 /* Pseudo et rang : plus de bandeau teinte, le pseudo en minuscules et en
    graisse normale, le rang juste dessous dans la pastille de la charte. */
-body #page-body .gwf_viewtopic_name{padding:0 0 6px;background:none;border:0;text-align:center}
+body #page-body .gwf_viewtopic_name{padding:0 0 2px;background:none;border:0;text-align:center}
 body #page-body .gwf_viewtopic_name>strong{display:block;margin:0 0 8px}
 body #page-body .gwf_viewtopic_name :is(a,strong,span){font:400 14px/1.3 var(--f1);letter-spacing:.04em;text-transform:none;color:var(--gc)}
 body #page-body .gwf_viewtopic_name .hld_rang,
@@ -1197,5 +1197,15 @@ body #page-body .gwf_liens_profil a:is([data-lien="site"],[data-lien="email"]){d
 body #page-body .gwf_liens_profil td>img{display:none}
 
 /* Un filet dore ouvre chaque message : il se pose en haut de la ligne du
-   message, donc au-dessus du premier comme entre deux messages. */
-#page-body tr.post>td{border-top:1px solid var(--or,#A68953)}
+   message, donc au-dessus du premier comme entre deux messages. Le
+   conteneur perd ses 10px de marge laterale pour que le filet aille d'un
+   bord a l'autre du bloc. */
+body #page-body .gwf_viewtopic_all{padding-left:0;padding-right:0}
+#page-body tr.post>td{border-top:2px solid var(--or,#A68953)}
+
+/* Plus d'angles arrondis dans un message. Le contenu de la fiche, ecrit par
+   le membre, garde les siens : ses ronds d'avatar notamment. */
+body #page-body tr.post>td,
+body #page-body :is(.gwf_viewtopic_left,.gwf_viewtopic_petit_titre,.postbody),
+body #page-body .gwf_viewtopic_left *,
+body #page-body .hld_champ_val img{border-radius:0}
