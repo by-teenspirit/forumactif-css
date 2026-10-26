@@ -1114,10 +1114,10 @@ body .gwf_participants_nb{font:500 9px/1.5 'Chakra Petch',sans-serif;font-style:
    chaque bloc prend sa place par `order` ; hld.js enveloppe le rang, qui
    n'etait qu'un noeud de texte, dans .hld_rang.
    La largeur vient de l'avatar : Forumactif les sert en 200 x 320 et on les
-   affiche a leur taille native, donc 226 = 200 + 24 de marge interne + le
-   filet. --or est le dore de la charte : le changer ici le change partout
-   dans la colonne. */
-body #page-body .gwf_viewtopic_left{--or:#A68953;width:226px;display:flex;flex-direction:column;padding:14px 12px;background:#fff;border-radius:0;overflow:visible}
+   affiche a leur taille native, donc 224 = 200 + 24 de marge interne. La
+   colonne n'a pas de cadre : seul l'avatar porte un filet. --or est le dore
+   de la charte : le changer ici le change partout dans la colonne. */
+body #page-body .gwf_viewtopic_left{--or:#A68953;width:224px;display:flex;flex-direction:column;padding:14px 12px;background:#fff;border:0;border-radius:0;overflow:visible}
 body #page-body .gwf_viewtopic_left>br{display:none}
 body #page-body .gwf_viewtopic_name{order:1}
 body #page-body .gwf_viewtopic_avatar{order:2}
@@ -1160,19 +1160,19 @@ body #page-body .systab .content::-webkit-scrollbar-thumb{background:#B9AFA2}
    d'autre que le libelle n'a de typo propre — ni gros chiffres pour les
    compteurs, ni exergue pour la citation. */
 body #page-body .gwf_viewtopic_label{padding:12px 0 0}
-body #page-body .gwf_viewtopic_label .infos-posteur{display:block;padding:5px 0;border:0;text-align:left}
+body #page-body .gwf_viewtopic_label .infos-posteur{display:block;padding:1px 0;border:0;text-align:left}
 body #page-body .gwf_viewtopic_label .infos-posteur:first-child{padding-top:0;border:0}
 body #page-body .infos-posteur .profil_label{display:inline}
-body #page-body .infos-posteur .label{font:500 8px/1.7 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--or)}
-body #page-body .infos-posteur .profil_label::after{content:"//";margin:0 5px;font:500 8px/1.7 'Chakra Petch',sans-serif;letter-spacing:0;color:var(--or)}
+body #page-body .infos-posteur .label{font:500 8px/1.5 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--or)}
+body #page-body .infos-posteur .profil_label::after{content:"//";margin:0 5px;font:500 8px/1.5 'Chakra Petch',sans-serif;letter-spacing:0;color:var(--or)}
 body #page-body .hld_champ_val,
 body #page-body .infos-posteur[data-type="nombre"] .hld_champ_val,
-body #page-body .infos-posteur[data-champ="citation"] .hld_champ_val{display:inline;padding-left:0;border-left:0;text-align:left;font:400 11px/1.7 var(--f4);color:var(--fn)}
-body #page-body .gwf_viewtopic_label .infos-posteur[data-champ="citation"]{display:block;padding:5px 0}
+body #page-body .infos-posteur[data-champ="citation"] .hld_champ_val{display:inline;padding-left:0;border-left:0;text-align:left;font:400 11px/1.5 var(--f4);color:var(--fn)}
+body #page-body .gwf_viewtopic_label .infos-posteur[data-champ="citation"]{display:block;padding:1px 0}
 body #page-body .infos-posteur[data-champ="citation"] .profil_label{display:inline}
 /* un champ image reste pleine largeur et sans libelle */
 body #page-body .infos-posteur[data-type="image"] .profil_label{display:none}
-body #page-body .gwf_viewtopic_label .infos-posteur[data-type="image"]{padding:8px 0}
+body #page-body .gwf_viewtopic_label .infos-posteur[data-type="image"]{padding:6px 0}
 
 /* Les liens du bas : le mot a la place de l'icone subsilver, sans filet. Le
    site web est servi deux fois par le gabarit, et le courriel n'est pas dans
