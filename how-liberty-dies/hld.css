@@ -992,7 +992,7 @@ body #page-body td.catBottom input[type=submit]{padding:8px 11px;letter-spacing:
    les change partout, sans avoir a relire les regles une par une. */
 .hld_fiche{
   --f_or:#A68953;      /* le dore des balises */
-  --f_barre:#B9AFA2;   /* la barre verticale des blocs de texte */
+  --f_barre:#B9AFA2;   /* l'ascenseur des blocs de texte */
   --f_tx:#636363;      /* le texte courant */
   --f_titre:#545353;   /* le titre et les balises serif */
   --f_band:#8B6A63;    /* le texte des bandeaux */
@@ -1029,11 +1029,14 @@ body #page-body td.catBottom input[type=submit]{padding:8px 11px;letter-spacing:
 .hld_f_trait{height:1px;margin:0 0 16px;background:var(--f_filet);border:0}
 
 /* Le bloc de texte est plafonne : la fiche garde la meme longueur quel que
-   soit le texte, le reste defile. La barre est dessinee en fond plutot qu'en
-   ::after, sinon elle defilerait avec le texte au lieu de rester en haut. */
-.hld_f_texte{max-height:270px;overflow-y:auto;scrollbar-width:none;padding-right:22px;margin:0 0 14px;
-  background-image:linear-gradient(var(--f_barre),var(--f_barre));background-repeat:no-repeat;background-position:top right;background-size:7px 86px}
-.hld_f_texte::-webkit-scrollbar{display:none}
+   soit le texte, le reste defile. La barre taupe a droite est l'ascenseur
+   lui-meme, habille aux couleurs de la fiche : il n'apparait donc que
+   lorsqu'il y a vraiment du texte en dessous. Le forum style deja ses
+   ascenseurs avec ::-webkit-scrollbar, on suit la meme voie. */
+.hld_f_texte{max-height:270px;overflow-y:auto;padding-right:16px;margin:0 0 14px}
+.hld_f_texte::-webkit-scrollbar{width:7px}
+.hld_f_texte::-webkit-scrollbar-track{background:none}
+.hld_f_texte::-webkit-scrollbar-thumb{background:var(--f_barre)}
 .hld_f_sep{height:1px;margin:12px 0;background:var(--f_filet);border:0}
 
 .hld_f_sous_titre{margin:0 0 14px;padding:11px 14px;border:1px solid #EFEFEF;background:#F6F6F6;text-align:center;font:400 9px/1.5 var(--f1);letter-spacing:.16em;text-transform:uppercase;color:var(--f_band)}
