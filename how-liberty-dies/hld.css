@@ -1196,9 +1196,6 @@ body #page-body .gwf_liens_profil a[data-lien="presentation"]::after{content:"pr
 body #page-body .gwf_liens_profil a:is([data-lien="site"],[data-lien="email"]){display:none}
 body #page-body .gwf_liens_profil td>img{display:none}
 
-/* Un filet dore separe deux messages. Chaque message occupe deux lignes :
-   la ligne du message (tr.post) et une ligne de pied (meme classe post--NN
-   mais sans .post) ou vivent les fleches haut / bas. Le filet se pose sous
-   cette ligne de pied, sauf pour le dernier message. */
-#page-body tr[class*="post--"]:not(.post)>td{border-bottom:1px solid var(--or,#A68953)}
-#page-body tr[class*="post--"]:not(.post):is(:last-child,:nth-last-child(2))>td{border-bottom:0}
+/* Un filet dore ouvre chaque message : il se pose en haut de la ligne du
+   message, donc au-dessus du premier comme entre deux messages. */
+#page-body tr.post>td{border-top:1px solid var(--or,#A68953)}
