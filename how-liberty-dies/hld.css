@@ -1083,3 +1083,14 @@ body .gwf_viewtopic_petit_titre{border:0}
 #page-body .gwf_viewtopic_petit_titre a:has(>img.i_icon_delete)::after{content:"supprimer"}
 #page-body .gwf_viewtopic_petit_titre a:has(>img.i_icon_ip)::after{content:"ip"}
 #page-body .gwf_viewtopic_petit_titre .hld_mq::after{content:"multi-citer"}
+
+/* Les deux cellules d'un message avaient 14px de marge interne de chaque
+   cote : 33px perdus entre la colonne du profil et la bande du message,
+   alors que la maquette les met presque cote a cote. On ramene a 6px, ce
+   qui laisse 17px entre les deux et un retrait identique a gauche et a
+   droite du bloc. */
+#page-body tr.post>td:is(.row1,.row2){padding:4px 6px}
+/* Forumactif pose au-dessus de chaque message une cellule qui ne contient
+   qu'un <span class="gensmall"> vide : 20px de blanc pour rien. Elle n'est
+   masquee que lorsqu'elle est vide, pour ne pas emporter les signatures. */
+#page-body td:is(.row1,.row2)[colspan="2"]:has(>span.gensmall:empty){display:none}
