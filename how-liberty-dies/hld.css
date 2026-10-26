@@ -1097,3 +1097,76 @@ body .gwf_viewtopic_petit_titre{border:0}
    qu'un <span class="gensmall"> vide : 20px de blanc pour rien. Elle n'est
    masquee que lorsqu'elle est vide, pour ne pas emporter les signatures. */
 #page-body td:is(.row1,.row2)[colspan="2"]:has(>span.gensmall:empty){display:none}
+
+/* ====== BARRE DU HAUT D'UN SUJET (maquette du 26 octobre) ====== */
+/* Les deux boutons etaient deux fois plus hauts que ceux de la liste des
+   sujets : meme hauteur pour les deux ecrans. */
+body #page-body .gwf_viewtopic_img a[href]{padding-top:5px;padding-bottom:5px}
+/* Le titre du sujet descend d'un cran, et le compteur de participants quitte
+   l'italique serif pour la Chakra majuscule du reste de la charte. */
+body .gwf_viewtopic_titre span1{font-size:15px;line-height:1.35}
+body .gwf_participants_nb{font:500 9px/1.5 'Chakra Petch',sans-serif;font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--pa)}
+
+/* ====== COLONNE AUTEUR D'UN SUJET (maquette du 26 octobre) ======
+   La maquette range la colonne pseudo / rang / avatar / onglets / champs /
+   liens, alors que Forumactif sert l'avatar en premier et colle le rang
+   derriere le pseudo dans le meme bloc. La colonne passe donc en flex et
+   chaque bloc prend sa place par `order` ; hld.js enveloppe le rang, qui
+   n'etait qu'un noeud de texte, dans .hld_rang.
+   --or est le dore de la charte : le changer ici le change sur les filets
+   et sur les libelles de champs d'un coup. */
+body #page-body .gwf_viewtopic_left{--or:#A68953;display:flex;flex-direction:column;padding:14px 12px;background:#fff;border-radius:0;overflow:visible}
+body #page-body .gwf_viewtopic_left>br{display:none}
+body #page-body .gwf_viewtopic_name{order:1}
+body #page-body .gwf_viewtopic_avatar{order:2}
+body #page-body .systab{order:3}
+body #page-body .gwf_liens_profil{order:4}
+
+/* Pseudo et rang : plus de bandeau teinte, le pseudo en minuscules et en
+   graisse normale, le rang juste dessous dans la pastille de la charte. */
+body #page-body .gwf_viewtopic_name{padding:0 0 12px;background:none;border:0;text-align:center}
+body #page-body .gwf_viewtopic_name>strong{display:block;margin:0 0 8px}
+body #page-body .gwf_viewtopic_name :is(a,strong,span){font:400 14px/1.3 var(--f1);letter-spacing:.04em;text-transform:none;color:var(--gc)}
+body #page-body .gwf_viewtopic_name .hld_rang,
+body #page-body .gwf_viewtopic_name .hld_rang strong{font:500 8.5px/1.4 'Chakra Petch',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+
+/* L'avatar prend un contour gris et perd ses angles arrondis. */
+body #page-body .gwf_viewtopic_avatar{padding:0;border:.5px solid var(--fi);border-radius:0;background:#fff;font-size:0}
+body #page-body .gwf_viewtopic_avatar a>img{border-radius:0}
+
+/* Les onglets perdent leur pastille : deux mots en Chakra majuscule, le
+   selectionne en noir, l'autre en gris. */
+body #page-body .systab{padding:14px 0 0}
+body #page-body .systab .tabs{display:flex;justify-content:center;gap:14px;margin:0}
+body #page-body .systab .tab{flex:0 1 auto;padding:0;border:0;border-radius:0;background:none;font:500 8.5px/1.4 'Chakra Petch',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--pa)}
+body #page-body .systab .tab:hover{background:none;color:var(--fn)}
+body #page-body .systab .tab.selected{background:none;border:0;color:var(--fn)}
+
+/* Le contenu d'un onglet est plafonne et defile, pour que la colonne ne
+   depasse jamais le premier message quel que soit le nombre de champs. */
+body #page-body .systab .content{max-height:320px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#B9AFA2 transparent}
+body #page-body .systab .content::-webkit-scrollbar{width:6px}
+body #page-body .systab .content::-webkit-scrollbar-track{background:none}
+body #page-body .systab .content::-webkit-scrollbar-thumb{background:#B9AFA2}
+
+/* Les champs collent aux bords de la colonne, se separent d'un filet dore,
+   et leurs libelles passent en Chakra doree majuscule. */
+body #page-body .gwf_viewtopic_label{padding:14px 0 0}
+body #page-body .gwf_viewtopic_label .infos-posteur{border-top:1px solid var(--or)}
+body #page-body .gwf_viewtopic_label .infos-posteur:first-child{border-top:1px solid var(--or);padding-top:8px}
+body #page-body .infos-posteur .label{font:500 8.5px/1.6 'Chakra Petch',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--or)}
+
+/* Les liens du bas : le mot a la place de l'icone subsilver. Le site web est
+   servi deux fois par le gabarit, et le courriel n'est pas dans la maquette :
+   les deux sont masques. */
+body #page-body .gwf_liens_profil{padding:14px 0 0;margin-top:14px;border-top:1px solid var(--or)}
+body #page-body .gwf_liens_profil tr{justify-content:center;gap:4px 14px}
+body #page-body .gwf_liens_profil a[data-lien]{font:500 8.5px/1.4 'Chakra Petch',sans-serif;letter-spacing:.13em;text-transform:uppercase;text-decoration:none}
+body #page-body .gwf_liens_profil a[data-lien]:is(:link,:visited){color:var(--pa)}
+body #page-body .gwf_liens_profil a[data-lien]:hover{color:var(--fn)}
+body #page-body .gwf_liens_profil a[data-lien]>img{display:none}
+body #page-body .gwf_liens_profil a[data-lien="profil"]::after{content:"profil"}
+body #page-body .gwf_liens_profil a[data-lien="mp"]::after{content:"mp"}
+body #page-body .gwf_liens_profil a[data-lien="presentation"]::after{content:"présentation"}
+body #page-body .gwf_liens_profil a:is([data-lien="site"],[data-lien="email"]){display:none}
+body #page-body .gwf_liens_profil td>img{display:none}
