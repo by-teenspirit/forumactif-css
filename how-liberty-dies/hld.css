@@ -841,7 +841,7 @@ body .gwf_cate .gwf_title_cate:hover,body .gwf_cate .gwf_title_cate:hover a{colo
    de 27px, et un filet vertical de 1px entre les compteurs et le dernier
    message. Le filet deborde de 6px en haut et en bas pour retrouver les 50px
    de la maquette, ou il est plus haut que le bloc de texte. */
-body .gwf_sujets{grid-template-columns:minmax(0,1fr) 100px 27px max-content;column-gap:11px;padding-top:9px;padding-bottom:9px;padding-right:16px}
+body .gwf_sujets{grid-template-columns:minmax(0,1fr) 108px 27px 114px;column-gap:11px;padding-top:9px;padding-bottom:9px;padding-right:16px}
 body .gwf_sujets .gwf_sujets_imgnew{margin:0 24px 0 10px}
 body .gwf_sujets .gwf_sujets_imgnew img{width:18px;height:18px}
 body .gwf_sujets :is(.gwf_sujets_avatar,.gwf_sujets_avatar img){width:27px;height:27px}
@@ -905,3 +905,47 @@ body #fa_menulist li a{display:block;text-align:left;text-transform:none;letter-
 body #fa_menulist :is(a,a:link,a:visited){color:var(--fn)!important;background:none}
 body #fa_menu:hover #fa_menulist :is(a,a:visited){background:none!important;color:var(--fn)!important}
 body #fa_menulist li a:hover{background:var(--ch)!important}
+
+/* ====== COLONNES FIXES DE LA LISTE DES SUJETS ======
+   Les deux colonnes de droite sont figees (108px et 114px) : un gros nombre
+   de messages ou de vues, ou un pseudo a rallonge, ne doit jamais decaler
+   l'avatar ni le bord droit, qui reste cale sur le titre de la zone. */
+body .gwf_sujets .gwf_sujets_view div{white-space:nowrap}
+body .gwf_sujets .gwf_sujets_lastpost{overflow:hidden;text-overflow:ellipsis}
+
+/* ====== COULEUR DE GROUPE DANS LE QEEL ======
+   Forumactif pose la couleur du groupe en style inline sur le
+   <span class="usr_grp_clr"> ; le pseudo est dans un <strong> a l'interieur,
+   et une regle de mise au propre des <strong> reprenait la main dessus.
+   On le fait reherite de son span. */
+body #page-body .usr_grp_clr :is(b,strong,span,a){color:inherit}
+
+/* ====== MESSAGERIE PRIVEE (privmsg) ======
+   De l'air sous la banniere. */
+body .hld_onglets{margin-top:24px;align-items:flex-start}
+
+/* L'onglet actif est un <span> et les autres des <a> : seuls les <a>
+   heritaient de la typo des liens (Karla majuscule) et de la couleur doree
+   des liens visites, et le span prenait 6px de plus en hauteur, ce qui
+   decalait son texte vers le haut. Meme regle pour les deux etats, et
+   chaque onglet centre son propre texte. */
+body :is(a,span).hld_onglet{display:flex;align-items:center;justify-content:center;font:400 9px/1.4 var(--f1);letter-spacing:.12em;text-transform:uppercase;padding:7px 15px}
+body :is(a.hld_onglet,a.hld_onglet:link,a.hld_onglet:visited){background:var(--bl);border-color:var(--fi);color:var(--fn)}
+body a.hld_onglet:hover{background:var(--ch);color:var(--fn)}
+body :is(span,a).hld_onglet_actif,body a.hld_onglet_actif:visited,body .hld_onglet_actif:hover{background:var(--fn);border-color:var(--fn);color:var(--bl)}
+
+/* La fleche native du <select> est collee au bord : on la remplace par un
+   chevron pose a 10px du bord. */
+body #page-body select{appearance:none;-webkit-appearance:none;padding-right:26px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1 5 5 9 1' fill='none' stroke='%238A8A8A' stroke-width='1.3'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:9px 6px}
+
+/* Le bouton « nouveau » de la messagerie reprend celui de la liste des
+   sujets : l'image subsilver est masquee et le mot vient du ::after. */
+body #page-body a:has(> img.i_msg_newpost){display:inline-block;padding:4px 23px;border:.5px solid var(--fi);border-radius:0;background:#fff;font:500 10.5px/1.4 'Chakra Petch',sans-serif;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+body #page-body :is(a,a:link,a:visited):has(> img.i_msg_newpost){color:var(--fn)}
+body #page-body a:has(> img.i_msg_newpost)>img{display:none}
+body #page-body a:has(> img.i_msg_newpost)::after{content:"nouveau"}
+body #page-body a:has(> img.i_msg_newpost):hover{background:var(--ch)}
+
+/* Les cinq boutons d'action passaient sur deux lignes : on resserre le
+   padding et l'interlettrage juste assez pour les tenir sur une seule. */
+body #page-body td.catBottom input[type=submit]{padding:8px 11px;letter-spacing:.07em}
