@@ -1055,3 +1055,31 @@ body #page-body td.catBottom input[type=submit]{padding:8px 11px;letter-spacing:
 .hld_fiche .puce{background:var(--f_pale);color:#8A8A8A}
 .hld_fiche .puce_or{background:var(--f_or);color:#fff}
 .hld_fiche .puce_nuit{background:var(--f_titre);color:#fff}
+
+/* ====== INTERIEUR D'UN SUJET, PASSE DU 26/10 ======
+   Sur la maquette, le seul blanc est celui de la bande d'informations du
+   message : le haut du sujet et le corps du message restent sur le fond de
+   page, sans cadre. Et le haut tient sur une seule ligne, les deux boutons
+   et le participant a gauche, le titre et le fil d'Ariane a droite. */
+body .gwf_viewtopic_top{display:flex;align-items:center;gap:16px;padding:12px 10px 16px}
+body .gwf_viewtopic_img{flex:0 0 auto;gap:6px}
+/* Les deux boutons etaient souds en une gelule ; la maquette les veut
+   rectangulaires et separes, chacun avec ses quatre bords. */
+body .gwf_viewtopic_img a[href]:is(:first-of-type,:last-of-type){border-radius:0;border-left:.5px solid var(--fi)}
+body .gwf_participants{flex:0 0 auto;margin:0}
+body .gwf_viewtopic_titre{flex:1 1 auto;width:auto;height:auto;background:none;border:0;padding:0;align-content:center}
+body .postbody{background:none;border:0}
+body .gwf_viewtopic_petit_titre{border:0}
+
+/* Les actions du message en toutes lettres plutot qu'en pastilles rondes.
+   La citation multiple garde son image transparente par-dessus le libelle :
+   c'est elle qui porte le onclick du forum. */
+#page-body .gwf_viewtopic_petit_titre>div{gap:14px;margin-top:6px}
+#page-body .gwf_viewtopic_petit_titre>div :is(a,.hld_mq){width:auto;height:auto;padding:0;border:0;border-radius:0;background:none;color:#B5B5B5}
+#page-body .gwf_viewtopic_petit_titre>div :is(a,.hld_mq):hover{background:none;color:var(--fn)}
+#page-body .gwf_viewtopic_petit_titre>div :is(a,.hld_mq)::after{font-family:var(--f1);font-size:9px;letter-spacing:.14em;text-transform:uppercase}
+#page-body .gwf_viewtopic_petit_titre a:has(>img.i_icon_quote)::after{content:"citer"}
+#page-body .gwf_viewtopic_petit_titre a:has(>img.i_icon_edit)::after{content:"editer"}
+#page-body .gwf_viewtopic_petit_titre a:has(>img.i_icon_delete)::after{content:"supprimer"}
+#page-body .gwf_viewtopic_petit_titre a:has(>img.i_icon_ip)::after{content:"ip"}
+#page-body .gwf_viewtopic_petit_titre .hld_mq::after{content:"multi-citer"}
