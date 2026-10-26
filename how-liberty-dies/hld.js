@@ -385,7 +385,46 @@
       else if(!img && /^\d{1,7}$/.test(txt)){ c.setAttribute('data-type','nombre'); }
       if(!txt && !img && !val.querySelector('a')){ c.setAttribute('data-vide','1'); }
     }
+    rang(col);
+    liens(col);
     col.setAttribute('data-hld-vt','1');
+  }
+  /* Le rang ("PNJ") est un noeud de texte nu pose apres un <br>, donc
+     impossible a styler et impossible a deplacer sous le pseudo. On
+     l'enveloppe dans .hld_rang et on retire les <br> : le pseudo et le rang
+     deviennent deux blocs, le CSS fait le reste. .hld_chip lui donne la
+     pastille de la charte, qui reste reglee dans le CSS principal. */
+  function rang(col){
+    var nm=col.querySelector('.gwf_viewtopic_name');
+    if(!nm || nm.querySelector('.hld_rang')) return;
+    var bouts=[].slice.call(nm.childNodes), dernier=-1;
+    for(var b=0;b<bouts.length;b++){ if(bouts[b].nodeName==='BR') dernier=b; }
+    if(dernier<0) return;
+    var sp=document.createElement('span');
+    sp.className='hld_rang hld_chip';
+    for(var k=dernier+1;k<bouts.length;k++) sp.appendChild(bouts[k]);
+    for(var j=0;j<bouts.length;j++){ if(bouts[j].nodeName==='BR' && bouts[j].parentNode===nm) nm.removeChild(bouts[j]); }
+    if((sp.textContent||'').replace(/\s+/g,'')) nm.appendChild(sp);
+  }
+  /* Les liens de bas de colonne ne sont que des icones subsilver. On etiquette
+     chaque lien par le champ dont il vient (data-lien) et le CSS ecrit le mot
+     a la place de l'image. Le site web sort deux fois (gabarit prosilver +
+     subsilver) : seule la premiere est gardee. */
+  var ICONES=[['i_icon_profile','profil'],['i_icon_pm','mp'],
+              ['icon_email','email'],['presentation.gif','presentation'],
+              ['icon_www','site']];
+  function liens(col){
+    var as=col.querySelectorAll('.gwf_liens_profil a');
+    for(var i=0;i<as.length;i++){
+      var im=as[i].querySelector('img');
+      if(!im) continue;
+      var nom=(im.getAttribute('src')||'').split('/').pop(), cl=im.className||'';
+      for(var k=0;k<ICONES.length;k++){
+        if(cl.indexOf(ICONES[k][0])>-1 || nom.indexOf(ICONES[k][0])>-1){
+          as[i].setAttribute('data-lien',ICONES[k][1]); break;
+        }
+      }
+    }
   }
   function outils(){
     var mqs=document.querySelectorAll('.gwf_viewtopic_petit_titre>div>img[id^="post_mq"]');
