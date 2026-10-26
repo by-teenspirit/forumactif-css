@@ -841,7 +841,7 @@ body .gwf_cate .gwf_title_cate:hover,body .gwf_cate .gwf_title_cate:hover a{colo
    de 27px, et un filet vertical de 1px entre les compteurs et le dernier
    message. Le filet deborde de 6px en haut et en bas pour retrouver les 50px
    de la maquette, ou il est plus haut que le bloc de texte. */
-body .gwf_sujets{grid-template-columns:minmax(0,1fr) 108px 27px 114px;column-gap:11px;padding-top:9px;padding-bottom:9px;padding-right:16px}
+body .gwf_sujets{grid-template-columns:minmax(0,1fr) 108px 27px 112px;column-gap:11px;padding-top:9px;padding-bottom:9px;padding-right:16px}
 body .gwf_sujets .gwf_sujets_imgnew{margin:0 24px 0 10px}
 body .gwf_sujets .gwf_sujets_imgnew img{width:18px;height:18px}
 body .gwf_sujets :is(.gwf_sujets_avatar,.gwf_sujets_avatar img){width:27px;height:27px}
@@ -907,7 +907,8 @@ body #fa_menu:hover #fa_menulist :is(a,a:visited){background:none!important;colo
 body #fa_menulist li a:hover{background:var(--ch)!important}
 
 /* ====== COLONNES FIXES DE LA LISTE DES SUJETS ======
-   Les deux colonnes de droite sont figees (108px et 114px) : un gros nombre
+   Les deux colonnes de droite sont figees (108px et 112px, soit la date la
+   plus longue possible « Mer 15 Sept 2026 - 12:57 » plus 4px) : un gros nombre
    de messages ou de vues, ou un pseudo a rallonge, ne doit jamais decaler
    l'avatar ni le bord droit, qui reste cale sur le titre de la zone. */
 body .gwf_sujets .gwf_sujets_view div{white-space:nowrap}
@@ -930,9 +931,12 @@ body .hld_onglets{margin-top:24px;align-items:flex-start}
    decalait son texte vers le haut. Meme regle pour les deux etats, et
    chaque onglet centre son propre texte. */
 body :is(a,span).hld_onglet{display:flex;align-items:center;justify-content:center;font:400 9px/1.4 var(--f1);letter-spacing:.12em;text-transform:uppercase;padding:7px 15px}
-body :is(a.hld_onglet,a.hld_onglet:link,a.hld_onglet:visited){background:var(--bl);border-color:var(--fi);color:var(--fn)}
-body a.hld_onglet:hover{background:var(--ch);color:var(--fn)}
-body :is(span,a).hld_onglet_actif,body a.hld_onglet_actif:visited,body .hld_onglet_actif:hover{background:var(--fn);border-color:var(--fn);color:var(--bl)}
+/* Le theme colore les liens visites en dore via un selecteur a id ; il faut
+   donc forcer les deux etats, sinon l'onglet survole vire au dore et perd
+   son fond. */
+body .hld_onglet:not(.hld_onglet_actif),body a.hld_onglet:not(.hld_onglet_actif):is(:link,:visited){background:var(--bl)!important;border-color:var(--fi)!important;color:var(--fn)!important}
+body a.hld_onglet:not(.hld_onglet_actif):hover{background:var(--ch)!important;color:var(--fn)!important}
+body .hld_onglet_actif,body a.hld_onglet_actif:is(:link,:visited,:hover){background:var(--fn)!important;border-color:var(--fn)!important;color:var(--bl)!important}
 
 /* La fleche native du <select> est collee au bord : on la remplace par un
    chevron pose a 10px du bord. */
