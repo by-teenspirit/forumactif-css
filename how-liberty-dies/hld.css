@@ -1199,7 +1199,7 @@ body #page-body .gwf_liens_profil td>img{display:none}
 /* Un seul filet dore, en haut du bloc qui porte le fil d'Ariane. Le
    conteneur des messages perd ses 10px de marge laterale pour que le bloc
    et les messages soient cales sur les memes bords. */
-body #page-body .gwf_viewtopic_all{padding-left:0;padding-right:0}
+body #page-body .gwf_viewtopic_all{padding-left:0;padding-right:0;margin-top:0}
 body .gwf_viewtopic_top{border-top:2px solid var(--or,#A68953)}
 
 /* Plus d'angles arrondis dans un message. Le contenu de la fiche, ecrit par
