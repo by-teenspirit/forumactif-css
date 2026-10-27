@@ -1049,8 +1049,8 @@ body #page-body td.catBottom input[type=submit]{padding:8px 11px;letter-spacing:
 /* La colonne image donne sa hauteur au duo ; le texte d'a cote se plafonne
    a la meme valeur et defile. */
 .hld_f_duo{display:flex;align-items:stretch;gap:14px;margin:0 0 14px}
-.hld_f_duo>.hld_f_texte{flex:1 1 auto;min-width:0;margin:0;max-height:270px}
-.hld_f_image{flex:0 0 170px;height:270px;padding:5px;border:1px solid var(--f_cadre);background:#fff}
+.hld_f_duo>.hld_f_texte{flex:1 1 auto;min-width:0;margin:0;max-height:210px}
+.hld_f_image{flex:0 0 170px;height:210px;padding:5px;border:1px solid var(--f_cadre);background:#fff}
 .hld_f_image img{width:100%;height:100%;object-fit:cover;display:block}
 
 /* Les balises en ligne. Noms courts parce que ce sont elles qu'on tape a
@@ -1248,9 +1248,14 @@ body #page-body span.nav a:hover:has(>img[src*="topic_fr"],>img[src*="reply_fr"]
 #page-body .gwf_viewtopic_petit_titre{position:relative}
 #page-body .hld_likes{position:absolute;right:14px;top:10px;display:inline-flex;align-items:center;gap:5px;cursor:pointer;font:400 9px/1.5 var(--f1);letter-spacing:.14em;text-transform:uppercase;color:var(--pa);-webkit-user-select:none;user-select:none}
 #page-body .hld_likes:hover{color:var(--fn)}
-#page-body .hld_likes .hld_coeur{font-family:"Material Icons";font-style:normal;font-size:12px;line-height:1;letter-spacing:normal;text-transform:none;color:#A68953}
+#page-body .hld_likes .hld_coeur{font-family:"Material Icons";font-style:normal;font-size:11px;line-height:1;letter-spacing:normal;text-transform:none;color:inherit}
+#page-body .hld_likes[data-aime="1"]{color:#A68953}
 #page-body .hld_likes .hld_coeur::before{content:"favorite_border"}
 #page-body .hld_likes[data-aime="1"] .hld_coeur::before{content:"favorite"}
 #page-body .hld_likes b{font-weight:400}
 #page-body .hld_likes[data-vide="1"]{display:none}
+#page-body .hld_aiment{display:none;position:absolute;right:0;top:100%;z-index:6;margin-top:6px;padding:7px 11px;border:.5px solid var(--fi);background:var(--carte);font:400 9.5px/1.7 var(--f4);letter-spacing:0;text-transform:none;text-align:right;white-space:nowrap;color:var(--fn);box-shadow:0 2px 6px rgba(0,0,0,.07)}
+#page-body .hld_likes:hover .hld_aiment{display:block}
+#page-body .hld_aiment a{color:var(--fn);text-decoration:none}
+#page-body .hld_aiment a:hover{text-decoration:underline}
 #page-body .fa_like_div{display:none}
