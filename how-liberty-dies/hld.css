@@ -927,7 +927,7 @@ body .gwf_sujets .gwf_sujets_lastpost{overflow:hidden;text-overflow:ellipsis}
    et une regle de mise au propre des <strong> reprenait la main dessus.
    On le fait reherite de son span. */
 body #page-body .usr_grp_clr :is(b,strong,span,a){color:inherit}
-body #page-body .usr_grp_clr :is(b,strong){font-weight:700}
+body #page-body .gwf_qeel .usr_grp_clr :is(b,strong){font-weight:400}
 
 /* ====== PAS D'ARRONDI DANS LA LISTE DES SUJETS ====== */
 body #page-body .gwf_topiclist,body #page-body .gwf_topiclist *{border-radius:0}
@@ -959,7 +959,7 @@ body #page-body select{appearance:none;-webkit-appearance:none;padding-right:26p
 
 /* Le bouton « nouveau » de la messagerie reprend celui de la liste des
    sujets : l'image subsilver est masquee et le mot vient du ::after. */
-body #page-body a:has(> img.i_msg_newpost){display:inline-block;padding:4px 23px;border:.5px solid var(--fi);border-radius:0;background:#fff;font:500 10.5px/1.4 'Chakra Petch',sans-serif;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+body #page-body a:has(> img.i_msg_newpost){display:inline-block;padding:4px 23px;border:.5px solid var(--fi);border-radius:0;background:var(--carte);font:500 10.5px/1.4 'Chakra Petch',sans-serif;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
 body #page-body :is(a,a:link,a:visited):has(> img.i_msg_newpost){color:var(--fn)}
 body #page-body a:has(> img.i_msg_newpost)>img{display:none}
 body #page-body a:has(> img.i_msg_newpost)::after{content:"nouveau"}
@@ -1104,7 +1104,8 @@ body .gwf_viewtopic_petit_titre{border:0}
 body #page-body .gwf_viewtopic_img a[href]{padding-top:5px;padding-bottom:5px}
 /* Le titre du sujet descend d'un cran, et le compteur de participants quitte
    l'italique serif pour la Chakra majuscule du reste de la charte. */
-body .gwf_viewtopic_titre span1{font-size:15px;line-height:1.35}
+body .gwf_viewtopic_titre span1{font-size:13px;line-height:1.35}
+body .gwf_viewtopic_titre :is(a.nav,a.nav span,a.nav i){font-size:9px}
 body .gwf_participants_nb{font:500 9px/1.5 'Chakra Petch',sans-serif;font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--pa)}
 
 /* ====== COLONNE AUTEUR D'UN SUJET (maquette du 26 octobre) ======
@@ -1118,7 +1119,7 @@ body .gwf_participants_nb{font:500 9px/1.5 'Chakra Petch',sans-serif;font-style:
    + 24 de marge interne. La colonne n'a pas de cadre : seul l'avatar porte
    un filet. --or est le dore de la charte : le changer ici le change partout
    dans la colonne. */
-body #page-body .gwf_viewtopic_left{--or:#A68953;width:232px;display:flex;flex-direction:column;padding:14px 12px;background:#fff;border:0;border-radius:0;overflow:visible}
+body #page-body .gwf_viewtopic_left{--or:#A68953;width:232px;display:flex;flex-direction:column;padding:14px 12px;background:var(--carte);border:0;border-radius:0;overflow:visible}
 body #page-body .gwf_viewtopic_left>br{display:none}
 body #page-body .gwf_viewtopic_name{order:1}
 body #page-body .gwf_viewtopic_avatar{order:2}
@@ -1127,19 +1128,20 @@ body #page-body .gwf_liens_profil{order:4}
 
 /* Pseudo et rang : plus de bandeau teinte, le pseudo en minuscules et en
    graisse normale, le rang juste dessous dans la pastille de la charte. */
-body #page-body .gwf_viewtopic_name{padding:0 0 2px;background:none;border:0;text-align:center}
+body #page-body .gwf_viewtopic_name{padding:0;background:none;border:0;text-align:center}
 body #page-body .gwf_viewtopic_name>strong{display:block;margin:0 0 8px}
-body #page-body .gwf_viewtopic_name :is(a,strong,span){font:700 19px/1.25 var(--f2);letter-spacing:.01em;text-transform:none;color:var(--gc)}
+body #page-body .gwf_viewtopic_name :is(a,strong,span){font:400 19px/1.25 var(--f2);letter-spacing:.01em;text-transform:lowercase;color:var(--gc)}
 body #page-body .gwf_viewtopic_name .hld_rang,
 body #page-body .gwf_viewtopic_name .hld_rang strong{font:500 8.5px/1.4 'Chakra Petch',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#fff}
-body #page-body .gwf_viewtopic_name .hld_rang{display:block;width:auto;padding:4px 8px;text-align:center}
+body #page-body .gwf_viewtopic_name .hld_rang{display:block;width:auto;padding:2px 1px;margin:0 0 5px;text-align:center}
 
 /* L'avatar a sa taille d'origine et un contour gris de 4px. box-sizing est
    remis en content-box : en border-box le filet mangeait l'image, qui
    tombait a 199 x 319. */
-body #page-body .gwf_viewtopic_avatar{box-sizing:content-box;width:200px;height:320px;padding:0;border:4px solid var(--fi);border-radius:0;background:#fff;font-size:0}
+body #page-body .gwf_viewtopic_avatar{box-sizing:content-box;width:200px;height:320px;padding:0;border:4px solid var(--fi);border-radius:0;background:var(--carte);font-size:0}
 body #page-body .gwf_viewtopic_avatar a{display:block;width:100%;height:100%}
-body #page-body .gwf_viewtopic_avatar a>img{width:100%;height:100%;object-fit:cover;border-radius:0}
+body #page-body .gwf_viewtopic_avatar a>img{width:100%;height:100%;object-fit:cover;border-radius:0;transition:filter .35s ease}
+body #page-body .gwf_viewtopic_avatar:hover a>img{filter:grayscale(1)}
 
 /* Les onglets : en Chakra majuscule, le selectionne en noir et l'autre en
    gris. Chacun tient sur une ligne ; un nom trop long est coupe plutot que
@@ -1167,11 +1169,11 @@ body #page-body .gwf_viewtopic_label{padding:12px 0 0}
 body #page-body .gwf_viewtopic_label .infos-posteur{display:block;padding:1px 0;border:0;text-align:left}
 body #page-body .gwf_viewtopic_label .infos-posteur:first-child{padding-top:0;border:0}
 body #page-body .infos-posteur .profil_label{display:inline}
-body #page-body .infos-posteur .label{font:500 9px/1.5 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--or)}
-body #page-body .infos-posteur .profil_label::after{content:"//";margin:0 5px;font:500 9px/1.5 'Chakra Petch',sans-serif;letter-spacing:0;color:var(--or)}
+body #page-body .infos-posteur .label{font:500 10px/1.5 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--or)}
+body #page-body .infos-posteur .profil_label::after{content:"//";margin:0 5px;font:500 10px/1.5 'Chakra Petch',sans-serif;letter-spacing:0;color:var(--or)}
 body #page-body .hld_champ_val,
 body #page-body .infos-posteur[data-type="nombre"] .hld_champ_val,
-body #page-body .infos-posteur[data-champ="citation"] .hld_champ_val{display:inline;padding-left:0;border-left:0;text-align:left;font:400 10px/1.5 var(--f4);color:var(--fn)}
+body #page-body .infos-posteur[data-champ="citation"] .hld_champ_val{display:inline;padding-left:0;border-left:0;text-align:left;font:400 11px/1.5 var(--f4);color:var(--fn)}
 body #page-body .gwf_viewtopic_label .infos-posteur[data-champ="citation"]{display:block;padding:1px 0}
 body #page-body .infos-posteur[data-champ="citation"] .profil_label{display:inline}
 /* un champ image reste pleine largeur et sans libelle */
@@ -1200,7 +1202,7 @@ body #page-body .gwf_liens_profil td>img{display:none}
    conteneur des messages perd ses 10px de marge laterale pour que le bloc
    et les messages soient cales sur les memes bords. */
 body #page-body .gwf_viewtopic_all{padding-left:0;padding-right:0;margin-top:0}
-body .gwf_viewtopic_top{border-top:2px solid var(--or,#A68953)}
+body .gwf_viewtopic_top{border-top:1.2px solid var(--or,#A68953)}
 
 /* Plus d'angles arrondis dans un message. Le contenu de la fiche, ecrit par
    le membre, garde les siens : ses ronds d'avatar notamment. */
@@ -1212,6 +1214,23 @@ body #page-body .hld_champ_val img{border-radius:0}
 /* Les boutons « nouveau » et « repondre » du bas : le gabarit les sert en
    simples liens dans un <span class="nav">, alors que ceux du haut sont
    deja en pastilles. Meme boite pour les deux. */
-body #page-body span.nav a:has(>img[src*="topic_fr"],>img[src*="reply_fr"]){display:inline-block;padding:5px 16px;border:.5px solid var(--fi);border-radius:0;background:#fff;font:400 9.5px/1.4 var(--f1);letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+body #page-body span.nav a:has(>img[src*="topic_fr"],>img[src*="reply_fr"]){display:inline-block;padding:5px 16px;border:.5px solid var(--fi);border-radius:0;background:var(--carte);font:400 9.5px/1.4 var(--f1);letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
 body #page-body span.nav a:is(:link,:visited):has(>img[src*="topic_fr"],>img[src*="reply_fr"]){color:var(--fn)}
 body #page-body span.nav a:hover:has(>img[src*="topic_fr"],>img[src*="reply_fr"]){background:var(--ch)}
+
+/* ====== THEME SOMBRE : ce qui restait blanc ======
+   --carte est le fond des blocs poses sur la page : blanc en clair, et en
+   sombre un gris un cran au-dessus du fond, pour garder le meme rapport.
+   Tout ce qui etait code en dur en #fff passe par elle. */
+:root{--carte:#FFFFFF}
+[data-theme="dark"]{--carte:#242424}
+
+/* Les citations, blocs de code et spoilers gardaient le gris clair du
+   gabarit, et les cadres de recompenses leur bleu subsilver. */
+[data-theme="dark"] #page-body dl.codebox :is(dt,dd){background:var(--ch);color:var(--fn);border-color:var(--fi)}
+[data-theme="dark"] #page-body :is(.dd_award,.award_more){background:var(--ch);border-color:var(--fi)}
+
+/* L'editeur de reponse rapide est entierement blanc par defaut. Sa zone de
+   saisie est une iframe : son fond interieur ne se regle pas d'ici. */
+[data-theme="dark"] :is(.sceditor-container,.sceditor-toolbar,.sceditor-group,.sceditor-button){background:var(--bl);border-color:var(--fi)}
+[data-theme="dark"] .sceditor-container :is(textarea,iframe){background:var(--bl);color:var(--fn)}
