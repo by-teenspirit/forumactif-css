@@ -784,13 +784,17 @@
     var sp=document.createElement('span'); sp.className='hld_likes';
     var coeur=document.createElement('i'); coeur.className='hld_coeur';
     var nb=document.createElement('b');
-    sp.appendChild(coeur); sp.appendChild(nb);
+    var pop=document.createElement('span'); pop.className='hld_aiment';
+    sp.appendChild(coeur); sp.appendChild(nb); sp.appendChild(pop);
     function rafraichir(){
       var n=compte(liste);
       nb.textContent=n+(n>1?' likes':' like');
       sp.setAttribute('data-aime', (bouton && bouton.className.indexOf('fa_liked')>-1) ? '1' : '0');
       sp.setAttribute('data-vide', (n===0 && !bouton) ? '1' : '0');
-      if(liste) sp.title=(liste.textContent||'').trim();
+      /* la liste des noms est recopiee telle quelle : ses liens restent
+         cliquables, et Forumactif peut reecrire l'originale sans gener. */
+      pop.innerHTML = (n>0 && liste) ? liste.innerHTML : '';
+      pop.style.display = (n>0) ? '' : 'none';
     }
     rafraichir();
     sp.addEventListener('click', function(){ if(bouton) bouton.click(); });
