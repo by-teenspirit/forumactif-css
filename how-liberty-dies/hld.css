@@ -970,94 +970,9 @@ body #page-body a:has(> img.i_msg_newpost):hover{background:var(--ch)}
 body #page-body td.catBottom input[type=submit]{padding:8px 11px;letter-spacing:.07em}
 
 /* ====== FICHES ======
-   Vocabulaire de blocs pour les fiches ecrites en HTML dans un message.
-   Aucun template : la personne assemble les blocs ci-dessous dans son
-   message, le style vit ici pour rester modifiable sans toucher aux fiches.
-
-   .hld_fiche          l'enveloppe, pose la typo
-   .hld_f_avatars      rangee de ronds (+ .vertical pour la colonne)
-   .hld_f_avatar       un rond (+ .grand pour le central)
-   .hld_f_titre        le titre, les tirets sont dessines ici
-   .hld_f_chapeau      l'intro italique centree
-   .hld_f_trait        le filet pleine largeur
-   .hld_f_texte        un bloc de texte, barre taupe en haut a droite
-   .hld_f_sep          le filet fin entre deux paragraphes d'un bloc
-   .hld_f_sous_titre   le bandeau
-   .hld_f_encadre      l'encadre blanc
-   .hld_f_duo          la rangee a deux colonnes
-   .hld_f_image        la colonne image d'un duo
-   en ligne : .or .serif .doux .puce .puce_or .puce_nuit
-
-   Les couleurs sont des variables posees sur .hld_fiche : les changer la
-   les change partout, sans avoir a relire les regles une par une. */
-.hld_fiche{
-  --f_or:#A68953;      /* le dore des balises */
-  --f_barre:#B9AFA2;   /* l'ascenseur des blocs de texte */
-  --f_tx:#636363;      /* le texte courant */
-  --f_titre:#545353;   /* le titre et les balises serif */
-  --f_band:#8B6A63;    /* le texte des bandeaux */
-  --f_pale:#F4F4F4;    /* le fond des puces claires */
-  --f_filet:#ECEBEB;   /* les filets */
-  --f_cadre:#E6E6E6;   /* les contours */
-  font:400 10.5px/1.75 var(--f4);color:var(--f_tx);text-align:justify}
-.hld_fiche *{box-sizing:border-box}
-/* Forumactif remplace chaque retour a la ligne du message par un <br>. Entre
-   deux blocs il ne sert a rien, et dans une rangee flex il compte comme un
-   element : trois <br> ajoutaient trois fois la gouttiere et retrecissaient
-   les colonnes. On les neutralise la ou ils sont structurels ; ceux qui sont
-   a l'interieur d'un paragraphe continuent de couper la ligne. */
-.hld_fiche>br,.hld_f_duo>br,.hld_f_avatars>br,.hld_f_texte>br{display:none}
-/* La feuille des messages colore le gras en dore : dans une fiche il reste
-   de la couleur du texte, le dore est reserve aux balises. */
-.hld_fiche :is(b,strong){color:inherit}
-.hld_fiche p{margin:0 0 10px}
-.hld_fiche p:last-child{margin-bottom:0}
-
-/* Les ronds. En rangee ils sont centres et celui du milieu est plus grand ;
-   en colonne ils sont tous a la meme taille. */
-.hld_f_avatars{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 0 18px}
-.hld_f_avatars.vertical{flex:0 0 auto;flex-direction:column;justify-content:flex-start;gap:14px;margin:0}
-.hld_f_avatar{flex:0 0 auto;width:54px;height:54px;padding:4px;border:1px solid var(--f_cadre);border-radius:50%;background:#fff}
-.hld_f_avatar.grand{width:68px;height:68px}
-.hld_f_avatars.vertical .hld_f_avatar{width:74px;height:74px}
-.hld_f_avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
-
-.hld_f_titre{margin:0 0 14px;text-align:center;font:700 13px/1.4 var(--f2);letter-spacing:.05em;text-transform:uppercase;color:var(--f_titre)}
-.hld_f_titre::before{content:"--";margin-right:9px;color:#9E9E9E;font-weight:400}
-.hld_f_titre::after{content:"--";margin-left:9px;color:#9E9E9E;font-weight:400}
-.hld_f_chapeau{width:80%;margin:0 auto 16px;text-align:center;font:italic 400 10px/1.6 var(--f2);color:#676767}
-.hld_f_trait{height:1px;margin:0 0 16px;background:var(--f_filet);border:0}
-
-/* Le bloc de texte est plafonne : la fiche garde la meme longueur quel que
-   soit le texte, le reste defile. La barre taupe a droite est l'ascenseur
-   lui-meme, habille aux couleurs de la fiche : il n'apparait donc que
-   lorsqu'il y a vraiment du texte en dessous. Le forum style deja ses
-   ascenseurs avec ::-webkit-scrollbar, on suit la meme voie. */
-.hld_f_texte{max-height:270px;overflow-y:auto;padding-right:16px;margin:0 0 14px}
-.hld_f_texte::-webkit-scrollbar{width:7px}
-.hld_f_texte::-webkit-scrollbar-track{background:none}
-.hld_f_texte::-webkit-scrollbar-thumb{background:var(--f_barre)}
-.hld_f_sep{height:1px;margin:12px 0;background:var(--f_filet);border:0}
-
-.hld_f_sous_titre{margin:0 0 14px;padding:11px 14px;border:1px solid #EFEFEF;background:#F6F6F6;text-align:center;font:400 9px/1.5 var(--f1);letter-spacing:.16em;text-transform:uppercase;color:var(--f_band)}
-.hld_f_encadre{margin:0 0 14px;padding:13px 22px;border:1px solid #F0F0F0;background:#fff;text-align:left}
-
-/* La colonne image donne sa hauteur au duo ; le texte d'a cote se plafonne
-   a la meme valeur et defile. */
-.hld_f_duo{display:flex;align-items:flex-start;gap:14px;margin:0 0 14px}
-.hld_f_duo>.hld_f_texte{flex:1 1 auto;min-width:0;margin:0;max-height:320px}
-.hld_f_image{flex:0 0 208px;height:320px;padding:5px;border:1px solid var(--f_cadre);background:#fff}
-.hld_f_image img{width:100%;height:100%;object-fit:cover;display:block}
-
-/* Les balises en ligne. Noms courts parce que ce sont elles qu'on tape a
-   longueur de fiche ; elles ne valent qu'a l'interieur d'une .hld_fiche. */
-.hld_fiche .or{color:var(--f_or);text-transform:uppercase;letter-spacing:.05em}
-.hld_fiche .serif{font-family:var(--f2);font-weight:700;text-transform:uppercase;color:var(--f_titre)}
-.hld_fiche .doux{color:var(--f_or);font-style:italic}
-.hld_fiche :is(.puce,.puce_or,.puce_nuit){display:inline-block;padding:2px 7px;margin-right:3px;font:400 8px/1.5 var(--f1);letter-spacing:.14em;text-transform:uppercase;vertical-align:1px}
-.hld_fiche .puce{background:var(--f_pale);color:#8A8A8A}
-.hld_fiche .puce_or{background:var(--f_or);color:#fff}
-.hld_fiche .puce_nuit{background:var(--f_titre);color:#fff}
+   Le vocabulaire des fiches (.hld_fiche et ses blocs) vit dans le CSS
+   principal du forum, pas ici : il doit rester modifiable depuis le
+   panneau d'administration par qui ecrit les fiches. */
 
 /* ====== INTERIEUR D'UN SUJET, PASSE DU 26/10 ======
    Sur la maquette, le seul blanc est celui de la bande d'informations du
