@@ -1,3 +1,325 @@
+/* ====== MAQUETTE HLD 1/2 ====== rapatriee du CSS principal du forum ======
+   Ces blocs vivaient dans Affichage > Images et Couleurs > CSS principal.
+   Ils ont ete deplaces ici, tels quels, pour liberer de la place dans ce
+   champ (limite a 65 535 caracteres) et y installer le CSS des fiches, que
+   les redactrices doivent pouvoir modifier depuis l'administration.
+   La suite du fichier (MAQUETTE HLD 2/2) les surcharge : ne pas intervertir. */
+
+/* CATEGORIES */
+
+/* --- La grille ------------------------------------------------------------
+   display:contents fait disparaitre .gwf_titre_desc et .gw_cate_right sans
+   supprimer leur contenu : leurs enfants deviennent des cases de la grille.
+   C'est ce qui permet de remonter les compteurs sur la ligne du titre sans
+   toucher au template. Pour deplacer un element : deplace son nom dans
+   grid-template-areas. La ligne n'a ni fond ni cadre : ce sont les cases
+   qui portent les filets, comme sur la maquette.                          */
+
+.gwf_cate{
+  display: grid;
+  width: 810px;
+  grid-template-columns: 58px minmax(0,1fr) 88px 152px;
+  grid-template-areas:
+    "titre titre  compteurs compteurs"
+    "img   desc   avatar    lastpost";
+  column-gap: 8px;
+  row-gap: 7px;
+  align-items: start;
+  background: transparent;
+  border: 0;
+  padding: 0 0 6px;
+  margin-bottom: 6px;
+  font-family: Tahoma, sans-serif;
+  font-size: 9px;
+  line-height: 17px;
+  color: var(--balise1);
+}
+
+.gwf_titre_desc,
+.gw_cate_right{ display: contents; }
+
+.gwf_title_cate{
+  grid-area: titre;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 2px 0 0;
+  font-family: var(--f2);
+  text-transform: uppercase;
+}
+.gwf_title_cate > a{
+  font-size: 16px;
+  letter-spacing: .03em;
+  color: var(--fn);
+  text-decoration: none;
+}
+
+.gwf_sous_fofo{
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  text-transform: uppercase;
+}
+.gwf_sous_fofo a{
+  display: inline-block;
+  padding: 1px 3px;
+  background-color: var(--fond_bloc);
+  border: 0;
+  font-family: var(--police1);
+  font-size: 8.5px;
+  font-style: normal;
+  letter-spacing: .09em;
+  text-decoration: none;
+  color: var(--balise1);
+}
+
+.gwf_suj_mes{
+  grid-area: compteurs;
+  place-self: center end;
+  width: auto; height: auto;
+  margin: 0; padding: 0;
+  background: none; border: 0;
+  font-family: var(--police3);
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  white-space: nowrap;
+  color: var(--balise1);
+}
+
+.gwf_img{
+  grid-area: img;
+  width: 58px; height: 112px;
+  margin: 0;
+  object-fit: cover;
+  border: var(--border) !important;
+}
+
+.gwf_desc{
+  grid-area: desc;
+  width: auto; height: auto;
+  margin: 0;
+  padding: 11px 14px;
+  background-color: var(--fond-interieur);
+  border: var(--border);
+  text-align: justify;
+}
+.gwf_desc p{
+  margin: 0;
+  height: auto;
+  font-size: 9px;
+  line-height: 17px;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.gwf_desc p:hover{ -webkit-line-clamp: unset; overflow: visible; }
+
+.gwf_avatar{
+  grid-area: avatar;
+  width: 88px; height: 112px;
+  margin: 0;
+  border: 0;
+}
+.gwf_avatar img{
+  display: block;
+  width: 88px; height: 112px;
+  object-fit: cover;
+  filter: none;
+}
+
+.gwf_lastpost{
+  grid-area: lastpost;
+  width: auto; height: auto;
+  margin: 0;
+  padding: 14px 10px;
+  background-color: var(--fond-interieur);
+  border: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: none;
+  font-family: var(--police1);
+  font-size: 10px;
+  line-height: 1.6;
+}
+.gwf_lastpost > span{ display: block; }
+.gwf_lastpost span a{
+  display: inline;
+  padding: 0;
+  font-family: var(--police2);
+  font-style: italic;
+  font-size: 11px;
+}
+.gwf_lastpost span a strong{
+  font-family: var(--police1);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.lp-date{
+  display: block;
+  margin: 6px 0 4px;
+  font-family: var(--police3);
+  font-size: 9px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--balise1);
+}
+
+@media (max-width: 700px){
+  .gwf_cate{
+    width: auto;
+    grid-template-columns: 58px minmax(0,1fr);
+    grid-template-areas:
+      "titre  titre"
+      "img    desc"
+      "avatar lastpost";
+  }
+  .gwf_suj_mes{ place-self: center start; }
+  .gwf_avatar{ justify-self: start; }
+}
+
+/*FIN CATEGORIES*/
+
+/*QEEL*/
+.gwf_qeel{display: flex; width: 810px;background-color: var(--fond_gwf); padding: 5px; font-size: 12px; margin-top: 5px;}
+.gwf_qeel p{margin: 0; padding: 10px; text-align: justify;}
+
+.gwf_qeel_bloc_gauche{width: 250px; background-color: var(--fond_bloc);border: var(--border); height: 239px;
+  text-align: justify;overflow:auto;}
+.gwf_qeel_bloc_gauche span{font-family: Tahoma, sans-serif !important;font-size:11px !important;}
+.gwf_qeel_bloc_gauche .row1{background: none;padding: 7px;}
+.gwf_qeel_bloc_gauche span.gensmall{font-size: 12px !important; font-family: var(--police1) !important;}
+
+.gwf_qeel_bloc_central{margin-left: 5px; margin-right: 5px;}
+.gwf_qeel_new{width: 310px; background-color: var(--fond_bloc);border: var(--border); height: 45px; margin-bottom: 5px; text-align: center;
+  text-transform: uppercase; padding: 14px; font-size: 11px;}
+#dernier_membre{font-family: var(--police2); font-size: 12px;}
+#ongle_dieux{color: #4A312A;}
+#ongle_creatures{color: #846E64}
+#ongle_mortels{color: #8A949A}
+dieu{color: #4A312A;}
+crea{color: #846E64}
+mort{color: #8A949A}
+.gwf_qeel_ava_groupe{display: flex}
+.gwf_qeel_avatar img{width: 100px; height: 160px; border: var(--border); filter: grayscale(100%); transition: 2s;}
+.gwf_qeel_avatar img:hover{filter: grayscale(0%); transition: 2s;}
+.gwf_qeel_groupe{width: 205px; height: 160px; margin-left: 5px; background-color: var(--fond_bloc);border: var(--border);}
+.gwf_qeel_list_gr{display: flex; margin-top: 5px;}
+.gwf_qeel_list_gr span{width: 100px; background-color: var(--fond_bloc);border: var(--border); margin-right: 5px; text-align: center;
+  text-transform: uppercase; font-family: var(--police2); font-size: 11px; padding: 5px; height: 24px;}
+
+.gwf_qeel_stat, .gwf_qeel_credit{width: 250px; background-color: var(--fond_bloc);border: var(--border); height: 117px;overflow:auto;}
+.gwf_qeel_credit{margin-top: 5px;}
+.gwf_qeel_stat p, .gwf_qeel_credit p{height: 110px;overflow:auto;padding:10px;}
+
+.onglet, .ongle{display:inline-block; cursor:pointer;}
+.contenu_onglet, .contenu_ongle{ display:none;}
+
+/*FIN QEEL*/
+
+/*AFFICHAGE DES SUJETS*/
+.gwf_topiclist{width: 810px; display: flex;}
+.gwf_grand_titre_list{text-align: center; width: 100%; margin-bottom: 5px; border: 5px solid var(--fond_gwf); background-position: center;
+  background-image: url('https://images2.imgbox.com/5f/6c/Es31vEGS_o.gif'); height: 60px; text-transform: uppercase;
+  font-family: var(--police2); }
+.gwf_grand_titre_list a{color: var(--balise1);}
+.gwf_grand_titre_list span1 a{color: var(--lien-cadre); font-family: var(--police1);font-weight: normal !important;}
+.gwf_grand_titre_list a:before, .gwf_grand_titre_list a:after { 
+  content:''; width:30%; border-bottom: var(--border); display:inline-block;vertical-align:middle;}
+.gwf_grand_titre_list a.nav:before, .gwf_grand_titre_list a.nav:after{display: none;}
+.gwf_grand_titre_list a:before {margin-right:1em}
+.gwf_grand_titre_list a:after {margin-left:1em;}
+#gwf_header_topic{padding: 10px}
+
+.gwf_sujets{display: flex; width: 810px;background-color: var(--fond_gwf); padding: 5px; font-size: 12px;}
+
+.gwf_sujets_left{display: flex; width: 450px; background-color: var(--fond_bloc);border: var(--border); align-items: center;}
+.gwf_sujets_imgnew{width: 25px;height: 25px;overflow: hidden; border-radius: 100px; margin: 10px;}
+.gwf_sujets_imgnew img{width:100%; height:100%; object-fit: cover;-o-object-fit: cover;}
+.gwf_sujets_titre{width: 88%;text-align: justify;}
+.gwf_sujets_type{text-transform: uppercase; color: var(--balise1);}
+.gwf_sujets .topictitle {font-weight: 400 !important; font-family: var(--police1) !important; font-size: 11px; text-transform:uppercase;}
+.gwf_sujets_name{display: flex;}
+.gwf_sujets_name a{text-transform: uppercase; font-family: var(--police2);margin-left: 5px; font-size: 11px;}
+.gwf_sujets_name br, .gwf_sujets_name > div img {display: none;}
+.gwf_sujets_name > div{text-transform: lowercase; margin-left: 5px;}
+
+.gwf_sujets_avatar {width: 50px;height: 50px;overflow: hidden; border-radius: 100px; border: var(--border); margin: 0px 15px;}
+.gwf_sujets_avatar img {width:100%; height:100%; object-fit: cover;-o-object-fit: cover;}
+
+.gwf_sujets_lastpost{width: 180px; background-color: var(--fond_bloc); border: var(--border); display: flex;
+    align-items: center;justify-content: center;flex-direction: column; text-transform: lowercase;}
+.gwf_sujets_lastpost div{text-transform: uppercase; font-family: var(--police2);}
+.gwf_sujets_view{width: 120px;}
+.gwf_sujets_view div:first-child {margin-bottom: 4px;}
+.gwf_sujets_view div{background-color: var(--fond_bloc); border: var(--border); margin-left: 5px; text-align: center; padding: 4px;}
+
+.selectCode { float:right; text-transform: uppercase; cursor:pointer; font-size:12px;}
+div.cont_code { clear: right; }
+/*FIN AFFICHAGE SUJETS*/
+
+/*AFFICHAGE D'UN SUJET*/
+.gwf_viewtopic_top{width: 810px; display: flex; background-color: var(--fond_gwf); padding: 5px; justify-content: space-between;}
+.gwf_viewtopic_img{}
+.gwf_viewtopic_titre{width: 60%; background-position: center;
+  background-image: url('https://images2.imgbox.com/5f/6c/Es31vEGS_o.gif'); text-transform: uppercase;
+  font-family: var(--police1);  padding: 7px; text-align: center;}
+.gwf_viewtopic_titre span1{font-family: var(--police2); color: var(--balise1);font-size: 70%;}
+.gwf_viewtopic_titre span1:before, .gwf_viewtopic_titre span1:after { 
+  content:''; width:15%; border-bottom: var(--border); display:inline-block;vertical-align:middle;}
+.gwf_viewtopic_titre span1:before {margin-right:1em}
+.gwf_viewtopic_titre span1:after {margin-left:1em;}
+.gwf_viewtopic_all{background-color: var(--fond_gwf); margin-top: 5px;}
+
+.gwf_viewtopic_left{margin-left: 5px;}
+.gwf_viewtopic_avatar{background-color: var(--fond_bloc); border: var(--border); padding:5px; margin-top: 5px;}
+.gwf_viewtopic_name{background-color: var(--fond_bloc); border: var(--border); text-align: center; text-transform: uppercase;
+font-size: 10px;padding: 5px; margin-top: -13px; margin-bottom: 5px;}
+.gwf_viewtopic_name strong{font-family: var(--police2); font-size: 14px;}
+.gwf_viewtopic_label{background-color: var(--fond_bloc); border: var(--border); font-size: 11px; padding: 5px;
+height: 150px; overflow: auto; text-align: justify;}
+.gwf_viewtopic_label img, .gwf_viewtopic_feuille img{width:200px;padding: 5px;}
+.gwf_viewtopic_label span.label span{text-transform: uppercase; font-size: 10px; font-family: var(--police2); color: var(--balise1) !important;}
+.gwf_viewtopic_feuille{background-color: var(--fond_bloc); border: var(--border); padding: 5px; height: 150px; overflow: auto;font-family: var(--police1); max-width: 212px; text-align: justify;}
+.gwf_viewtopic_feuille > a{margin-top: -5px !important; display: flex; margin-bottom: -20px; font-size: 0px;}
+.gwf_viewtopic_feuille .gen{text-transform: uppercase; font-size: 10px; font-family: var(--police2); color: var(--balise1) !important;}
+/*** PROFIL SYSTEME ONGLET --------------- ***/
+.tabs {display: flex;justify-content: space-between;}
+/* .systab .tab => les onglet */
+.systab .tab {
+  margin-right: 2px; /* créée un espace entre les 3 titres d'onglets*/
+  cursor: pointer; background-color: var(--fond_bloc); border: var(--border); padding:5px;
+  font-size: 10px; text-transform: uppercase; font-family: var(--police2);}
+/* .systab .tab:hover => les onglets survolés */
+.systab .tab:hover {color: var(--balise1);}
+/* .systab .tab.selected => les onglets sélectionnés */
+.systab .tab.selected{}
+/* .systab .contents => les conteneurs des contenus associés aux onglets  */
+.systab .contents {margin-top: 5px; font-family: var(--police1); font-size: 11px;}
+
+/* style des onglets si ils sont à gauche ou à droite */
+.systab.s_float .tab,.systab.s_float .tab {display: block; margin: 5px;}
+/* flottement des conteneurs si les onglets sont à gauche où à droite */
+.systab.s_float .tabs,.systab.s_float .contents {float: left;}
+/*-------------*/
+
+.gwf_viewtopic_petit_titre{background-color: var(--fond_bloc); text-transform: uppercase; border: var(--border); display: flex;
+flex-direction: column;align-items: center;font-size: 11px;padding: 5px;margin: 5px; height: 50px; justify-content: center;}
+.gwf_viewtopic_petit_titre img{margin-top: 8px; margin-right: 8px;}
+.postbody{padding: 10px 20px; text-align: justify; line-height: 15px;}
+/* personnalisation chiante des champs de la feuille de personnage */
+#rpg-pseudo{text-transform: lowercase;font-family: var(--police1);font-size: 11px; color: var(--texte-fonce) !important;}
+#rpg-tw, #rpg-inventaire, #rpg-préférences-de-rp, #rpg-rps-en-cours, #rpg-rps-disponibles, #rpg-playlist-et-moodboard{text-transform: lowercase;font-family: var(--police1);font-size: 11px; color: var(--texte-fonce) !important;}
+
+/* FIN AFFICHAGE D'UN SUJET*/
+
 /* ====== MAQUETTE HLD 2/2 ====== la premiere partie est dans le CSS principal ====== */
 .gwf_viewtopic_top{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;gap:8px 10px;align-items:center;width:var(--L);padding:10px;margin:0}
 .gwf_viewtopic_all{width:var(--L);padding:0 10px 10px}
