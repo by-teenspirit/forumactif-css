@@ -1570,8 +1570,7 @@ body #page-body span.nav a:hover:has(>img[src*="topic_fr"],>img[src*="reply_fr"]
 #page-body .gwf_viewtopic_petit_titre{position:relative}
 #page-body .hld_likes{position:absolute;right:14px;top:10px;display:inline-flex;align-items:center;gap:5px;cursor:pointer;font:400 9px/1.5 var(--f1);letter-spacing:.14em;text-transform:uppercase;color:var(--pa);-webkit-user-select:none;user-select:none}
 #page-body .hld_likes:hover{color:var(--fn)}
-#page-body .hld_likes .hld_coeur{font-family:"Material Icons";font-style:normal;font-size:11px;line-height:1;letter-spacing:normal;text-transform:none;color:inherit}
-#page-body .hld_likes[data-aime="1"]{color:#A68953}
+#page-body .hld_likes .hld_coeur{font-family:"Material Icons";font-style:normal;font-size:11px;line-height:1;letter-spacing:normal;text-transform:none;color:var(--coeur,#C4706B)}
 #page-body .hld_likes .hld_coeur::before{content:"favorite_border"}
 #page-body .hld_likes[data-aime="1"] .hld_coeur::before{content:"favorite"}
 #page-body .hld_likes b{font-weight:400}
