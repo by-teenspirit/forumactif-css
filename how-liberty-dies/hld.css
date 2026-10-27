@@ -1048,7 +1048,7 @@ body #page-body td.catBottom input[type=submit]{padding:8px 11px;letter-spacing:
 
 /* La colonne image donne sa hauteur au duo ; le texte d'a cote se plafonne
    a la meme valeur et defile. */
-.hld_f_duo{display:flex;align-items:flex-start;gap:14px;margin:0 0 14px}
+.hld_f_duo{display:flex;align-items:stretch;gap:14px;margin:0 0 14px}
 .hld_f_duo>.hld_f_texte{flex:1 1 auto;min-width:0;margin:0;max-height:270px}
 .hld_f_image{flex:0 0 170px;height:270px;padding:5px;border:1px solid var(--f_cadre);background:#fff}
 .hld_f_image img{width:100%;height:100%;object-fit:cover;display:block}
@@ -1238,3 +1238,19 @@ body #page-body span.nav a:hover:has(>img[src*="topic_fr"],>img[src*="reply_fr"]
    saisie est une iframe : son fond interieur ne se regle pas d'ici. */
 [data-theme="dark"] :is(.sceditor-container,.sceditor-toolbar,.sceditor-group,.sceditor-button){background:var(--bl);border-color:var(--fi)}
 [data-theme="dark"] .sceditor-container :is(textarea,iframe){background:var(--bl);color:var(--fn)}
+
+/* ====== LES « J'AIME » EN HAUT DU MESSAGE ======
+   Forumactif les sert en bas du message, sous la forme d'une phrase et d'un
+   bouton. La maquette les veut en haut a droite de la barre du message, en
+   coeur + compte. hld.js pose la pastille et delegue le clic au bouton
+   d'origine, qui porte les jetons de securite : il reste en place, masque.
+   La liste de ceux qui aiment passe en infobulle. */
+#page-body .gwf_viewtopic_petit_titre{position:relative}
+#page-body .hld_likes{position:absolute;right:14px;top:10px;display:inline-flex;align-items:center;gap:5px;cursor:pointer;font:400 9px/1.5 var(--f1);letter-spacing:.14em;text-transform:uppercase;color:var(--pa);-webkit-user-select:none;user-select:none}
+#page-body .hld_likes:hover{color:var(--fn)}
+#page-body .hld_likes .hld_coeur{font-family:"Material Icons";font-style:normal;font-size:12px;line-height:1;color:#A68953}
+#page-body .hld_likes .hld_coeur::before{content:"favorite_border"}
+#page-body .hld_likes[data-aime="1"] .hld_coeur::before{content:"favorite"}
+#page-body .hld_likes b{font-weight:400}
+#page-body .hld_likes[data-vide="1"]{display:none}
+#page-body .fa_like_div{display:none}
