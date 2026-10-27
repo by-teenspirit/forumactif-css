@@ -759,3 +759,51 @@
   if(document.readyState !== 'loading'){ compteurs(); }
   else { document.addEventListener('DOMContentLoaded', compteurs); }
 })();
+
+/* Les « j'aime » remontent en haut du message.
+   Forumactif les pose en bas : une phrase (.fa_like_list) qui nomme ceux
+   qui aiment, et un bouton (.rep-button) qui porte les jetons de securite
+   du vote. On ne touche ni a l'un ni a l'autre : on lit la phrase pour en
+   tirer un compte, on pose un coeur dans la barre du message, et le clic
+   est renvoye au bouton d'origine. Un observateur suit la phrase, qui est
+   reecrite par Forumactif apres chaque vote. */
+(function(){
+  function compte(liste){
+    if(!liste) return 0;
+    var n=liste.querySelectorAll('a').length;
+    var m=(liste.textContent||'').match(/(\d+)\s+autre/);
+    if(m) n+=parseInt(m[1],10);
+    return n;
+  }
+  function pose(post){
+    var bar=post.querySelector('.gwf_viewtopic_petit_titre');
+    var bloc=post.querySelector('.fa_like_div');
+    if(!bar || !bloc || bar.querySelector('.hld_likes')) return;
+    var bouton=bloc.querySelector('button');
+    var liste=bloc.querySelector('.fa_like_list');
+    var sp=document.createElement('span'); sp.className='hld_likes';
+    var coeur=document.createElement('i'); coeur.className='hld_coeur';
+    var nb=document.createElement('b');
+    sp.appendChild(coeur); sp.appendChild(nb);
+    function rafraichir(){
+      var n=compte(liste);
+      nb.textContent=n+(n>1?' likes':' like');
+      sp.setAttribute('data-aime', (bouton && bouton.className.indexOf('fa_liked')>-1) ? '1' : '0');
+      sp.setAttribute('data-vide', (n===0 && !bouton) ? '1' : '0');
+      if(liste) sp.title=(liste.textContent||'').trim();
+    }
+    rafraichir();
+    sp.addEventListener('click', function(){ if(bouton) bouton.click(); });
+    if(window.MutationObserver){
+      new MutationObserver(rafraichir).observe(bloc,{childList:true,subtree:true,attributes:true,characterData:true});
+    }
+    bar.appendChild(sp);
+  }
+  function tout(){
+    var posts=document.querySelectorAll('tr.post');
+    for(var i=0;i<posts.length;i++) pose(posts[i]);
+  }
+  if(document.readyState!=='loading'){ tout(); }
+  else { document.addEventListener('DOMContentLoaded', tout); }
+  window.addEventListener('load', tout);
+})();
