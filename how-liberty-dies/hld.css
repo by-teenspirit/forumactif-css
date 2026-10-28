@@ -1239,3 +1239,6 @@ body #page-body .gwf_liens_profil a[data-lien]::after{letter-spacing:.1em}
    un carre gris vide dans l'onglet. Les commentaires ne comptent pas pour
    :empty, donc la regle attrape bien le cas « rien dedans ». */
 #page-body .gwf_viewtopic_feuille:empty{display:none}
+/* Les champs deplaces dans l'onglet « Behind the mask » gardent la mise en
+   page de ceux restes dans le premier onglet. */
+body #page-body .systab .content .infos-posteur{display:block;padding:1px 0;border:0;text-align:left}
