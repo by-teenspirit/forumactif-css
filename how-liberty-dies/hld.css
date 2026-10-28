@@ -1110,7 +1110,11 @@ body #page-body .gwf_liens_profil a[data-lien]>img{display:none}
 body #page-body .gwf_liens_profil a[data-lien="profil"]::after{content:"profil"}
 body #page-body .gwf_liens_profil a[data-lien="mp"]::after{content:"mp"}
 body #page-body .gwf_liens_profil a[data-lien="presentation"]::after{content:"présentation"}
-body #page-body .gwf_liens_profil a:is([data-lien="site"],[data-lien="email"]){display:none}
+/* Deux champs de contact de type « site web » coexistent : le script les
+   distingue par leur icone, presentation.gif pour le premier, icon_www.gif
+   pour le second. Le second porte le lien vers les relations. */
+body #page-body .gwf_liens_profil a[data-lien="site"]::after{content:"relations"}
+body #page-body .gwf_liens_profil a[data-lien="email"]{display:none}
 body #page-body .gwf_liens_profil td>img{display:none}
 
 /* Un seul filet dore, en haut du bloc qui porte le fil d'Ariane. Le
