@@ -1208,4 +1208,4 @@ div.gen:has(a[href*="/abuse"]){text-transform:uppercase;letter-spacing:.08em}
    poser en bas : le script ne les deplace que sur l'index. On masque la cellule
    qui les porte ; ils restent accessibles depuis le pied de l'index. */
 #page-body td.gensmall:has(>a[href*="search_id=newposts"]),
-#page-body td.gensmall:has(>a[href*="mark=forums"]){display:none}
+#page-body td.gensmall:has(>a[href*="mark=forums"]){display:none !important}
