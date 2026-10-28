@@ -234,8 +234,8 @@
     t.parentNode.insertBefore(racine, t);
     t.style.display='none';
   }
-  if(document.readyState!=='loading'){ ficheProfil(); }
-  else { document.addEventListener('DOMContentLoaded', ficheProfil); }
+  /* Desactive le 28/10 : la page de profil (/u1) doit rester celle de
+     Forumactif. La fonction est conservee pour pouvoir la rebrancher. */
 })();
 
 /* Liste des membres : la colonne Humeur n'est pas utilisee sur le forum.
