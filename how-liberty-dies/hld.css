@@ -275,8 +275,8 @@ table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[al
 /* ====== PAGE DE PROFIL (profile_view_body) ======
    Les images du profil n'etaient pas contraintes : la table partait a 921px
    dans un conteneur de 800. table-layout:fixed la tient, max-width tient les images. */
-#page-body table.forumline:has(h1.h_member){table-layout:fixed;width:100%;border:.5px solid var(--fi);border-radius:var(--r1);overflow:hidden}
-#page-body table.forumline:has(h1.h_member) img{max-width:100%;height:auto}
+/* La page de profil (/u1) est laissee a l'affichage d'origine de Forumactif :
+   les deux regles qui la mettaient en forme ont ete retirees le 28/10. */
 #page-body h1.h_member{font:400 11px/1.4 var(--f1);letter-spacing:.14em;text-transform:uppercase;color:var(--fn);margin:0}
 #page-body h1.h_member a{color:var(--or);text-decoration:none}
 #page-body table.forumline:has(h1.h_member) td.row1{vertical-align:top;padding:4px 16px 14px}
@@ -1209,3 +1209,19 @@ div.gen:has(a[href*="/abuse"]){text-transform:uppercase;letter-spacing:.08em}
    qui les porte ; ils restent accessibles depuis le pied de l'index. */
 #page-body td.gensmall:has(>a[href*="search_id=newposts"]),
 #page-body td.gensmall:has(>a[href*="mark=forums"]){display:none !important}
+
+/* ====== THEME SOMBRE : la suite de ce qui restait blanc (28/10) ======
+   L'editeur rapide garde sa propre feuille, servie apres la notre : il faut
+   donc passer devant, d'ou le !important sur ces quatre lignes. */
+[data-theme="dark"] div.sceditor-container,
+[data-theme="dark"] div.sceditor-toolbar,
+[data-theme="dark"] div.sceditor-group,
+[data-theme="dark"] .sceditor-button{background:var(--bl) !important;border-color:var(--fi) !important}
+[data-theme="dark"] .sceditor-container :is(textarea,iframe){background:var(--bl) !important;color:var(--fn)}
+[data-theme="dark"] #page-body .avatar.mini{background:var(--ch)}
+[data-theme="dark"] #page-body .spoiler_content{background:var(--ch);border-color:var(--fi)}
+[data-theme="dark"] .hld_onglet.hld_onglet_actif{background:var(--ch);color:var(--fn)}
+
+/* Hors de l'index, la cellule des liens de navigation est masquee : la table
+   qui la portait ne laissait plus qu'un bandeau blanc de 18px. */
+#page-body table:has(> tbody > tr > td.gensmall:has(>a[href*="search_id=newposts"])){display:none !important}
