@@ -1169,3 +1169,43 @@ body #page-body span.nav a:hover:has(>img[src*="topic_fr"],>img[src*="reply_fr"]
 #page-body .hld_aiment a{color:var(--fn);text-decoration:none}
 #page-body .hld_aiment a:hover{text-decoration:underline}
 #page-body .fa_like_div{display:none}
+
+/* ====== PASSE DU 28/10 ======
+   Reglages demandes apres relecture. */
+
+/* Un sujet commencait colle aux trois blocs du bandeau. L'espace se pose ici
+   et pas sur .gwf_bandeau, qui sert aussi sur l'index. */
+body .gwf_viewtopic_top{margin-top:15px}
+
+/* La pastille des likes est posee en absolu a droite de la barre : un titre
+   de sujet un peu long passait dessous. On reserve la place des deux cotes,
+   pour que le titre reste centre et s'arrete avant la pastille. */
+#page-body .gwf_viewtopic_petit_titre{padding-left:70px;padding-right:70px}
+
+/* Colonne de profil : meme gris que le reste, et des items plus discrets.
+   La couleur passe par une variable pour que le theme sombre la reprenne. */
+:root{--prof:#636363}
+[data-theme="dark"]{--prof:var(--fn)}
+body #page-body .infos-posteur .label,
+body #page-body .infos-posteur .profil_label::after{font-size:9.5px}
+body #page-body .hld_champ_val,
+body #page-body .infos-posteur[data-type="nombre"] .hld_champ_val,
+body #page-body .infos-posteur[data-champ="citation"] .hld_champ_val{font-size:9.5px;color:var(--prof)}
+
+/* Le meme ascenseur que celui des boites de la PA. */
+body #page-body .systab .content{scrollbar-color:rgb(216,216,212) transparent}
+body #page-body .systab .content::-webkit-scrollbar{width:4px}
+body #page-body .systab .content::-webkit-scrollbar-thumb{background:rgb(216,216,212);border-radius:9px}
+
+/* Barre de bas de page : deux liens en moins. */
+body .hld_pied .hld_pied_lien[href*="search_id=egosearch"],
+body .hld_pied .hld_pied_lien[href*="search_id=unanswered"]{display:none}
+
+/* La ligne de credits du tout en bas, en capitales comme le reste. */
+div.gen:has(a[href*="/abuse"]){text-transform:uppercase;letter-spacing:.08em}
+
+/* Hors de l'index, le gabarit laisse ces liens en haut de page au lieu de les
+   poser en bas : le script ne les deplace que sur l'index. On masque la cellule
+   qui les porte ; ils restent accessibles depuis le pied de l'index. */
+body td.gensmall:has(>a[href*="search_id=newposts"]),
+body td.gensmall:has(>a[href*="mark=forums"]){display:none}
