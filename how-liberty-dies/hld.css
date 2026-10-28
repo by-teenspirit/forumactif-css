@@ -1232,6 +1232,6 @@ div.gen:has(a[href*="/abuse"]){text-transform:uppercase;letter-spacing:.08em}
 
 /* Les quatre liens du profil debordaient de 9px dans une colonne de 208 et
    passaient sur deux lignes : on resserre la gouttiere et l'interlettrage. */
-body #page-body .gwf_liens_profil :is(tr,td){gap:4px 10px}
-body #page-body .gwf_liens_profil a[data-lien]{white-space:nowrap}
+body #page-body .gwf_liens_profil :is(tr,td){gap:4px 8px}
+body #page-body .gwf_liens_profil a[data-lien]{margin:0;white-space:nowrap}
 body #page-body .gwf_liens_profil a[data-lien]::after{letter-spacing:.1em}
