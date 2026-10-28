@@ -275,31 +275,23 @@ table[width="100%"]:has(> tbody > tr > td > span > a[href*="mark=forums"]) td[al
 /* ====== PAGE DE PROFIL (profile_view_body) ======
    Les images du profil n'etaient pas contraintes : la table partait a 921px
    dans un conteneur de 800. table-layout:fixed la tient, max-width tient les images. */
-/* La page de profil (/u1) est laissee a l'affichage d'origine de Forumactif :
-   les deux regles qui la mettaient en forme ont ete retirees le 28/10. */
-#page-body h1.h_member{font:400 11px/1.4 var(--f1);letter-spacing:.14em;text-transform:uppercase;color:var(--fn);margin:0}
-#page-body h1.h_member a{color:var(--or);text-decoration:none}
-#page-body table.forumline:has(h1.h_member) td.row1{vertical-align:top;padding:4px 16px 14px}
-#page-body table.forumline:has(h1.h_member) td.row1>table{width:100%;border-spacing:0}
-#page-body table.forumline:has(h1.h_member) td.row1>table>tbody>tr>td:first-child{width:130px;text-align:left;vertical-align:top;padding:7px 12px 7px 0;font:400 10.5px/1.7 var(--f4);color:var(--pa);white-space:normal}
-#page-body table.forumline:has(h1.h_member) td.row1>table>tbody>tr>td:last-child{vertical-align:top;padding:6px 0;font:400 11px/1.6 var(--f4);color:var(--tx)}
-#page-body table.forumline:has(h1.h_member) td.row1>table>tbody>tr+tr>td{border-top:.5px solid var(--sep)}
-#page-body table.forumline:has(h1.h_member) td.row1 img{max-width:200px;border-radius:var(--r1);display:block}
-#page-body table.forumline:has(h1.h_member) :is(td.catLeft,td.catRight){border-bottom:.5px solid var(--sep)}
+/* La page de profil (/u1) est laissee a l'affichage d'origine de Forumactif.
+   Les regles qui la mettaient en forme ont ete retirees le 28/10, et les
+   pastilles de contact sont desactivees la-bas via :not(:has(h1.h_member)). */
 /* icones subsilver d'origine remplacees par des boutons a la charte */
-#page-body :is(img[src*="icon_pm"],img[src*="icon_email"],img[src*="icon_www"],img[src*="presentation.gif"],img[src*="icon_quote"],img[src*="icon_profile"]){display:none}
+#page-body:not(:has(h1.h_member)) :is(img[src*="icon_pm"],img[src*="icon_email"],img[src*="icon_www"],img[src*="presentation.gif"],img[src*="icon_quote"],img[src*="icon_profile"]){display:none}
 /* Liens de contact : les icones subsilver d'origine deviennent des pastilles
    Material Icons (police deja chargee par le forum), sans texte. */
-#page-body :is(a:has(>img[src*="icon_pm"]),a:has(>img[src*="icon_email"]),a:has(>img[src*="icon_www"]),a:has(>img[src*="presentation.gif"]),a:has(>img[src*="icon_quote"]),a:has(>img[src*="icon_profile"])){width:32px;height:32px;padding:0;display:inline-flex;align-items:center;justify-content:center;border:.5px solid var(--fi);border-radius:50%;background:var(--bl);color:var(--fn);text-decoration:none;vertical-align:middle;transition:background .18s ease,color .18s ease}
-#page-body :is(a:has(>img[src*="icon_pm"]),a:has(>img[src*="icon_email"]),a:has(>img[src*="icon_www"]),a:has(>img[src*="presentation.gif"]),a:has(>img[src*="icon_quote"]),a:has(>img[src*="icon_profile"])):hover{background:var(--ch)}
-#page-body :is(a:has(>img[src*="icon_pm"]),a:has(>img[src*="icon_email"]),a:has(>img[src*="icon_www"]),a:has(>img[src*="presentation.gif"]),a:has(>img[src*="icon_quote"]),a:has(>img[src*="icon_profile"]))::after{font-family:"Material Icons";font-size:16px;line-height:1;letter-spacing:0;text-transform:none;font-weight:400}
-#page-body a:has(>img[src*="icon_pm"])::after{content:"mail"}
-#page-body a:has(>img[src*="icon_email"])::after{content:"alternate_email"}
-#page-body :is(a:has(>img[src*="icon_www"]),a:has(>img[src*="presentation.gif"]))::after{content:"link"}
+#page-body:not(:has(h1.h_member)) :is(a:has(>img[src*="icon_pm"]),a:has(>img[src*="icon_email"]),a:has(>img[src*="icon_www"]),a:has(>img[src*="presentation.gif"]),a:has(>img[src*="icon_quote"]),a:has(>img[src*="icon_profile"])){width:32px;height:32px;padding:0;display:inline-flex;align-items:center;justify-content:center;border:.5px solid var(--fi);border-radius:50%;background:var(--bl);color:var(--fn);text-decoration:none;vertical-align:middle;transition:background .18s ease,color .18s ease}
+#page-body:not(:has(h1.h_member)) :is(a:has(>img[src*="icon_pm"]),a:has(>img[src*="icon_email"]),a:has(>img[src*="icon_www"]),a:has(>img[src*="presentation.gif"]),a:has(>img[src*="icon_quote"]),a:has(>img[src*="icon_profile"])):hover{background:var(--ch)}
+#page-body:not(:has(h1.h_member)) :is(a:has(>img[src*="icon_pm"]),a:has(>img[src*="icon_email"]),a:has(>img[src*="icon_www"]),a:has(>img[src*="presentation.gif"]),a:has(>img[src*="icon_quote"]),a:has(>img[src*="icon_profile"]))::after{font-family:"Material Icons";font-size:16px;line-height:1;letter-spacing:0;text-transform:none;font-weight:400}
+#page-body:not(:has(h1.h_member)) a:has(>img[src*="icon_pm"])::after{content:"mail"}
+#page-body:not(:has(h1.h_member)) a:has(>img[src*="icon_email"])::after{content:"alternate_email"}
+#page-body:not(:has(h1.h_member)) :is(a:has(>img[src*="icon_www"]),a:has(>img[src*="presentation.gif"]))::after{content:"link"}
 /* Boutons « citer » et « profil » d'un message prive : memes pastilles, pour
    ne pas laisser deux gifs orange au milieu des icones rondes. */
-#page-body a:has(>img[src*="icon_quote"])::after{content:"format_quote"}
-#page-body a:has(>img[src*="icon_profile"])::after{content:"person"}
+#page-body:not(:has(h1.h_member)) a:has(>img[src*="icon_quote"])::after{content:"format_quote"}
+#page-body:not(:has(h1.h_member)) a:has(>img[src*="icon_profile"])::after{content:"person"}
 /* ====== LISTE DES MEMBRES ====== */
 /* Vignette ronde pour les avatars de la liste des membres uniquement : on les
    reconnait au lien vers le profil, sinon le panneau "Avatar" du profil se
