@@ -1224,4 +1224,4 @@ div.gen:has(a[href*="/abuse"]){text-transform:uppercase;letter-spacing:.08em}
 
 /* Hors de l'index, la cellule des liens de navigation est masquee : la table
    qui la portait ne laissait plus qu'un bandeau blanc de 18px. */
-#page-body table:has(> tbody > tr > td.gensmall:has(>a[href*="search_id=newposts"])){display:none !important}
+#page-body table:has(> tbody > tr > td.gensmall > a[href*="search_id=newposts"]){display:none !important}
