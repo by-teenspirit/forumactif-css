@@ -387,6 +387,7 @@
     }
     rang(col);
     liens(col);
+    feuille(col);
     masque(col);
     col.setAttribute('data-hld-vt','1');
   }
@@ -396,6 +397,37 @@
      premier. Pour choisir lesquels, modifier DERRIERE : ce sont les valeurs
      de data-champ, c'est-a-dire le nom du champ en minuscules sans accents,
      les espaces remplaces par des tirets. Un champ absent est ignore. */
+  /* La feuille de personnage arrive en texte nu : un lien, puis des paires
+     <span class="gen">libelle</span>: <span class="gen" id="rpg-...">valeur</span>
+     separees par des <br>. On la reecrit avec la structure des champs du
+     premier onglet, pour qu'elle herite exactement du meme style. */
+  function feuille(col){
+    var f = col.querySelector('.gwf_viewtopic_feuille');
+    if(!f || f.getAttribute('data-hld-fdp')) return;
+    var vals = f.querySelectorAll('span[id^="rpg-"]');
+    if(!vals.length) return;
+    var frag = document.createDocumentFragment();
+    for(var i=0;i<vals.length;i++){
+      var val = vals[i], lab = val.previousElementSibling;
+      if(!lab) continue;
+      var nom = (lab.textContent||'').replace(/\s*:\s*$/,'').trim();
+      if(!nom) continue;
+      var bloc = document.createElement('div');
+      bloc.className = 'infos-posteur';
+      bloc.setAttribute('data-champ', slug(nom));
+      var pl = document.createElement('span'); pl.className = 'profil_label';
+      var l = document.createElement('span'); l.className = 'label'; l.textContent = nom;
+      pl.appendChild(l);
+      var v = document.createElement('span'); v.className = 'hld_champ_val';
+      while(val.firstChild) v.appendChild(val.firstChild);
+      bloc.appendChild(pl); bloc.appendChild(v);
+      frag.appendChild(bloc);
+    }
+    if(!frag.childNodes.length) return;
+    f.textContent = '';
+    f.appendChild(frag);
+    f.setAttribute('data-hld-fdp','1');
+  }
   var DERRIERE = ['pronoms','dc','rp-et-dispo'];
   function masque(col){
     var panneaux = col.querySelectorAll('.systab .contents > .content');
