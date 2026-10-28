@@ -1249,4 +1249,4 @@ body #page-body .systab .content .infos-posteur{display:block;padding:1px 0;bord
 #page-body table.forumline:has(h1.h_member) img{max-width:100%;height:auto}
 /* Le conteneur de la feuille de personnage portait encore le cadre gris et la
    hauteur fixe du theme d'origine : dans l'onglet, il doit se faire oublier. */
-body #page-body .gwf_viewtopic_feuille{max-width:none;height:auto;padding:0;margin:0;background:none;border:0;text-align:left}
+body #page-body .gwf_viewtopic_feuille{max-width:none;height:auto;padding:12px 0 0;margin:0;background:none;border:0;text-align:left}
