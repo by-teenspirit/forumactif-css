@@ -387,7 +387,24 @@
     }
     rang(col);
     liens(col);
+    masque(col);
     col.setAttribute('data-hld-vt','1');
+  }
+  /* « Behind the mask » : {postrow.displayed.POSTER_RPG} ne renvoie rien, la
+     feuille de personnage de Forumactif n'est pas alimentee. On remplit donc
+     le second onglet avec des champs de profil ordinaires, deplacés depuis le
+     premier. Pour choisir lesquels, modifier DERRIERE : ce sont les valeurs
+     de data-champ, c'est-a-dire le nom du champ en minuscules sans accents,
+     les espaces remplaces par des tirets. Un champ absent est ignore. */
+  var DERRIERE = ['pronoms','dc','rp-et-dispo'];
+  function masque(col){
+    var panneaux = col.querySelectorAll('.systab .contents > .content');
+    if(panneaux.length < 2) return;
+    var cible = panneaux[1];
+    for(var i=0;i<DERRIERE.length;i++){
+      var c = col.querySelector('.infos-posteur[data-champ="'+DERRIERE[i]+'"]');
+      if(c) cible.appendChild(c);
+    }
   }
   /* Le rang ("PNJ") est un noeud de texte nu pose apres un <br>, donc
      impossible a styler et impossible a deplacer sous le pseudo. On
