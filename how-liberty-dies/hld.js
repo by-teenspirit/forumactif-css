@@ -863,3 +863,21 @@
   else { document.addEventListener('DOMContentLoaded', tout); }
   window.addEventListener('load', tout);
 })();
+
+/* Le titre d'un message commence par « Sujet : », pose en texte nu par le
+   gabarit. On retire ce prefixe : c'est autant de place gagnee avant la
+   pastille des likes, posee a droite de la meme barre. */
+(function(){
+  function titre(){
+    var bars = document.querySelectorAll('tr.post .gwf_viewtopic_petit_titre');
+    for(var i=0;i<bars.length;i++){
+      var n = bars[i].firstChild;
+      while(n && n.nodeType !== 3) n = n.nextSibling;
+      if(!n) continue;
+      var t = n.textContent;
+      if(/^\s*Sujet\s*:\s*/.test(t)) n.textContent = t.replace(/^\s*Sujet\s*:\s*/, '');
+    }
+  }
+  if(document.readyState !== 'loading'){ titre(); }
+  else { document.addEventListener('DOMContentLoaded', titre); }
+})();
