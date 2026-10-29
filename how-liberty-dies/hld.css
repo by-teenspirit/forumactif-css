@@ -1105,7 +1105,7 @@ body #page-body .gwf_liens_profil a[data-lien="presentation"]::after{content:"pr
 /* Deux champs de contact de type « site web » coexistent : le script les
    distingue par leur icone, presentation.gif pour le premier, icon_www.gif
    pour le second. Le second porte le lien vers les relations. */
-body #page-body .gwf_liens_profil a[data-lien="site"]::after{content:"liens"}
+body #page-body .gwf_liens_profil a[data-lien="site"]::after{content:"relations"}
 body #page-body .gwf_liens_profil a[data-lien="email"]{display:none}
 body #page-body .gwf_liens_profil td>img{display:none}
 
@@ -1263,3 +1263,12 @@ body #page-body .postbody{font-family:var(--f4);font-size:11px}
 #page-body table.forumline:has(h1.h_member) td,
 #page-body table.forumline:has(h1.h_member) td :is(span,div,p,strong,b,em,i,label){font-family:var(--f4);font-size:11px;color:var(--tx)}
 #page-body table.forumline:has(h1.h_member) td a{font-family:var(--f4);font-size:11px}
+
+/* ====== BLOCS CODE / CITATION / SPOILER / HIDE (29/10) ====== */
+/* .code portait une largeur fixe de 470px : le bloc depassait les trois autres */
+#page-body .postbody dd.code{width:auto}
+/* les libelles etaient en gras dore : on les aligne sur le reste du texte */
+#page-body .postbody dl.codebox dt b{font-weight:400;color:var(--prof)}
+/* citation et hide : meme interlignage que le texte courant */
+#page-body .postbody dd.quote,
+#page-body .postbody dl.codebox.hidecode dd{line-height:inherit}
