@@ -1105,7 +1105,7 @@ body #page-body .gwf_liens_profil a[data-lien="presentation"]::after{content:"pr
 /* Deux champs de contact de type « site web » coexistent : le script les
    distingue par leur icone, presentation.gif pour le premier, icon_www.gif
    pour le second. Le second porte le lien vers les relations. */
-body #page-body .gwf_liens_profil a[data-lien="site"]::after{content:"relations"}
+body #page-body .gwf_liens_profil a[data-lien="site"]::after{content:"liens"}
 body #page-body .gwf_liens_profil a[data-lien="email"]{display:none}
 body #page-body .gwf_liens_profil td>img{display:none}
 
