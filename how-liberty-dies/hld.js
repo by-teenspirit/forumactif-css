@@ -773,6 +773,9 @@
       if(!lien) continue;
       lien.className = 'hld_pied_lien';
       lien.removeAttribute('style');
+      /* Le libelle d'origine est trop long : il poussait « Cookies » seul
+         sur une deuxieme ligne. */
+      if(ORDRE[i]==='search_id=newposts') lien.textContent = 'Voir les nouveaux messages';
       nav.appendChild(lien);
     }
     if(!nav.children.length) return;
