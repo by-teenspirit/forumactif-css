@@ -1252,5 +1252,5 @@ body #page-body .systab .content .infos-posteur{display:block;padding:1px 0;bord
 body #page-body .gwf_viewtopic_feuille{max-width:none;height:auto;padding:12px 0 0;margin:0;background:none;border:0;text-align:left}
 /* Les credits du bas prennent la typo et le survol de la barre de liens juste
    au-dessus, mais sans la pastille : ni fond, ni arrondi, ni padding. */
-div.gen:has(a[href*="/abuse"]) a{display:inline-block;padding:0;border:0;border-radius:0;background:none;font:400 9px/1.6 var(--f1);letter-spacing:.11em;text-transform:uppercase;color:var(--pa);text-decoration:none;transition:color .15s ease}
-div.gen:has(a[href*="/abuse"]) a:hover{background:none;color:var(--fn)}
+#page-footer div.gen:has(a[href*="/abuse"]) a{display:inline-block;padding:0;border:0;border-radius:0;background:none;font:400 9px/1.6 var(--f1);letter-spacing:.11em;text-transform:uppercase;color:var(--pa);text-decoration:none;transition:color .15s ease}
+#page-footer div.gen:has(a[href*="/abuse"]) a:hover{background:none;color:var(--fn)}
