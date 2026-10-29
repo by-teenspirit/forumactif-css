@@ -1183,10 +1183,10 @@ body .gwf_viewtopic_top{margin-top:15px}
 :root{--prof:#636363}
 [data-theme="dark"]{--prof:var(--fn)}
 body #page-body .infos-posteur .label,
-body #page-body .infos-posteur .profil_label::after{font-size:9.5px}
+body #page-body .infos-posteur .profil_label::after{font-size:10.5px}
 body #page-body .hld_champ_val,
 body #page-body .infos-posteur[data-type="nombre"] .hld_champ_val,
-body #page-body .infos-posteur[data-champ="citation"] .hld_champ_val{font-size:9.5px;color:var(--prof)}
+body #page-body .infos-posteur[data-champ="citation"] .hld_champ_val{font-size:10.5px;color:var(--prof)}
 
 /* Le meme ascenseur que celui des boites de la PA. */
 body #page-body .systab .content{scrollbar-color:rgb(216,216,212) transparent}
@@ -1254,3 +1254,12 @@ body #page-body .gwf_viewtopic_feuille{max-width:none;height:auto;padding:12px 0
    au-dessus, mais sans la pastille : ni fond, ni arrondi, ni padding. */
 #page-footer div.gen:has(a[href*="/abuse"]) a{display:inline-block;padding:0;border:0;border-radius:0;background:none;font:400 9px/1.6 var(--f1);letter-spacing:.11em;text-transform:uppercase;color:var(--pa);text-decoration:none;transition:color .15s ease}
 #page-footer div.gen:has(a[href*="/abuse"]) a:hover{background:none;color:var(--fn)}
+/* Le corps d'un message sans balise restait en Karla : la charte veut du
+   Tahoma, comme le reste du texte courant. */
+body #page-body .postbody{font-family:var(--f4);font-size:11px}
+/* Page de profil : une seule typo et une seule couleur pour tout ce qui n'est
+   pas un lien, pour que les champs restent lisibles quoi qu'on y mette. Les
+   titres de section gardent leur mise en forme. */
+#page-body table.forumline:has(h1.h_member) td,
+#page-body table.forumline:has(h1.h_member) td :is(span,div,p,strong,b,em,i,label){font-family:var(--f4);font-size:11px;color:var(--tx)}
+#page-body table.forumline:has(h1.h_member) td a{font-family:var(--f4);font-size:11px}
