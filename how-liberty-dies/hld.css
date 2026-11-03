@@ -1288,3 +1288,7 @@ body #page-body:has(h1.h_member) :is(a:has(> img[src*="icon_pm"]),a:has(> img[sr
 body #page-body:has(h1.h_member) a:has(> img[src*="icon_pm"])::after{content:"message privé"}
 body #page-body:has(h1.h_member) a:has(> img[src*="presentation.gif"])::after{content:"liens"}
 body #page-body:has(h1.h_member) a:has(> img[src*="icon_www"])::after{content:"présentation"}
+
+/* ====== COLONNE DE PROFIL : PLUS DE BOUTON PROFIL (03/11) ====== */
+/* Le pseudo au-dessus mene deja au profil : le lien faisait doublon. */
+body #page-body .gwf_liens_profil a[data-lien="profil"]{display:none}
