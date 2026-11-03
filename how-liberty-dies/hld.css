@@ -1272,3 +1272,19 @@ body #page-body .postbody{font-family:var(--f4);font-size:11px}
 /* citation et hide : meme interlignage que le texte courant */
 #page-body .postbody dd.quote,
 #page-body .postbody dl.codebox.hidecode dd{line-height:inherit}
+
+/* ====== PAGE DE PROFIL : LES CONTACTS EN LIENS TEXTE (03/11) ====== */
+/* La ligne « Contacter par email » disparait entierement. */
+body #page-body:has(h1.h_member) tr:has(> td > div.gen > a > img[src*="icon_email"]){display:none}
+/* Les trois autres perdent leur bouton GIF natif. */
+body #page-body:has(h1.h_member) a:has(> img[src*="icon_pm"]) img,
+body #page-body:has(h1.h_member) a:has(> img[src*="presentation.gif"]) img,
+body #page-body:has(h1.h_member) a:has(> img[src*="icon_www"]) img{display:none}
+/* Couleur de lien du forum (reprise du CSS principal, 28-ltr.css). */
+body #page-body:has(h1.h_member) :is(a:has(> img[src*="icon_pm"]),a:has(> img[src*="presentation.gif"]),a:has(> img[src*="icon_www"])){color:#B07E69}
+body #page-body:has(h1.h_member) :is(a:has(> img[src*="icon_pm"]),a:has(> img[src*="presentation.gif"]),a:has(> img[src*="icon_www"])):hover{color:#DD6900}
+/* Le ::after des pastilles tourne en Material Icons : on le remet en texte. */
+body #page-body:has(h1.h_member) :is(a:has(> img[src*="icon_pm"]),a:has(> img[src*="presentation.gif"]),a:has(> img[src*="icon_www"]))::after{font-family:var(--f4);font-size:11px;font-weight:400;line-height:inherit;letter-spacing:normal;text-transform:none}
+body #page-body:has(h1.h_member) a:has(> img[src*="icon_pm"])::after{content:"message privé"}
+body #page-body:has(h1.h_member) a:has(> img[src*="presentation.gif"])::after{content:"liens"}
+body #page-body:has(h1.h_member) a:has(> img[src*="icon_www"])::after{content:"présentation"}
