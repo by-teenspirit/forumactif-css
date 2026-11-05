@@ -1308,7 +1308,9 @@ body #page-body .gwf_liens_profil a[data-lien="profil"]{display:none}
 /* Textes restes en #555 : sous-forums, compteurs, cases du qeel. */
 [data-theme="dark"] :is(.hld_liens a,.gwf_sous_fofo a,.gwf_suj_mes,.qeel_case){color:var(--tx)}
 [data-theme="dark"] strong{color:var(--fn)}
-[data-theme="dark"] .gwf_title_cate a{color:var(--fn)}
+/* Le titre de categorie etait fige a #706767 (regle de la ligne 776) : il faut
+   la meme specificite pour repasser devant. */
+[data-theme="dark"] body .gwf_cate :is(.gwf_title_cate,.gwf_title_cate a){color:var(--fn)}
 [data-theme="dark"] #page-body .spoiler_content{color:var(--tx)}
 [data-theme="dark"] #fa_right #fa_notifications{color:var(--tx) !important}
 /* Le lien passait a 3,9 : on prend le dore de la charte, qui monte a 6,6. */
