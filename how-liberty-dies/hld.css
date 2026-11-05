@@ -1292,3 +1292,24 @@ body #page-body:has(h1.h_member) a:has(> img[src*="icon_www"])::after{content:"p
 /* ====== COLONNE DE PROFIL : PLUS DE BOUTON PROFIL (03/11) ====== */
 /* Le pseudo au-dessus mene deja au profil : le lien faisait doublon. */
 body #page-body .gwf_liens_profil a[data-lien="profil"]{display:none}
+
+/* ====== THEME SOMBRE : LA PASSE DE CONTRASTE (05/11) ====== */
+/* Le CSS principal fixe encore des gris et des noirs de theme clair.
+   Mesure faite au ratio WCAG sur l'index, une liste de sujets et un sujet :
+   tout ce qui suit etait sous 4,0 sur fond sombre. */
+[data-theme="dark"]{--pa:#8E8E8E}
+/* La boite de la presentation masquait sa derniere ligne coupee avec un bord
+   blanc en dur : on le rattache au fond de la boite, valable dans les deux themes. */
+body .hld_boite{border-bottom-color:var(--bx)}
+/* La bande de texture des categories est une image claire : on la rabat. */
+[data-theme="dark"] #page-body img.gwf_img{filter:brightness(.17)}
+/* Textes restes en noir natif. */
+[data-theme="dark"] :is(b1,.gen,.gensmall,.nav,.gwf_viewtopic_titre){color:var(--tx)}
+/* Textes restes en #555 : sous-forums, compteurs, cases du qeel. */
+[data-theme="dark"] :is(.hld_liens a,.gwf_sous_fofo a,.gwf_suj_mes,.qeel_case){color:var(--tx)}
+[data-theme="dark"] strong{color:var(--fn)}
+[data-theme="dark"] .gwf_title_cate a{color:var(--fn)}
+[data-theme="dark"] #page-body .spoiler_content{color:var(--tx)}
+[data-theme="dark"] #fa_right #fa_notifications{color:var(--tx) !important}
+/* Le lien passait a 3,9 : on prend le dore de la charte, qui monte a 6,6. */
+[data-theme="dark"] a:link{color:var(--or)}
