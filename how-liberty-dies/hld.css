@@ -785,7 +785,7 @@ body .gwf_cate .gw_cate_right{gap:3px}
    de la boite de padding, pas au bord de la bordure. Le padding bas et la
    marge du dernier <p> s'ajoutaient a cette bordure en fin de defilement et
    laissaient 32px de blanc ; on les remet a zero pour n'avoir que les 12px. */
-body .hld_boite:not(.hld_nu){border-bottom:12px solid #fff;padding-bottom:0}
+body .hld_boite:not(.hld_nu){border-bottom:12px solid var(--bx);padding-bottom:0}
 body .hld_boite:not(.hld_nu)::after{content:none}
 body .hld_boite:not(.hld_nu)>:last-child{margin-bottom:0}
 
@@ -1298,9 +1298,9 @@ body #page-body .gwf_liens_profil a[data-lien="profil"]{display:none}
    Mesure faite au ratio WCAG sur l'index, une liste de sujets et un sujet :
    tout ce qui suit etait sous 4,0 sur fond sombre. */
 [data-theme="dark"]{--pa:#8E8E8E}
-/* La boite de la presentation masquait sa derniere ligne coupee avec un bord
-   blanc en dur : on le rattache au fond de la boite, valable dans les deux themes. */
-body .hld_boite{border-bottom-color:var(--bx)}
+/* La boite de la presentation masque sa derniere ligne coupee avec un bord de
+   12px : il etait en blanc en dur, il suit maintenant le fond de la boite
+   (regle d'origine plus haut, passee a var(--bx)). */
 /* La bande de texture des categories est une image claire : on la rabat. */
 [data-theme="dark"] #page-body img.gwf_img{filter:brightness(.17)}
 /* Textes restes en noir natif. */
