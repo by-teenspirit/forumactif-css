@@ -1335,3 +1335,9 @@ a:hover{color:var(--lien-sur)}
 /* Deux couleurs de theme clair etaient figees dans nos propres regles. */
 [data-theme="dark"] body .gwf_sujets :is(.gwf_sujets_type,.gwf_sujets_type strong){color:var(--fn)}
 [data-theme="dark"] body .gwf_sujets a.topictitle{color:var(--fn)}
+
+/* ====== THEME SOMBRE : LES PASTILLES DE STATUT (08/11) ====== */
+/* Les marqueurs de la liste des sujets (verrouille, lu, non lu) sont des PNG
+   noirs sur fond transparent : invisibles sur fond sombre. L'inversion garde
+   la transparence et les rend gris clair, au ton du texte. */
+[data-theme="dark"] :is(.gwf_sujets_imgnew,.gwf_sujets_minicon) img{filter:invert(1) brightness(.84)}
