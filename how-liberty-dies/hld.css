@@ -1325,6 +1325,13 @@ body #page-body .gwf_liens_profil a[data-lien="profil"]{display:none}
    composants (barre de navigation, onglets, pastilles) qui ont leur couleur. */
 a:link,a:visited{color:var(--lien)}
 a:hover{color:var(--lien-sur)}
-/* Le fond de page etait noir en theme clair : --fx n'avait pas de valeur
-   claire, et body est le seul endroit qui s'en sert. */
-:root:not([data-theme="dark"]){--fx:var(--pg)}
+/* Les liens qui avaient deja leur couleur dans la charte la gardent : seuls
+   les liens ordinaires passent au dore. Les variantes :link/:visited sont la
+   pour repasser devant la regle a:link ci-dessus, de meme specificite. */
+.gwf_sous_fofo a,.gwf_sous_fofo a:link,.gwf_sous_fofo a:visited{color:#555555}
+.hld_parto li a,.hld_parto li a:link,.hld_parto li a:visited{color:var(--tx)}
+
+/* ====== THEME SOMBRE : LA LISTE DES SUJETS (08/11) ====== */
+/* Deux couleurs de theme clair etaient figees dans nos propres regles. */
+[data-theme="dark"] body .gwf_sujets :is(.gwf_sujets_type,.gwf_sujets_type strong){color:var(--fn)}
+[data-theme="dark"] body .gwf_sujets a.topictitle{color:var(--fn)}
