@@ -1073,7 +1073,7 @@ body #page-body .systab .content::-webkit-scrollbar-thumb{background:#B9AFA2}
    d'autre que le libelle n'a de typo propre — ni gros chiffres pour les
    compteurs, ni exergue pour la citation. */
 body #page-body .gwf_viewtopic_label{padding:12px 0 0}
-body #page-body .gwf_viewtopic_label .infos-posteur{display:block;padding:1px 0;border:0;text-align:left}
+body #page-body .gwf_viewtopic_label .infos-posteur{display:block;padding:1px 0;border:0;text-align:justify}
 body #page-body .gwf_viewtopic_label .infos-posteur:first-child{padding-top:0;border:0}
 body #page-body .infos-posteur .profil_label{display:inline}
 body #page-body .infos-posteur .label{font:500 10px/1.5 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--or)}
@@ -1241,7 +1241,7 @@ body #page-body .gwf_liens_profil a[data-lien]::after{letter-spacing:.1em}
 #page-body .gwf_viewtopic_feuille:empty{display:none}
 /* Les champs deplaces dans l'onglet « Behind the mask » gardent la mise en
    page de ceux restes dans le premier onglet. */
-body #page-body .systab .content .infos-posteur{display:block;padding:1px 0;border:0;text-align:left}
+body #page-body .systab .content .infos-posteur{display:block;padding:1px 0;border:0;text-align:justify}
 /* Page de profil : on n'y remet aucun habillage, seulement de quoi la tenir
    dans la largeur du forum. Sans ca la table part a 1014px dans une colonne
    de 800 et les images d'illustration a 500. */
@@ -1249,7 +1249,7 @@ body #page-body .systab .content .infos-posteur{display:block;padding:1px 0;bord
 #page-body table.forumline:has(h1.h_member) img{max-width:100%;height:auto}
 /* Le conteneur de la feuille de personnage portait encore le cadre gris et la
    hauteur fixe du theme d'origine : dans l'onglet, il doit se faire oublier. */
-body #page-body .gwf_viewtopic_feuille{max-width:none;height:auto;padding:12px 0 0;margin:0;background:none;border:0;text-align:left}
+body #page-body .gwf_viewtopic_feuille{max-width:none;height:auto;padding:12px 0 0;margin:0;background:none;border:0;text-align:justify}
 /* Les credits du bas prennent la typo et le survol de la barre de liens juste
    au-dessus, mais sans la pastille : ni fond, ni arrondi, ni padding. */
 #page-footer div.gen:has(a[href*="/abuse"]) a{display:inline-block;padding:0;border:0;border-radius:0;background:none;font:400 9px/1.6 var(--f1);letter-spacing:.11em;text-transform:uppercase;color:var(--pa);text-decoration:none;transition:color .15s ease}
@@ -1341,3 +1341,11 @@ a:hover{color:var(--lien-sur)}
    noirs sur fond transparent : invisibles sur fond sombre. L'inversion garde
    la transparence et les rend gris clair, au ton du texte. */
 [data-theme="dark"] :is(.gwf_sujets_imgnew,.gwf_sujets_minicon) img{filter:invert(1) brightness(.84)}
+
+/* ====== UN BLOC TROP LARGE NE DOIT PLUS ELARGIR LA PAGE (08/11) ====== */
+/* Les codes de partenaires sont des iframes a largeur fixe. Dans un tableau en
+   mise en page automatique, cette largeur remonte en largeur minimale de la
+   cellule et etire toute la rangee au-dela des 800px du forum. width:0 annule
+   cette remontee, min-width:100% rend la largeur reelle, et le debordement
+   defile a l'interieur du message au lieu de pousser la page. */
+#page-body .postbody{width:0;min-width:100%;overflow-x:auto}
