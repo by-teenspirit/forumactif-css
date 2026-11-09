@@ -1349,3 +1349,15 @@ a:hover{color:var(--lien-sur)}
    cette remontee, min-width:100% rend la largeur reelle, et le debordement
    defile a l'interieur du message au lieu de pousser la page. */
 #page-body .postbody{width:0;min-width:100%;overflow-x:auto}
+
+/* ====== LES DEUX PANNEAUX DE LA BARRE DU HAUT (09/11) ====== */
+/* Forumactif les positionne par un left en pixels pose en style en ligne, ce
+   qui les colle au bord de la fenetre : d'ou le !important. */
+#fa_menulist,#notif_list{left:auto !important;right:10px !important}
+/* La croix de suppression d'une notification est un <a class="delete"> vide :
+   aucune feuille du forum ne lui donne d'image, elle etait donc invisible.
+   On dessine le signe nous-memes et on l'ancre en haut a droite de l'entree. */
+#notif_list li .content{position:relative;padding-right:18px}
+#notif_list a.delete{position:absolute;top:0;right:0;display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;line-height:1;color:var(--pa);text-decoration:none;transition:color .15s ease}
+#notif_list a.delete::before{content:"\00d7";font:400 15px/1 var(--f4)}
+#notif_list a.delete:hover{color:var(--fn)}
