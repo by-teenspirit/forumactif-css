@@ -1357,7 +1357,7 @@ a:hover{color:var(--lien-sur)}
 /* La croix de suppression d'une notification est un <a class="delete"> vide :
    aucune feuille du forum ne lui donne d'image, elle etait donc invisible.
    On dessine le signe nous-memes et on l'ancre en haut a droite de l'entree. */
-#notif_list li .content{position:relative;padding-right:18px}
-#notif_list a.delete{position:absolute;top:0;right:0;display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;line-height:1;color:var(--pa);text-decoration:none;transition:color .15s ease}
+#notif_list li .content{position:relative;padding-right:30px}
+#notif_list a.delete{position:absolute;top:0;right:12px;display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;line-height:1;color:var(--pa);text-decoration:none;transition:color .15s ease}
 #notif_list a.delete::before{content:"\00d7";font:400 15px/1 var(--f4)}
 #notif_list a.delete:hover{color:var(--fn)}
