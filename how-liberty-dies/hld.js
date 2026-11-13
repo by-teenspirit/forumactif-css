@@ -30,15 +30,30 @@
   /* Forumactif ecrit la chaine "(12)", parentheses comprises, dans le compteur
      de notifications. Le CSS ne peut pas retirer des parentheses d'un noeud de
      texte : on nettoie ici pour que la pastille doree n'affiche que le nombre,
-     et on la cache quand il n'y a rien a signaler. */
+     et on la cache quand il n'y a rien a signaler.
+     Le compteur n'est pas dans le HTML : Forumactif l'injecte par script,
+     apres le DOMContentLoaded. On guette donc son apparition, puis on ne
+     surveille plus que lui. Pas de boucle : une fois le texte reduit aux
+     chiffres, le rappel ne reecrit plus rien. */
   function pastille(){
     var c=document.getElementById('notif_unread');
-    if(!c) return;
+    if(!c) return false;
     var n=(c.textContent||'').replace(/[^0-9]/g,'');
     if(c.textContent!==n) c.textContent=n;
     c.style.display=(n===''||n==='0')?'none':'';
+    return true;
   }
-  pastille();
+  if(!pastille() && window.MutationObserver){
+    var guet=new MutationObserver(function(){
+      if(!pastille()) return;
+      guet.disconnect();
+      new MutationObserver(pastille).observe(
+        document.getElementById('notif_unread'),
+        {childList:true,characterData:true,subtree:true}
+      );
+    });
+    guet.observe(document.documentElement,{childList:true,subtree:true});
+  }
   document.addEventListener('DOMContentLoaded',pastille,false);
 })();
 
