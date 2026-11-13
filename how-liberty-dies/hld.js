@@ -27,6 +27,19 @@
       liste.style.display='';
     }
   }, false);
+  /* Forumactif ecrit la chaine "(12)", parentheses comprises, dans le compteur
+     de notifications. Le CSS ne peut pas retirer des parentheses d'un noeud de
+     texte : on nettoie ici pour que la pastille doree n'affiche que le nombre,
+     et on la cache quand il n'y a rien a signaler. */
+  function pastille(){
+    var c=document.getElementById('notif_unread');
+    if(!c) return;
+    var n=(c.textContent||'').replace(/[^0-9]/g,'');
+    if(c.textContent!==n) c.textContent=n;
+    c.style.display=(n===''||n==='0')?'none':'';
+  }
+  pastille();
+  document.addEventListener('DOMContentLoaded',pastille,false);
 })();
 
 
